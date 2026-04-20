@@ -23,9 +23,9 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  opacity: 0.06;
+  width: 700px;
+  height: 700px;
+  opacity: 0.15;
   pointer-events: none;
   z-index: 0;
 }
@@ -62,8 +62,8 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 
 .card { background: #1a1d25; border: 0.5px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.1rem 1.1rem 1rem; transition: border-color 0.15s; }
 .card:hover { border-color: rgba(79,200,160,0.3); }
-.card-logo { height: 42px; display: flex; align-items: center; margin-bottom: 0.8rem; }
-.card-logo img { max-height: 38px; max-width: 120px; object-fit: contain; }
+.card-logo { height: 48px; display: flex; align-items: center; margin-bottom: 0.8rem; }
+.card-logo img { max-height: 44px; max-width: 160px; object-fit: contain; }
 .card-desc { font-size: 11.5px; color: #5a6470; line-height: 1.5; }
 .card-url { font-size: 11px; color: #4fc8a0; margin-top: 0.55rem; opacity: 0.7; }
 .card-tagline { font-size: 9.5px; letter-spacing: 0.1em; color: #4a5560; text-transform: uppercase; margin-top: 0.4rem; }
@@ -251,8 +251,8 @@ function switchTab(id,btn){
 
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
-canvas.width = 600;
-canvas.height = 600;
+canvas.width = 700;
+canvas.height = 700;
 
 let angle = 0;
 
@@ -272,14 +272,14 @@ const featureLines = [
 ];
 
 function drawHead(rotY) {
-  ctx.clearRect(0,0,600,600);
+  ctx.clearRect(0,0,700,700);
   ctx.save();
-  ctx.translate(300,280);
+  ctx.translate(350,330);
   const cos = Math.cos(rotY);
   const scale = Math.abs(cos);
   const flip = cos < 0 ? -1 : 1;
   ctx.strokeStyle = '#4fc8a0';
-  ctx.lineWidth = 1.5;
+  ctx.lineWidth = 1.8;
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
   ctx.beginPath();

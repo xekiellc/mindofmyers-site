@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mind of Myers</title>
 
-<!-- Google Analytics — replace G-XXXXXXXXXX with your GA4 Measurement ID -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -31,7 +30,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 }
 
 .sw {
-  background: #0f1117;
+  background: transparent;
   max-width: 960px;
   margin: 2rem auto;
   border-radius: 14px;
@@ -43,18 +42,18 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
   z-index: 1;
 }
 
-.hero { padding: 3rem 2.5rem 2rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+.hero { padding: 3rem 2.5rem 2rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); background: rgba(15,17,23,0.9); }
 .hero-ey { font-size: 11px; letter-spacing: 0.14em; color: #7a8899; text-transform: uppercase; margin-bottom: 0.5rem; }
 .hero-name { font-size: 40px; font-weight: 500; color: #f0f0f0; line-height: 1.1; margin-bottom: 0.4rem; }
 .hero-name span { color: #4fc8a0; }
 .hero-sub { font-size: 14px; color: #7a8899; max-width: 480px; line-height: 1.6; font-style: italic; }
 
-.tab-nav { display: flex; padding: 0 2.5rem; background: #0f1117; border-bottom: 0.5px solid rgba(255,255,255,0.08); overflow-x: auto; }
+.tab-nav { display: flex; padding: 0 2.5rem; background: rgba(15,17,23,0.9); border-bottom: 0.5px solid rgba(255,255,255,0.08); overflow-x: auto; }
 .tab-btn { padding: 0.85rem 1.2rem; font-size: 13px; color: #7a8899; background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; font-family: inherit; }
 .tab-btn.active { color: #4fc8a0; border-bottom-color: #4fc8a0; }
 .tab-btn:hover:not(.active) { color: #c0c8d0; }
 
-.tab-content { padding: 2rem 2.5rem; display: none; flex: 1; }
+.tab-content { padding: 2rem 2.5rem; display: none; flex: 1; background: rgba(15,17,23,0.9); }
 .tab-content.active { display: block; }
 .sec-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a8899; margin-bottom: 1rem; }
 
@@ -63,7 +62,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .card { background: #1a1d25; border: 0.5px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.1rem 1.1rem 1rem; transition: border-color 0.15s; }
 .card:hover { border-color: rgba(79,200,160,0.3); }
 .card-logo { height: 48px; display: flex; align-items: center; margin-bottom: 0.8rem; }
-.card-logo img { max-height: 44px; max-width: 160px; object-fit: contain; }
+.card-logo img { height: 36px; max-width: 160px; object-fit: contain; }
 .card-desc { font-size: 11.5px; color: #5a6470; line-height: 1.5; }
 .card-url { font-size: 11px; color: #4fc8a0; margin-top: 0.55rem; opacity: 0.7; }
 .card-tagline { font-size: 9.5px; letter-spacing: 0.1em; color: #4a5560; text-transform: uppercase; margin-top: 0.4rem; }
@@ -114,7 +113,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; }
 .tag { font-size: 11px; padding: 4px 12px; border-radius: 20px; background: #1a1d25; border: 0.5px solid rgba(255,255,255,0.08); color: #7a8899; }
 
-.footer { padding: 1.25rem 2.5rem; border-top: 0.5px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.footer { padding: 1.25rem 2.5rem; border-top: 0.5px solid rgba(255,255,255,0.06); background: rgba(15,17,23,0.9); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 .footer-l { font-size: 11px; color: #3a4450; }
 .footer-e { font-size: 12px; color: #4fc8a0; opacity: 0.7; text-decoration: none; }
 .footer-e:hover { opacity: 1; }
@@ -142,7 +141,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
     <div class="sec-label">Ventures &amp; Projects</div>
     <div class="cards-3col">
       <div class="card">
-        <div class="card-logo"><img src="XEKIE%20Logo.jpg" alt="XEKIE"></div>
+        <div class="card-logo"><img src="xekie-logo-wide.svg" alt="XEKIE"></div>
         <div class="card-desc">Demand-side marketplace where buyers post what they want and sellers respond.</div>
         <div class="card-tagline">TRADE DIFFERENT</div>
         <div class="card-url">xekie.com</div>

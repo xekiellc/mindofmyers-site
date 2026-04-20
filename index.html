@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mind of Myers</title>
+
+<!-- Google Analytics — replace G-XXXXXXXXXX with your GA4 Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; min-height: 100vh; }
+.sw { background: #0f1117; max-width: 960px; margin: 2rem auto; border-radius: 14px; overflow: hidden; color: #e8e8e8; display: flex; flex-direction: column; }
+
+.hero { padding: 3rem 2.5rem 2rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+.hero-ey { font-size: 11px; letter-spacing: 0.14em; color: #7a8899; text-transform: uppercase; margin-bottom: 0.5rem; }
+.hero-name { font-size: 40px; font-weight: 500; color: #f0f0f0; line-height: 1.1; margin-bottom: 0.4rem; }
+.hero-name span { color: #4fc8a0; }
+.hero-sub { font-size: 14px; color: #7a8899; max-width: 480px; line-height: 1.6; font-style: italic; }
+
+.tab-nav { display: flex; padding: 0 2.5rem; background: #0f1117; border-bottom: 0.5px solid rgba(255,255,255,0.08); overflow-x: auto; }
+.tab-btn { padding: 0.85rem 1.2rem; font-size: 13px; color: #7a8899; background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; font-family: inherit; }
+.tab-btn.active { color: #4fc8a0; border-bottom-color: #4fc8a0; }
+.tab-btn:hover:not(.active) { color: #c0c8d0; }
+
+.tab-content { padding: 2rem 2.5rem; display: none; flex: 1; }
+.tab-content.active { display: block; }
+.sec-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a8899; margin-bottom: 1rem; }
+
+.cards-3col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 2rem; }
+
+.card { background: #1a1d25; border: 0.5px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.1rem 1.1rem 1rem; transition: border-color 0.15s; }
+.card:hover { border-color: rgba(79,200,160,0.3); }
+.card-logo { height: 42px; display: flex; align-items: center; margin-bottom: 0.8rem; }
+.card-logo img { max-height: 38px; max-width: 120px; object-fit: contain; }
+.card-desc { font-size: 11.5px; color: #5a6470; line-height: 1.5; }
+.card-url { font-size: 11px; color: #4fc8a0; margin-top: 0.55rem; opacity: 0.7; }
+.card-tagline { font-size: 9.5px; letter-spacing: 0.1em; color: #4a5560; text-transform: uppercase; margin-top: 0.4rem; }
+
+.gp360 { font-size: 13px; font-weight: 500; color: #f0f0f0; line-height: 1.2; }
+.gp360 span { color: #e63946; }
+
+.yama-logo { font-size: 12.5px; font-weight: 500; color: #d4a94a; line-height: 1.3; }
+.yama-logo small { display: block; font-size: 9.5px; color: #8a7040; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
+
+.jony-logo { font-size: 12.5px; font-weight: 500; color: #c0c8d4; line-height: 1.3; }
+.jony-logo small { display: block; font-size: 9.5px; color: #5a6470; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
+
+.wicket-logo { font-size: 13px; font-weight: 500; line-height: 1.3; }
+.wicket-logo .mj { color: #c8a84b; }
+.wicket-logo .wk { color: #e8e8e8; }
+.wicket-logo small { display: block; font-size: 9.5px; color: #4a7a4a; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
+
+.card-kyzmyt { background: #0d1122; border-color: rgba(180,150,100,0.2); }
+.card-kyzmyt:hover { border-color: rgba(200,168,75,0.4); }
+.kyzmyt-logo { font-size: 17px; font-weight: 500; line-height: 1.2; letter-spacing: 0.01em; }
+.kyzmyt-logo .kw { color: #f0f0f0; }
+.kyzmyt-logo .kg { color: #c8924a; }
+.kyzmyt-logo small { display: block; font-size: 9.5px; color: #6a7a9a; letter-spacing: 0.06em; font-style: italic; font-weight: 400; margin-top: 3px; text-transform: none; }
+
+.books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; }
+.book-card { display: flex; flex-direction: column; }
+.book-cover { width: 100%; aspect-ratio: 2/3; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 0; margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.bc1 { background: #0d1f2d; border-left: 4px solid #5b9cf6; }
+.bc2 { background: #1a0d0d; border-left: 4px solid #e24b4a; }
+.bc3 { background: #0d1a12; border-left: 4px solid #4fc8a0; }
+.bc-label { font-size: 13px; font-weight: 500; text-align: center; padding: 0 0.75rem; line-height: 1.4; }
+.bc1 .bc-label { color: #85b7eb; }
+.bc2 .bc-label { color: #f09595; }
+.bc3 .bc-label { color: #5dcaa5; }
+.book-title { font-size: 14px; font-weight: 500; color: #dde4ec; margin-bottom: 0.3rem; }
+.book-desc { font-size: 12px; color: #5a6470; line-height: 1.5; }
+
+.cards-kpop { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 2rem; }
+.card-kpop { background: #16112a; border: 0.5px solid rgba(140,100,200,0.2); border-radius: 12px; padding: 1.1rem 1.1rem 1rem; transition: border-color 0.15s; }
+.card-kpop:hover { border-color: rgba(155,127,232,0.5); }
+.kpop-dot { width: 8px; height: 8px; border-radius: 50%; margin-bottom: 0.75rem; }
+.kpop-name { font-size: 13px; font-weight: 500; color: #c9b8f0; margin-bottom: 0.3rem; }
+.kpop-desc { font-size: 11.5px; color: #6a5a8a; line-height: 1.5; }
+.kpop-intro { font-size: 13px; color: #7a8899; margin-bottom: 1.5rem; line-height: 1.7; max-width: 560px; }
+
+.about-text { font-size: 14px; color: #8a9499; line-height: 1.8; max-width: 560px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; }
+.tag { font-size: 11px; padding: 4px 12px; border-radius: 20px; background: #1a1d25; border: 0.5px solid rgba(255,255,255,0.08); color: #7a8899; }
+
+.footer { padding: 1.25rem 2.5rem; border-top: 0.5px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.footer-l { font-size: 11px; color: #3a4450; }
+.footer-e { font-size: 12px; color: #4fc8a0; opacity: 0.7; text-decoration: none; }
+.footer-e:hover { opacity: 1; }
+</style>
+</head>
+<body>
+<div class="sw">
+
+  <div class="hero">
+    <div class="hero-ey">mindofmyers.com</div>
+    <div class="hero-name">Mind of <span>Myers</span></div>
+    <div class="hero-sub">Entrepreneur. Novelist. Builder of things that don't exist yet.</div>
+  </div>
+
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('tech',this)">Tech &amp; Business</button>
+    <button class="tab-btn" onclick="switchTab('books',this)">Books</button>
+    <button class="tab-btn" onclick="switchTab('kpop',this)">K-Pop Network</button>
+    <button class="tab-btn" onclick="switchTab('about',this)">About</button>
+  </div>
+
+  <div id="tab-tech" class="tab-content active">
+    <div class="sec-label">Ventures &amp; Projects</div>
+    <div class="cards-3col">
+
+      <div class="card">
+        <div class="card-logo">
+          <img src="images/xekie-logo.jpg" alt="XEKIE">
+        </div>
+        <div class="card-desc">Demand-side marketplace where buyers post what they want and sellers respond.</div>
+        <div class="card-tagline">TRADE DIFFERENT</div>
+        <div class="card-url">xekie.com</div>
+      </div>
+
+      <div class="card">
+        <div class="card-logo"><div class="gp360">GLOBAL POLITICS <span>360</span></div></div>
+        <div class="card-desc">AI-powered global news and podcast aggregator with editorial integrity.</div>
+        <div class="card-tagline">INDEPENDENT VOICES ◆ UNFILTERED PERSPECTIVES</div>
+        <div class="card-url">globalpolitics360.com</div>
+      </div>
+
+      <div class="card">
+        <div class="card-logo"><div class="yama-logo">Yamanaka Factors<small>Cellular Reprogramming Report</small></div></div>
+        <div class="card-desc">Automated longevity and cellular reprogramming science news hub.</div>
+        <div class="card-url">yamanakafactors.com</div>
+      </div>
+
+      <div class="card">
+        <div class="card-logo"><div class="jony-logo">Sir Jony Ive<small>Premium Tribute &amp; News</small></div></div>
+        <div class="card-desc">A premium tribute and news hub dedicated to the legacy of the world's greatest designer.</div>
+        <div class="card-url">sirjonyive.com</div>
+      </div>
+
+      <div class="card">
+        <div class="card-logo"><div class="wicket-logo"><span class="mj">Majestic</span><span class="wk">Wicket</span><small>Where the World Watches Cricket</small></div></div>
+        <div class="card-desc">AI-curated global cricket hub covering 20+ leagues, every nation, 4x daily updates.</div>
+        <div class="card-url">majesticwicket.com</div>
+      </div>
+
+      <div class="card card-kyzmyt">
+        <div class="card-logo"><div class="kyzmyt-logo"><span class="kw">Kyzm</span><span class="kg">yt</span><small>like kismet — but real.</small></div></div>
+        <div class="card-desc">Fate-based dating platform. The world's first verified dating experience.</div>
+        <div class="card-url">kyzmyt.com</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="tab-books" class="tab-content">
+    <div class="sec-label">Novels</div>
+    <div class="books-grid">
+      <div class="book-card">
+        <div class="book-cover bc1"><div class="bc-label">Spyder Byte</div></div>
+        <div class="book-title">Spyder Byte</div>
+        <div class="book-desc">A surveillance nanotechnology thriller set in a fictional Ohio suburb — where the watchers become the watched.</div>
+      </div>
+      <div class="book-card">
+        <div class="book-cover bc2"><div class="bc-label">2084</div></div>
+        <div class="book-title">2084</div>
+        <div class="book-desc">A dystopian look at power, control, and what happens when the future arrives ahead of schedule.</div>
+      </div>
+      <div class="book-card">
+        <div class="book-cover bc3"><div class="bc-label">Crooked River Politics</div></div>
+        <div class="book-title">Crooked River Politics</div>
+        <div class="book-desc">Political fiction set deep in the corruption of a small Northeast Ohio city — where loyalty is currency and truth is a liability.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-kpop" class="tab-content">
+    <div class="sec-label">K-Pop Network</div>
+    <div class="kpop-intro">A 14-site automated content network covering the K-pop universe — from BTS to HYBE and beyond. Built with my wife, who knows this world better than anyone. AI-curated, twice-daily updates across all properties.</div>
+    <div class="cards-kpop">
+      <div class="card-kpop">
+        <div class="kpop-dot" style="background:#9b7fe8"></div>
+        <div class="kpop-name">BTS Bucket</div>
+        <div class="kpop-desc">Dedicated BTS news and content — automated and always current.</div>
+      </div>
+      <div class="card-kpop">
+        <div class="kpop-dot" style="background:#7f77dd"></div>
+        <div class="kpop-name">HYBE Bucket</div>
+        <div class="kpop-desc">Full HYBE label coverage across all artists and releases.</div>
+      </div>
+      <div class="card-kpop">
+        <div class="kpop-dot" style="background:#afa9ec"></div>
+        <div class="kpop-name">K-Pop Bucket</div>
+        <div class="kpop-desc">Broad K-pop industry news and cultural coverage.</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-about" class="tab-content">
+    <div class="sec-label">About Zach Myers</div>
+    <div class="about-text">Founder and CEO of XEKIE LLC. PhD student in Health Sciences at Youngstown State University. Author of three dystopian and political fiction novels. Builder of automated content networks. Based in Northeast Ohio, where he lives with his wife and four boys.</div>
+    <div class="tags">
+      <div class="tag">Founder</div>
+      <div class="tag">Author</div>
+      <div class="tag">Researcher</div>
+      <div class="tag">Longevity science</div>
+      <div class="tag">Political fiction</div>
+      <div class="tag">K-Pop media</div>
+      <div class="tag">Cricket</div>
+      <div class="tag">Dating tech</div>
+      <div class="tag">Northeast Ohio</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-l">© 2026 Mind of Myers</div>
+    <a class="footer-e" href="mailto:hello@mindofmyers.com">hello@mindofmyers.com</a>
+  </div>
+
+</div>
+<script>
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

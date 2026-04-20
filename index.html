@@ -16,8 +16,32 @@
 
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; min-height: 100vh; }
-.sw { background: #0f1117; max-width: 960px; margin: 2rem auto; border-radius: 14px; overflow: hidden; color: #e8e8e8; display: flex; flex-direction: column; }
+body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; min-height: 100vh; position: relative; overflow-x: hidden; }
+
+#bg-canvas {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sw {
+  background: #0f1117;
+  max-width: 960px;
+  margin: 2rem auto;
+  border-radius: 14px;
+  overflow: hidden;
+  color: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
 
 .hero { padding: 3rem 2.5rem 2rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
 .hero-ey { font-size: 11px; letter-spacing: 0.14em; color: #7a8899; text-transform: uppercase; margin-bottom: 0.5rem; }
@@ -97,8 +121,10 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 </style>
 </head>
 <body>
-<div class="sw">
 
+<canvas id="bg-canvas"></canvas>
+
+<div class="sw">
   <div class="hero">
     <div class="hero-ey">mindofmyers.com</div>
     <div class="hero-name">Mind of <span>Myers</span></div>
@@ -115,47 +141,38 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
   <div id="tab-tech" class="tab-content active">
     <div class="sec-label">Ventures &amp; Projects</div>
     <div class="cards-3col">
-
       <div class="card">
-        <div class="card-logo">
-          <img src="images/xekie-logo.jpg" alt="XEKIE">
-        </div>
+        <div class="card-logo"><img src="images/xekie-logo.jpg" alt="XEKIE"></div>
         <div class="card-desc">Demand-side marketplace where buyers post what they want and sellers respond.</div>
         <div class="card-tagline">TRADE DIFFERENT</div>
         <div class="card-url">xekie.com</div>
       </div>
-
       <div class="card">
         <div class="card-logo"><div class="gp360">GLOBAL POLITICS <span>360</span></div></div>
         <div class="card-desc">AI-powered global news and podcast aggregator with editorial integrity.</div>
         <div class="card-tagline">INDEPENDENT VOICES ◆ UNFILTERED PERSPECTIVES</div>
         <div class="card-url">globalpolitics360.com</div>
       </div>
-
       <div class="card">
         <div class="card-logo"><div class="yama-logo">Yamanaka Factors<small>Cellular Reprogramming Report</small></div></div>
         <div class="card-desc">Automated longevity and cellular reprogramming science news hub.</div>
         <div class="card-url">yamanakafactors.com</div>
       </div>
-
       <div class="card">
         <div class="card-logo"><div class="jony-logo">Sir Jony Ive<small>Premium Tribute &amp; News</small></div></div>
         <div class="card-desc">A premium tribute and news hub dedicated to the legacy of the world's greatest designer.</div>
         <div class="card-url">sirjonyive.com</div>
       </div>
-
       <div class="card">
         <div class="card-logo"><div class="wicket-logo"><span class="mj">Majestic</span><span class="wk">Wicket</span><small>Where the World Watches Cricket</small></div></div>
         <div class="card-desc">AI-curated global cricket hub covering 20+ leagues, every nation, 4x daily updates.</div>
         <div class="card-url">majesticwicket.com</div>
       </div>
-
       <div class="card card-kyzmyt">
         <div class="card-logo"><div class="kyzmyt-logo"><span class="kw">Kyzm</span><span class="kg">yt</span><small>like kismet — but real.</small></div></div>
         <div class="card-desc">Fate-based dating platform. The world's first verified dating experience.</div>
         <div class="card-url">kyzmyt.com</div>
       </div>
-
     </div>
   </div>
 
@@ -222,8 +239,8 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
     <div class="footer-l">© 2026 Mind of Myers</div>
     <a class="footer-e" href="mailto:hello@mindofmyers.com">hello@mindofmyers.com</a>
   </div>
-
 </div>
+
 <script>
 function switchTab(id,btn){
   document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
@@ -231,6 +248,67 @@ function switchTab(id,btn){
   document.getElementById('tab-'+id).classList.add('active');
   btn.classList.add('active');
 }
+
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+canvas.width = 600;
+canvas.height = 600;
+
+let angle = 0;
+
+const headPoints = [
+  [0,-160],[30,-155],[70,-130],[80,-90],[90,-50],[88,-10],[80,20],
+  [75,50],[65,75],[60,90],[40,115],[0,125],[-30,115],[-45,95],
+  [-50,70],[-48,40],[-40,80],[-30,110],[30,110],[48,80],[50,40],
+  [-50,40],[-60,0],[-70,-40],[-75,-90],[-60,-140],[-20,-162]
+];
+
+const featureLines = [
+  [[55,-55],[72,-60],[80,-50],[75,-35],[58,-30],[50,-38],[55,-55]],
+  [[60,-10],[55,20],[45,35],[55,40],[65,35]],
+  [[-48,-20],[-58,-15],[-62,0],[-58,15],[-48,20],[-42,10],[-44,0],[-42,-12],[-48,-20]],
+  [[45,-65],[65,-70],[82,-60]],
+  [[20,90],[35,85],[42,90],[35,97],[20,97],[10,90],[20,90]]
+];
+
+function drawHead(rotY) {
+  ctx.clearRect(0,0,600,600);
+  ctx.save();
+  ctx.translate(300,280);
+  const cos = Math.cos(rotY);
+  const scale = Math.abs(cos);
+  const flip = cos < 0 ? -1 : 1;
+  ctx.strokeStyle = '#4fc8a0';
+  ctx.lineWidth = 1.5;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  headPoints.forEach(([x,y],i) => {
+    const px = x * flip * scale;
+    i === 0 ? ctx.moveTo(px,y) : ctx.lineTo(px,y);
+  });
+  ctx.closePath();
+  ctx.stroke();
+  ctx.globalAlpha = Math.max(0,cos);
+  featureLines.forEach(line => {
+    ctx.beginPath();
+    line.forEach(([x,y],i) => {
+      const px = x * scale;
+      i === 0 ? ctx.moveTo(px,y) : ctx.lineTo(px,y);
+    });
+    ctx.stroke();
+  });
+  ctx.globalAlpha = 1;
+  ctx.restore();
+}
+
+function animate() {
+  angle += 0.004;
+  drawHead(angle);
+  requestAnimationFrame(animate);
+}
+
+animate();
 </script>
 </body>
 </html>

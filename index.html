@@ -53,6 +53,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .tab-content { padding: 2rem 2.5rem; display: none; flex: 1; }
 .tab-content.active { display: block; }
 .sec-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a8899; margin-bottom: 1rem; }
+.sec-sublabel { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #5a4a7a; margin-bottom: 0.75rem; margin-top: 1.5rem; }
 
 .cards-3col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 2rem; }
 
@@ -103,22 +104,21 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .book-title { font-size: 14px; font-weight: 500; color: #dde4ec; margin-bottom: 0.3rem; }
 .book-desc { font-size: 12px; color: #5a6470; line-height: 1.5; }
 
-.cards-kpop { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 2rem; }
+.kpop-intro { font-size: 13px; color: #7a8899; margin-bottom: 0.5rem; line-height: 1.7; max-width: 560px; }
+
 .card-kpop {
   background: #16112a;
   border: 0.5px solid rgba(140,100,200,0.2);
   border-radius: 12px;
-  padding: 1.1rem 1.1rem 1rem;
+  padding: 1rem;
   transition: border-color 0.15s, transform 0.15s;
   text-decoration: none;
   color: inherit;
   display: block;
 }
 .card-kpop:hover { border-color: rgba(155,127,232,0.5); transform: translateY(-2px); }
-.kpop-dot { width: 8px; height: 8px; border-radius: 50%; margin-bottom: 0.75rem; }
-.kpop-name { font-size: 13px; font-weight: 500; color: #c9b8f0; margin-bottom: 0.3rem; }
-.kpop-desc { font-size: 11.5px; color: #6a5a8a; line-height: 1.5; }
-.kpop-intro { font-size: 13px; color: #7a8899; margin-bottom: 1.5rem; line-height: 1.7; max-width: 560px; }
+.kpop-name { font-size: 13px; font-weight: 500; color: #c9b8f0; margin-bottom: 0.2rem; }
+.kpop-url { font-size: 10px; color: #7a6a9a; opacity: 0.8; }
 
 .about-text { font-size: 14px; color: #8a9499; line-height: 1.8; max-width: 560px; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; }
@@ -207,22 +207,65 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 
   <div id="tab-kpop" class="tab-content">
     <div class="sec-label">K-Pop Network</div>
-    <div class="kpop-intro">A 14-site automated content network covering the K-pop universe — from BTS to HYBE and beyond. Built with my wife, who knows this world better than anyone. AI-curated, twice-daily updates across all properties.</div>
-    <div class="cards-kpop">
+    <div class="kpop-intro">A 12-site automated content network covering the K-pop universe — from BTS to HYBE and beyond. Built with my wife, who knows this world better than anyone. AI-curated, twice-daily updates across all properties.</div>
+
+    <div class="sec-sublabel">BTS Bucket</div>
+    <div class="cards-3col" style="margin-bottom:1rem;">
       <a class="card-kpop" href="https://btstxt.com" target="_blank" rel="noopener">
-        <div class="kpop-dot" style="background:#9b7fe8"></div>
-        <div class="kpop-name">BTS Bucket</div>
-        <div class="kpop-desc">Dedicated BTS news and content — automated and always current.</div>
+        <div class="kpop-name">BTS TXT</div>
+        <div class="kpop-url">btstxt.com</div>
       </a>
+      <a class="card-kpop" href="https://armypulse.com" target="_blank" rel="noopener">
+        <div class="kpop-name">Army Pulse</div>
+        <div class="kpop-url">armypulse.com</div>
+      </a>
+      <a class="card-kpop" href="https://bangtanbeat.com" target="_blank" rel="noopener">
+        <div class="kpop-name">Bangtan Beat</div>
+        <div class="kpop-url">bangtanbeat.com</div>
+      </a>
+      <a class="card-kpop" href="https://txtbts.com" target="_blank" rel="noopener">
+        <div class="kpop-name">TXT BTS</div>
+        <div class="kpop-url">txtbts.com</div>
+      </a>
+    </div>
+
+    <div class="sec-sublabel">HYBE Bucket</div>
+    <div class="cards-3col" style="margin-bottom:1rem;">
       <a class="card-kpop" href="https://hybefandom.com" target="_blank" rel="noopener">
-        <div class="kpop-dot" style="background:#7f77dd"></div>
-        <div class="kpop-name">HYBE Bucket</div>
-        <div class="kpop-desc">Full HYBE label coverage across all artists and releases.</div>
+        <div class="kpop-name">HYBE Fandom</div>
+        <div class="kpop-url">hybefandom.com</div>
+      </a>
+      <a class="card-kpop" href="https://hybeworld.com" target="_blank" rel="noopener">
+        <div class="kpop-name">HYBE World</div>
+        <div class="kpop-url">hybeworld.com</div>
+      </a>
+      <a class="card-kpop" href="https://bighitnation.com" target="_blank" rel="noopener">
+        <div class="kpop-name">Big Hit Nation</div>
+        <div class="kpop-url">bighitnation.com</div>
+      </a>
+      <a class="card-kpop" href="https://bighitworld.com" target="_blank" rel="noopener">
+        <div class="kpop-name">Big Hit World</div>
+        <div class="kpop-url">bighitworld.com</div>
+      </a>
+    </div>
+
+    <div class="sec-sublabel">K-Pop Bucket</div>
+    <div class="cards-3col" style="margin-bottom:1rem;">
+      <a class="card-kpop" href="https://iheartkpop.com" target="_blank" rel="noopener">
+        <div class="kpop-name">I Heart K-Pop</div>
+        <div class="kpop-url">iheartkpop.com</div>
       </a>
       <a class="card-kpop" href="https://kpoppulse.com" target="_blank" rel="noopener">
-        <div class="kpop-dot" style="background:#afa9ec"></div>
-        <div class="kpop-name">K-Pop Bucket</div>
-        <div class="kpop-desc">Broad K-pop industry news and cultural coverage.</div>
+        <div class="kpop-name">K-Pop Pulse</div>
+        <div class="kpop-url">kpoppulse.com</div>
+      </a>
+      <a class="card-kpop" href="https://idolrush.com" target="_blank" rel="noopener">
+        <div class="kpop-name">Idol Rush</div>
+        <div class="kpop-url">idolrush.com</div>
+      </a>
+      <a class="card-kpop" href="https://biashaven.com" target="_blank" rel="noopener">
+        <div class="kpop-name">Bias Haven</div>
+        <div class="kpop-url">biashaven.com</div>
       </a>
     </div>
   </div>

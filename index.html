@@ -53,7 +53,11 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .tab-content { padding: 2rem 2.5rem; display: none; flex: 1; }
 .tab-content.active { display: block; }
 .sec-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a8899; margin-bottom: 1rem; }
-.sec-sublabel { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #5a4a7a; margin-bottom: 0.75rem; margin-top: 1.5rem; }
+
+.bucket-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; margin-top: 1.5rem; font-weight: 500; }
+.bucket-label-bts { color: #9b7fe8; }
+.bucket-label-hybe { color: #5b9cf6; }
+.bucket-label-kpop { color: #d46fa0; }
 
 .cards-3col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 2rem; }
 
@@ -106,7 +110,8 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 
 .kpop-intro { font-size: 13px; color: #7a8899; margin-bottom: 0.5rem; line-height: 1.7; max-width: 560px; }
 
-.card-kpop {
+/* BTS — purple */
+.card-bts {
   background: #16112a;
   border: 0.5px solid rgba(140,100,200,0.2);
   border-radius: 12px;
@@ -116,9 +121,42 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
   color: inherit;
   display: block;
 }
-.card-kpop:hover { border-color: rgba(155,127,232,0.5); transform: translateY(-2px); }
-.kpop-name { font-size: 13px; font-weight: 500; color: #c9b8f0; margin-bottom: 0.2rem; }
-.kpop-url { font-size: 10px; color: #7a6a9a; opacity: 0.8; }
+.card-bts:hover { border-color: rgba(155,127,232,0.6); transform: translateY(-2px); }
+.card-bts .kpop-name { color: #c9b8f0; }
+.card-bts .kpop-url { color: #7a6a9a; }
+
+/* HYBE — blue */
+.card-hybe {
+  background: #0d1525;
+  border: 0.5px solid rgba(80,120,200,0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: border-color 0.15s, transform 0.15s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.card-hybe:hover { border-color: rgba(91,156,246,0.6); transform: translateY(-2px); }
+.card-hybe .kpop-name { color: #90b8f0; }
+.card-hybe .kpop-url { color: #4a6a9a; }
+
+/* K-Pop — pink */
+.card-kpop-gen {
+  background: #250d1a;
+  border: 0.5px solid rgba(200,80,140,0.2);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: border-color 0.15s, transform 0.15s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.card-kpop-gen:hover { border-color: rgba(212,111,160,0.6); transform: translateY(-2px); }
+.card-kpop-gen .kpop-name { color: #f0a8c8; }
+.card-kpop-gen .kpop-url { color: #9a4a70; }
+
+.kpop-name { font-size: 13px; font-weight: 500; margin-bottom: 0.2rem; }
+.kpop-url { font-size: 10px; opacity: 0.8; }
 
 .about-text { font-size: 14px; color: #8a9499; line-height: 1.8; max-width: 560px; }
 .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; }
@@ -209,61 +247,61 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
     <div class="sec-label">K-Pop Network</div>
     <div class="kpop-intro">A 12-site automated content network covering the K-pop universe — from BTS to HYBE and beyond. Built with my wife, who knows this world better than anyone. AI-curated, twice-daily updates across all properties.</div>
 
-    <div class="sec-sublabel">BTS Bucket</div>
-    <div class="cards-3col" style="margin-bottom:1rem;">
-      <a class="card-kpop" href="https://btstxt.com" target="_blank" rel="noopener">
+    <div class="bucket-label bucket-label-bts">BTS Bucket</div>
+    <div class="cards-3col" style="margin-bottom:0.5rem;">
+      <a class="card-bts" href="https://btstxt.com" target="_blank" rel="noopener">
         <div class="kpop-name">BTS TXT</div>
         <div class="kpop-url">btstxt.com</div>
       </a>
-      <a class="card-kpop" href="https://armypulse.com" target="_blank" rel="noopener">
+      <a class="card-bts" href="https://armypulse.com" target="_blank" rel="noopener">
         <div class="kpop-name">Army Pulse</div>
         <div class="kpop-url">armypulse.com</div>
       </a>
-      <a class="card-kpop" href="https://bangtanbeat.com" target="_blank" rel="noopener">
+      <a class="card-bts" href="https://bangtanbeat.com" target="_blank" rel="noopener">
         <div class="kpop-name">Bangtan Beat</div>
         <div class="kpop-url">bangtanbeat.com</div>
       </a>
-      <a class="card-kpop" href="https://txtbts.com" target="_blank" rel="noopener">
+      <a class="card-bts" href="https://txtbts.com" target="_blank" rel="noopener">
         <div class="kpop-name">TXT BTS</div>
         <div class="kpop-url">txtbts.com</div>
       </a>
     </div>
 
-    <div class="sec-sublabel">HYBE Bucket</div>
-    <div class="cards-3col" style="margin-bottom:1rem;">
-      <a class="card-kpop" href="https://hybefandom.com" target="_blank" rel="noopener">
+    <div class="bucket-label bucket-label-hybe">HYBE Bucket</div>
+    <div class="cards-3col" style="margin-bottom:0.5rem;">
+      <a class="card-hybe" href="https://hybefandom.com" target="_blank" rel="noopener">
         <div class="kpop-name">HYBE Fandom</div>
         <div class="kpop-url">hybefandom.com</div>
       </a>
-      <a class="card-kpop" href="https://hybeworld.com" target="_blank" rel="noopener">
+      <a class="card-hybe" href="https://hybeworld.com" target="_blank" rel="noopener">
         <div class="kpop-name">HYBE World</div>
         <div class="kpop-url">hybeworld.com</div>
       </a>
-      <a class="card-kpop" href="https://bighitnation.com" target="_blank" rel="noopener">
+      <a class="card-hybe" href="https://bighitnation.com" target="_blank" rel="noopener">
         <div class="kpop-name">Big Hit Nation</div>
         <div class="kpop-url">bighitnation.com</div>
       </a>
-      <a class="card-kpop" href="https://bighitworld.com" target="_blank" rel="noopener">
+      <a class="card-hybe" href="https://bighitworld.com" target="_blank" rel="noopener">
         <div class="kpop-name">Big Hit World</div>
         <div class="kpop-url">bighitworld.com</div>
       </a>
     </div>
 
-    <div class="sec-sublabel">K-Pop Bucket</div>
-    <div class="cards-3col" style="margin-bottom:1rem;">
-      <a class="card-kpop" href="https://iheartkpop.com" target="_blank" rel="noopener">
+    <div class="bucket-label bucket-label-kpop">K-Pop Bucket</div>
+    <div class="cards-3col" style="margin-bottom:0.5rem;">
+      <a class="card-kpop-gen" href="https://iheartkpop.com" target="_blank" rel="noopener">
         <div class="kpop-name">I Heart K-Pop</div>
         <div class="kpop-url">iheartkpop.com</div>
       </a>
-      <a class="card-kpop" href="https://kpoppulse.com" target="_blank" rel="noopener">
+      <a class="card-kpop-gen" href="https://kpoppulse.com" target="_blank" rel="noopener">
         <div class="kpop-name">K-Pop Pulse</div>
         <div class="kpop-url">kpoppulse.com</div>
       </a>
-      <a class="card-kpop" href="https://idolrush.com" target="_blank" rel="noopener">
+      <a class="card-kpop-gen" href="https://idolrush.com" target="_blank" rel="noopener">
         <div class="kpop-name">Idol Rush</div>
         <div class="kpop-url">idolrush.com</div>
       </a>
-      <a class="card-kpop" href="https://biashaven.com" target="_blank" rel="noopener">
+      <a class="card-kpop-gen" href="https://biashaven.com" target="_blank" rel="noopener">
         <div class="kpop-name">Bias Haven</div>
         <div class="kpop-url">biashaven.com</div>
       </a>

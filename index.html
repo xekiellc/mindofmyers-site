@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mind of Myers</title>
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SHFYM489TT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -74,16 +74,11 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .kyzmyt-logo .kg { color: #c8924a; }
 .kyzmyt-logo small { display: block; font-size: 9.5px; color: #6a7a9a; letter-spacing: 0.06em; font-style: italic; font-weight: 400; margin-top: 3px; text-transform: none; }
 
-.books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; }
+.books-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .book-card { display: flex; flex-direction: column; }
-.book-cover { width: 100%; aspect-ratio: 2/3; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 0; margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.bc1 { background: #0d1f2d; border-left: 4px solid #5b9cf6; }
-.bc2 { background: #1a0d0d; border-left: 4px solid #e24b4a; }
-.bc3 { background: #0d1a12; border-left: 4px solid #4fc8a0; }
-.bc-label { font-size: 13px; font-weight: 500; text-align: center; padding: 0 0.75rem; line-height: 1.4; }
-.bc1 .bc-label { color: #85b7eb; }
-.bc2 .bc-label { color: #f09595; }
-.bc3 .bc-label { color: #5dcaa5; }
+.book-cover { width: 100%; aspect-ratio: 2/3; border-radius: 6px; margin-bottom: 0.85rem; overflow: hidden; }
+.book-cover img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; transition: transform 0.3s; }
+.book-cover img:hover { transform: scale(1.03); }
 .book-title { font-size: 14px; font-weight: 500; color: #dde4ec; margin-bottom: 0.3rem; }
 .book-desc { font-size: 12px; color: #5a6470; line-height: 1.5; }
 
@@ -163,17 +158,23 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
     <div class="sec-label">Novels</div>
     <div class="books-grid">
       <div class="book-card">
-        <div class="book-cover bc1"><div class="bc-label">Spyder Byte</div></div>
+        <div class="book-cover">
+          <img src="cover-spyder-byte.jpg" alt="Spyder Byte by Zach Myers">
+        </div>
         <div class="book-title">Spyder Byte</div>
         <div class="book-desc">A surveillance nanotechnology thriller set in a fictional Ohio suburb — where the watchers become the watched.</div>
       </div>
       <div class="book-card">
-        <div class="book-cover bc2"><div class="bc-label">2084</div></div>
+        <div class="book-cover">
+          <img src="cover-2084.jpg" alt="2084 by Zach Myers">
+        </div>
         <div class="book-title">2084</div>
         <div class="book-desc">A dystopian look at power, control, and what happens when the future arrives ahead of schedule.</div>
       </div>
       <div class="book-card">
-        <div class="book-cover bc3"><div class="bc-label">Crooked River Politics</div></div>
+        <div class="book-cover">
+          <img src="cover-crooked-river.jpg" alt="Crooked River Politics by Zach Myers">
+        </div>
         <div class="book-title">Crooked River Politics</div>
         <div class="book-desc">Political fiction set deep in the corruption of a small Northeast Ohio city — where loyalty is currency and truth is a liability.</div>
       </div>

@@ -56,8 +56,18 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 
 .cards-3col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 2rem; }
 
-.card { background: #1a1d25; border: 0.5px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 1.1rem 1.1rem 1rem; transition: border-color 0.15s; }
-.card:hover { border-color: rgba(79,200,160,0.3); }
+.card {
+  background: #1a1d25;
+  border: 0.5px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 1.1rem 1.1rem 1rem;
+  transition: border-color 0.15s, transform 0.15s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+.card:hover { border-color: rgba(79,200,160,0.5); transform: translateY(-2px); }
 .card-logo { height: 52px; display: flex; align-items: center; margin-bottom: 0.8rem; }
 .card-logo img { height: 48px; max-width: 180px; object-fit: contain; }
 .card-desc { font-size: 11.5px; color: #5a6470; line-height: 1.5; }
@@ -79,7 +89,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .wicket-logo small { display: block; font-size: 9.5px; color: #4a7a4a; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
 
 .card-kyzmyt { background: #0d1122; border-color: rgba(180,150,100,0.2); }
-.card-kyzmyt:hover { border-color: rgba(200,168,75,0.4); }
+.card-kyzmyt:hover { border-color: rgba(200,168,75,0.5); }
 .kyzmyt-logo { font-size: 17px; font-weight: 500; line-height: 1.2; letter-spacing: 0.01em; }
 .kyzmyt-logo .kw { color: #f0f0f0; }
 .kyzmyt-logo .kg { color: #c8924a; }
@@ -94,8 +104,17 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .book-desc { font-size: 12px; color: #5a6470; line-height: 1.5; }
 
 .cards-kpop { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 2rem; }
-.card-kpop { background: #16112a; border: 0.5px solid rgba(140,100,200,0.2); border-radius: 12px; padding: 1.1rem 1.1rem 1rem; transition: border-color 0.15s; }
-.card-kpop:hover { border-color: rgba(155,127,232,0.5); }
+.card-kpop {
+  background: #16112a;
+  border: 0.5px solid rgba(140,100,200,0.2);
+  border-radius: 12px;
+  padding: 1.1rem 1.1rem 1rem;
+  transition: border-color 0.15s, transform 0.15s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.card-kpop:hover { border-color: rgba(155,127,232,0.5); transform: translateY(-2px); }
 .kpop-dot { width: 8px; height: 8px; border-radius: 50%; margin-bottom: 0.75rem; }
 .kpop-name { font-size: 13px; font-weight: 500; color: #c9b8f0; margin-bottom: 0.3rem; }
 .kpop-desc { font-size: 11.5px; color: #6a5a8a; line-height: 1.5; }
@@ -130,38 +149,38 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
   <div id="tab-tech" class="tab-content active">
     <div class="sec-label">Ventures &amp; Projects</div>
     <div class="cards-3col">
-      <div class="card">
+      <a class="card" href="https://xekie.com" target="_blank" rel="noopener">
         <div class="card-logo"><img src="xekie-logo-wide.svg" alt="XEKIE"></div>
         <div class="card-desc">Demand-side marketplace where buyers post what they want and sellers respond.</div>
         <div class="card-tagline">TRADE DIFFERENT</div>
         <div class="card-url">xekie.com</div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://globalpolitics360.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="gp360">GLOBAL POLITICS <span>360</span></div></div>
         <div class="card-desc">AI-powered global news and podcast aggregator with editorial integrity.</div>
         <div class="card-tagline">INDEPENDENT VOICES ◆ UNFILTERED PERSPECTIVES</div>
         <div class="card-url">globalpolitics360.com</div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://yamanakafactors.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="yama-logo">Yamanaka Factors<small>Cellular Reprogramming Report</small></div></div>
         <div class="card-desc">Automated longevity and cellular reprogramming science news hub.</div>
         <div class="card-url">yamanakafactors.com</div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://sirjonyive.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="jony-logo">Sir Jony Ive<small>Premium Tribute &amp; News</small></div></div>
         <div class="card-desc">A premium tribute and news hub dedicated to the legacy of the world's greatest designer.</div>
         <div class="card-url">sirjonyive.com</div>
-      </div>
-      <div class="card">
+      </a>
+      <a class="card" href="https://majesticwicket.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="wicket-logo"><span class="mj">Majestic</span><span class="wk">Wicket</span><small>Where the World Watches Cricket</small></div></div>
         <div class="card-desc">AI-curated global cricket hub covering 20+ leagues, every nation, 4x daily updates.</div>
         <div class="card-url">majesticwicket.com</div>
-      </div>
-      <div class="card card-kyzmyt">
+      </a>
+      <a class="card card-kyzmyt" href="https://kyzmyt.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="kyzmyt-logo"><span class="kw">Kyzm</span><span class="kg">yt</span><small>like kismet — but real.</small></div></div>
         <div class="card-desc">Fate-based dating platform. The world's first verified dating experience.</div>
         <div class="card-url">kyzmyt.com</div>
-      </div>
+      </a>
     </div>
   </div>
 
@@ -190,27 +209,27 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
     <div class="sec-label">K-Pop Network</div>
     <div class="kpop-intro">A 14-site automated content network covering the K-pop universe — from BTS to HYBE and beyond. Built with my wife, who knows this world better than anyone. AI-curated, twice-daily updates across all properties.</div>
     <div class="cards-kpop">
-      <div class="card-kpop">
+      <a class="card-kpop" href="https://btstxt.com" target="_blank" rel="noopener">
         <div class="kpop-dot" style="background:#9b7fe8"></div>
         <div class="kpop-name">BTS Bucket</div>
         <div class="kpop-desc">Dedicated BTS news and content — automated and always current.</div>
-      </div>
-      <div class="card-kpop">
+      </a>
+      <a class="card-kpop" href="https://hybefandom.com" target="_blank" rel="noopener">
         <div class="kpop-dot" style="background:#7f77dd"></div>
         <div class="kpop-name">HYBE Bucket</div>
         <div class="kpop-desc">Full HYBE label coverage across all artists and releases.</div>
-      </div>
-      <div class="card-kpop">
+      </a>
+      <a class="card-kpop" href="https://kpoppulse.com" target="_blank" rel="noopener">
         <div class="kpop-dot" style="background:#afa9ec"></div>
         <div class="kpop-name">K-Pop Bucket</div>
         <div class="kpop-desc">Broad K-pop industry news and cultural coverage.</div>
-      </div>
+      </a>
     </div>
   </div>
 
   <div id="tab-about" class="tab-content">
     <div class="sec-label">About Zach Myers</div>
-    <div class="about-text">Founder and CEO of XEKIE LLC. PhD student in Health Sciences at Youngstown State University. Author of three dystopian and political fiction novels. Builder of automated content networks. Based in Northeast Ohio, where he lives with his wife and four boys.</div>
+    <div class="about-text">Founder and CEO of XEKIE LLC. PhD student in Health Sciences at Youngstown State University. Author of three dystopian and political fiction novels. Builder of next-generation retail marketplaces, secure data platforms, and automated content networks. Based in Northeast Ohio, where he lives with his wife and four boys.</div>
     <div class="tags">
       <div class="tag">Founder</div>
       <div class="tag">Author</div>

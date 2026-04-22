@@ -53,6 +53,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .tab-content.active { display: block; }
 .sec-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a8899; margin-bottom: 0.75rem; }
 .cat-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4a5560; margin-bottom: 0.75rem; margin-top: 1.5rem; font-weight: 500; padding-left: 2px; }
+.cat-label:first-of-type { margin-top: 0; }
 
 .cards-3col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 0.5rem; }
 
@@ -172,6 +173,15 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
   <div id="tab-tech" class="tab-content active">
     <div class="sec-label">Ventures &amp; Projects</div>
 
+    <div class="cat-label" style="margin-top:0;">Dating</div>
+    <div class="cards-3col">
+      <a class="card card-kyzmyt" href="https://kyzmyt.com" target="_blank" rel="noopener">
+        <div class="card-logo"><div class="kyzmyt-logo"><span class="kw">Kyzm</span><span class="kg">yt</span><small>like kismet — but real.</small></div></div>
+        <div class="card-desc">Fate-based dating platform. The world's first verified dating experience.</div>
+        <div class="card-url">kyzmyt.com</div>
+      </a>
+    </div>
+
     <div class="cat-label">Marketplaces</div>
     <div class="cards-3col">
       <a class="card" href="https://xekie.com" target="_blank" rel="noopener">
@@ -223,15 +233,6 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
         <div class="card-logo"><div class="jony-logo">Sir Jony Ive<small>Premium Tribute &amp; News</small></div></div>
         <div class="card-desc">A premium tribute and news hub dedicated to the legacy of the world's greatest designer.</div>
         <div class="card-url">sirjonyive.com</div>
-      </a>
-    </div>
-
-    <div class="cat-label">Dating</div>
-    <div class="cards-3col">
-      <a class="card card-kyzmyt" href="https://kyzmyt.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="kyzmyt-logo"><span class="kw">Kyzm</span><span class="kg">yt</span><small>like kismet — but real.</small></div></div>
-        <div class="card-desc">Fate-based dating platform. The world's first verified dating experience.</div>
-        <div class="card-url">kyzmyt.com</div>
       </a>
     </div>
 

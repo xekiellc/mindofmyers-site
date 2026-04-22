@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mind of Myers</title>
 
-<!-- OG / Social sharing tags -->
 <meta property="og:title" content="Mind of Myers">
 <meta property="og:description" content="Entrepreneur. Novelist. Builder of things that don't exist yet.">
 <meta property="og:image" content="https://mindofmyers.com/og-image.png">
@@ -52,14 +51,10 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 
 .tab-content { padding: 2rem 2.5rem; display: none; flex: 1; }
 .tab-content.active { display: block; }
-.sec-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a8899; margin-bottom: 1rem; }
+.sec-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a8899; margin-bottom: 0.75rem; }
+.cat-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4a5560; margin-bottom: 0.75rem; margin-top: 1.5rem; font-weight: 500; padding-left: 2px; }
 
-.bucket-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; margin-top: 1.5rem; font-weight: 500; }
-.bucket-label-bts { color: #9b7fe8; }
-.bucket-label-hybe { color: #5b9cf6; }
-.bucket-label-kpop { color: #d46fa0; }
-
-.cards-3col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 2rem; }
+.cards-3col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 0.5rem; }
 
 .card {
   background: #1a1d25;
@@ -100,6 +95,22 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .kyzmyt-logo .kg { color: #c8924a; }
 .kyzmyt-logo small { display: block; font-size: 9.5px; color: #6a7a9a; letter-spacing: 0.06em; font-style: italic; font-weight: 400; margin-top: 3px; text-transform: none; }
 
+.golazo-logo { font-size: 15px; font-weight: 700; line-height: 1.1; letter-spacing: 0.02em; }
+.golazo-logo .g1 { color: #f0f0f0; }
+.golazo-logo .g2 { color: #5bb8f5; }
+.golazo-logo small { display: block; font-size: 9px; color: #2d6e4a; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; font-weight: 400; }
+.card-golazo { background: #0a1a0f; border-color: rgba(45,110,74,0.3); }
+.card-golazo:hover { border-color: rgba(91,184,100,0.5); }
+
+.silque-logo { display: flex; align-items: center; gap: 10px; }
+.silque-logo img { height: 40px; width: 40px; object-fit: cover; border-radius: 50%; }
+.silque-logo-text { font-size: 15px; font-weight: 500; line-height: 1.2; }
+.silque-logo-text .s1 { color: #c8a84b; }
+.silque-logo-text .s2 { color: #e8e0d0; }
+.silque-logo-text small { display: block; font-size: 9px; color: #6a5a3a; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
+.card-silque { background: #120e08; border-color: rgba(180,140,60,0.2); }
+.card-silque:hover { border-color: rgba(200,168,75,0.5); }
+
 .books-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .book-card { display: flex; flex-direction: column; }
 .book-cover { width: 100%; aspect-ratio: 2/3; border-radius: 6px; margin-bottom: 0.85rem; overflow: hidden; }
@@ -109,48 +120,22 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .book-desc { font-size: 12px; color: #5a6470; line-height: 1.5; }
 
 .kpop-intro { font-size: 13px; color: #7a8899; margin-bottom: 0.5rem; line-height: 1.7; max-width: 560px; }
+.bucket-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; margin-top: 1.5rem; font-weight: 500; }
+.bucket-label-bts { color: #9b7fe8; }
+.bucket-label-hybe { color: #5b9cf6; }
+.bucket-label-kpop { color: #d46fa0; }
 
-/* BTS — purple */
-.card-bts {
-  background: #16112a;
-  border: 0.5px solid rgba(140,100,200,0.2);
-  border-radius: 12px;
-  padding: 1rem;
-  transition: border-color 0.15s, transform 0.15s;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
+.card-bts { background: #16112a; border: 0.5px solid rgba(140,100,200,0.2); border-radius: 12px; padding: 1rem; transition: border-color 0.15s, transform 0.15s; text-decoration: none; color: inherit; display: block; }
 .card-bts:hover { border-color: rgba(155,127,232,0.6); transform: translateY(-2px); }
 .card-bts .kpop-name { color: #c9b8f0; }
 .card-bts .kpop-url { color: #7a6a9a; }
 
-/* HYBE — blue */
-.card-hybe {
-  background: #0d1525;
-  border: 0.5px solid rgba(80,120,200,0.2);
-  border-radius: 12px;
-  padding: 1rem;
-  transition: border-color 0.15s, transform 0.15s;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
+.card-hybe { background: #0d1525; border: 0.5px solid rgba(80,120,200,0.2); border-radius: 12px; padding: 1rem; transition: border-color 0.15s, transform 0.15s; text-decoration: none; color: inherit; display: block; }
 .card-hybe:hover { border-color: rgba(91,156,246,0.6); transform: translateY(-2px); }
 .card-hybe .kpop-name { color: #90b8f0; }
 .card-hybe .kpop-url { color: #4a6a9a; }
 
-/* K-Pop — pink */
-.card-kpop-gen {
-  background: #250d1a;
-  border: 0.5px solid rgba(200,80,140,0.2);
-  border-radius: 12px;
-  padding: 1rem;
-  transition: border-color 0.15s, transform 0.15s;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
+.card-kpop-gen { background: #250d1a; border: 0.5px solid rgba(200,80,140,0.2); border-radius: 12px; padding: 1rem; transition: border-color 0.15s, transform 0.15s; text-decoration: none; color: inherit; display: block; }
 .card-kpop-gen:hover { border-color: rgba(212,111,160,0.6); transform: translateY(-2px); }
 .card-kpop-gen .kpop-name { color: #f0a8c8; }
 .card-kpop-gen .kpop-url { color: #9a4a70; }
@@ -186,6 +171,8 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 
   <div id="tab-tech" class="tab-content active">
     <div class="sec-label">Ventures &amp; Projects</div>
+
+    <div class="cat-label">Marketplaces</div>
     <div class="cards-3col">
       <a class="card" href="https://xekie.com" target="_blank" rel="noopener">
         <div class="card-logo"><img src="xekie-logo-wide.svg" alt="XEKIE"></div>
@@ -193,6 +180,34 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
         <div class="card-tagline">TRADE DIFFERENT</div>
         <div class="card-url">xekie.com</div>
       </a>
+      <a class="card card-silque" href="https://silqueroad.com" target="_blank" rel="noopener">
+        <div class="card-logo">
+          <div class="silque-logo">
+            <img src="silqueroad-logo.png" alt="Silque Road">
+            <div class="silque-logo-text"><span class="s1">Silque</span> <span class="s2">Road</span><small>The Bazaar is Open</small></div>
+          </div>
+        </div>
+        <div class="card-desc">We carry what the internet won't. Legal products, vetted sellers, 100% anonymous checkout. Pay with crypto.</div>
+        <div class="card-url">silqueroad.com</div>
+      </a>
+    </div>
+
+    <div class="cat-label">Sports</div>
+    <div class="cards-3col">
+      <a class="card card-golazo" href="https://golazoglobal.com" target="_blank" rel="noopener">
+        <div class="card-logo"><div class="golazo-logo"><span class="g1">GOLAZO</span> <span class="g2">GLOBAL</span><small>Every Goal. Every League. Every Nation.</small></div></div>
+        <div class="card-desc">AI-curated global football hub — news, scores, standings, and stats across 12 leagues. World Cup 2026 all summer.</div>
+        <div class="card-url">golazoglobal.com</div>
+      </a>
+      <a class="card" href="https://majesticwicket.com" target="_blank" rel="noopener">
+        <div class="card-logo"><div class="wicket-logo"><span class="mj">Majestic</span><span class="wk">Wicket</span><small>Where the World Watches Cricket</small></div></div>
+        <div class="card-desc">AI-curated global cricket hub covering 20+ leagues, every nation, 4x daily updates.</div>
+        <div class="card-url">majesticwicket.com</div>
+      </a>
+    </div>
+
+    <div class="cat-label">News &amp; Aggregators</div>
+    <div class="cards-3col">
       <a class="card" href="https://globalpolitics360.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="gp360">GLOBAL POLITICS <span>360</span></div></div>
         <div class="card-desc">AI-powered global news and podcast aggregator with editorial integrity.</div>
@@ -209,17 +224,17 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
         <div class="card-desc">A premium tribute and news hub dedicated to the legacy of the world's greatest designer.</div>
         <div class="card-url">sirjonyive.com</div>
       </a>
-      <a class="card" href="https://majesticwicket.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="wicket-logo"><span class="mj">Majestic</span><span class="wk">Wicket</span><small>Where the World Watches Cricket</small></div></div>
-        <div class="card-desc">AI-curated global cricket hub covering 20+ leagues, every nation, 4x daily updates.</div>
-        <div class="card-url">majesticwicket.com</div>
-      </a>
+    </div>
+
+    <div class="cat-label">Dating</div>
+    <div class="cards-3col">
       <a class="card card-kyzmyt" href="https://kyzmyt.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="kyzmyt-logo"><span class="kw">Kyzm</span><span class="kg">yt</span><small>like kismet — but real.</small></div></div>
         <div class="card-desc">Fate-based dating platform. The world's first verified dating experience.</div>
         <div class="card-url">kyzmyt.com</div>
       </a>
     </div>
+
   </div>
 
   <div id="tab-books" class="tab-content">

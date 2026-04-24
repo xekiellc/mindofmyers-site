@@ -53,7 +53,6 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .tab-content.active { display: block; }
 .sec-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a8899; margin-bottom: 0.75rem; }
 .cat-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4a5560; margin-bottom: 0.75rem; margin-top: 1.5rem; font-weight: 500; padding-left: 2px; }
-.cat-label:first-of-type { margin-top: 0; }
 
 .cards-3col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 0.5rem; }
 
@@ -111,6 +110,13 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .silque-logo-text small { display: block; font-size: 9px; color: #6a5a3a; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
 .card-silque { background: #120e08; border-color: rgba(180,140,60,0.2); }
 .card-silque:hover { border-color: rgba(200,168,75,0.5); }
+
+.kayfabe-logo { font-size: 14px; font-weight: 800; line-height: 1.1; letter-spacing: 0.04em; text-transform: uppercase; }
+.kayfabe-logo .k1 { color: #f5a623; }
+.kayfabe-logo .k2 { color: #e040a0; }
+.kayfabe-logo small { display: block; font-size: 9px; color: #7a4a7a; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; font-weight: 400; }
+.card-kayfabe { background: #160a1a; border-color: rgba(180,60,160,0.2); }
+.card-kayfabe:hover { border-color: rgba(224,64,160,0.5); }
 
 .books-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .book-card { display: flex; flex-direction: column; }
@@ -213,6 +219,11 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
         <div class="card-logo"><div class="wicket-logo"><span class="mj">Majestic</span><span class="wk">Wicket</span><small>Where the World Watches Cricket</small></div></div>
         <div class="card-desc">AI-curated global cricket hub covering 20+ leagues, every nation, 4x daily updates.</div>
         <div class="card-url">majesticwicket.com</div>
+      </a>
+      <a class="card card-kayfabe" href="https://kayfabeheat.com" target="_blank" rel="noopener">
+        <div class="card-logo"><div class="kayfabe-logo"><span class="k1">Kayfabe</span> <span class="k2">Heat</span><small>Work . Shoot . Heat</small></div></div>
+        <div class="card-desc">Pro wrestling news aggregator — AI-curated, updated 4x daily. Work. Shoot. Heat.</div>
+        <div class="card-url">kayfabeheat.com</div>
       </a>
     </div>
 

@@ -118,6 +118,15 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .card-kayfabe { background: #160a1a; border-color: rgba(180,60,160,0.2); }
 .card-kayfabe:hover { border-color: rgba(224,64,160,0.5); }
 
+.lulz-logo { font-size: 16px; font-weight: 700; line-height: 1.1; letter-spacing: 0.06em; font-family: monospace; }
+.lulz-logo .l1 { color: #00ff41; }
+.lulz-logo .l2 { color: #ff2d2d; }
+.lulz-logo small { display: block; font-size: 9px; color: #006620; letter-spacing: 0.08em; font-style: italic; margin-top: 4px; font-weight: 400; font-family: monospace; text-transform: none; }
+.card-lulz { background: #030b03; border-color: rgba(0,255,65,0.15); }
+.card-lulz:hover { border-color: rgba(0,255,65,0.45); }
+.card-lulz .card-desc { color: #3a6640; }
+.card-lulz .card-url { color: #00ff41; }
+
 .books-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .book-card { display: flex; flex-direction: column; }
 .book-cover { width: 100%; aspect-ratio: 2/3; border-radius: 6px; margin-bottom: 0.85rem; overflow: hidden; }
@@ -244,6 +253,15 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
         <div class="card-logo"><div class="jony-logo">Sir Jony Ive<small>Premium Tribute &amp; News</small></div></div>
         <div class="card-desc">A premium tribute and news hub dedicated to the legacy of the world's greatest designer.</div>
         <div class="card-url">sirjonyive.com</div>
+      </a>
+    </div>
+
+    <div class="cat-label">Underground</div>
+    <div class="cards-3col">
+      <a class="card card-lulz" href="https://lulz-sec.com" target="_blank" rel="noopener">
+        <div class="card-logo"><div class="lulz-logo"><span class="l1">LULZ</span><span class="l2">-SEC</span><small>still laughing. still watching.</small></div></div>
+        <div class="card-desc">Legal tribute to LulzSec, whistleblowers, and digital freedom fighters. AI-curated Zero Day feed, 4x daily.</div>
+        <div class="card-url">lulz-sec.com</div>
       </a>
     </div>
 

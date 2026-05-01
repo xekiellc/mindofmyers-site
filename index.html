@@ -127,6 +127,37 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .card-lulz .card-desc { color: #3a6640; }
 .card-lulz .card-url { color: #00ff41; }
 
+/* ── SCIENCE SILENCED ── */
+.scisilenced-logo { font-size: 14px; font-weight: 700; line-height: 1.15; letter-spacing: 0.04em; }
+.scisilenced-logo .ss-science { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #7a5a3a; font-weight: 400; display: block; margin-bottom: 2px; font-family: 'Courier New', monospace; }
+.scisilenced-logo .ss-word { color: #1a0a08; position: relative; display: inline-block; }
+.scisilenced-logo .ss-strike { position: absolute; top: 50%; left: -2px; right: -2px; height: 2px; background: #8b1010; transform: translateY(-50%); border-radius: 1px; }
+.scisilenced-logo small { display: block; font-size: 9px; color: #6a4a2a; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; font-weight: 400; font-family: 'Courier New', monospace; }
+.card-scisilenced {
+  background: #1c1408;
+  border-color: rgba(139,16,16,0.25);
+  position: relative;
+  overflow: hidden;
+}
+.card-scisilenced::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 11px,
+    rgba(139,16,16,0.04) 11px,
+    rgba(139,16,16,0.04) 12px
+  );
+  pointer-events: none;
+}
+.card-scisilenced:hover { border-color: rgba(139,16,16,0.6); transform: translateY(-2px); }
+.card-scisilenced .card-desc { color: #7a5a3a; }
+.card-scisilenced .card-url { color: #8b1010; opacity: 0.85; }
+.card-scisilenced .card-tagline { color: #5a3a1a; }
+/* ── END SCIENCE SILENCED ── */
+
 .card-cbnc { background: #0a1520; border-color: rgba(91,156,200,0.2); }
 .card-cbnc:hover { border-color: rgba(91,156,200,0.5); }
 .card-cbnc .card-desc { color: #4a6a7a; }
@@ -259,6 +290,22 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
         <div class="card-desc">A premium tribute and news hub dedicated to the legacy of the world's greatest designer.</div>
         <div class="card-url">sirjonyive.com</div>
       </a>
+
+      <!-- ── SCIENCE SILENCED ── -->
+      <a class="card card-scisilenced" href="https://sciencesilenced.com" target="_blank" rel="noopener">
+        <div class="card-logo">
+          <div class="scisilenced-logo">
+            <span class="ss-science">Science</span>
+            <span class="ss-word">SILENCED<span class="ss-strike"></span></span>
+            <small>No Pharma Funding. No Approved Narratives.</small>
+          </div>
+        </div>
+        <div class="card-desc">AI-curated aggregator of suppressed, censored, and heterodox medical and scientific research. Updated 4x daily.</div>
+        <div class="card-tagline">THE STUDIES THEY DIDN'T WANT YOU TO READ</div>
+        <div class="card-url">sciencesilenced.com</div>
+      </a>
+      <!-- ── END SCIENCE SILENCED ── -->
+
     </div>
 
     <div class="cat-label">Travel</div>

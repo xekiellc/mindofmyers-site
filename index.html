@@ -130,33 +130,46 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 /* ── SCIENCE SILENCED ── */
 .scisilenced-logo { font-size: 14px; font-weight: 700; line-height: 1.15; letter-spacing: 0.04em; }
 .scisilenced-logo .ss-science { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #7a5a3a; font-weight: 400; display: block; margin-bottom: 2px; font-family: 'Courier New', monospace; }
-.scisilenced-logo .ss-word { color: #1a0a08; position: relative; display: inline-block; }
+.scisilenced-logo .ss-word { color: #c8b89a; position: relative; display: inline-block; }
 .scisilenced-logo .ss-strike { position: absolute; top: 50%; left: -2px; right: -2px; height: 2px; background: #8b1010; transform: translateY(-50%); border-radius: 1px; }
 .scisilenced-logo small { display: block; font-size: 9px; color: #6a4a2a; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; font-weight: 400; font-family: 'Courier New', monospace; }
-.card-scisilenced {
-  background: #1c1408;
-  border-color: rgba(139,16,16,0.25);
+.card-scisilenced { background: #1c1408; border-color: rgba(139,16,16,0.25); position: relative; overflow: hidden; }
+.card-scisilenced::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 11px, rgba(139,16,16,0.04) 11px, rgba(139,16,16,0.04) 12px); pointer-events: none; }
+.card-scisilenced:hover { border-color: rgba(139,16,16,0.6); transform: translateY(-2px); }
+.card-scisilenced .card-desc { color: #7a5a3a; }
+.card-scisilenced .card-url { color: #8b1010; opacity: 0.85; }
+.card-scisilenced .card-tagline { color: #5a3a1a; }
+/* ── END SCIENCE SILENCED ── */
+
+/* ── PARDON JOHN KIRIAKOU ── */
+.pardon-logo { font-size: 11px; font-weight: 700; line-height: 1.3; letter-spacing: 0.18em; text-transform: uppercase; font-family: 'Georgia', serif; }
+.pardon-logo .p-pardon { color: #8b0000; font-size: 13px; display: block; letter-spacing: 0.22em; }
+.pardon-logo .p-name { color: #d4c9a8; font-size: 12px; display: block; letter-spacing: 0.1em; font-weight: 400; margin-top: 1px; }
+.pardon-logo small { display: block; font-size: 8.5px; color: #6a5a3a; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; font-weight: 400; font-style: italic; }
+.card-pardon {
+  background: #120c04;
+  border-color: rgba(139,0,0,0.3);
   position: relative;
   overflow: hidden;
 }
-.card-scisilenced::before {
+.card-pardon::before {
   content: '';
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
     0deg,
     transparent,
-    transparent 11px,
-    rgba(139,16,16,0.04) 11px,
-    rgba(139,16,16,0.04) 12px
+    transparent 13px,
+    rgba(139,0,0,0.03) 13px,
+    rgba(139,0,0,0.03) 14px
   );
   pointer-events: none;
 }
-.card-scisilenced:hover { border-color: rgba(139,16,16,0.6); transform: translateY(-2px); }
-.card-scisilenced .card-desc { color: #7a5a3a; }
-.card-scisilenced .card-url { color: #8b1010; opacity: 0.85; }
-.card-scisilenced .card-tagline { color: #5a3a1a; }
-/* ── END SCIENCE SILENCED ── */
+.card-pardon:hover { border-color: rgba(139,0,0,0.65); transform: translateY(-2px); }
+.card-pardon .card-desc { color: #7a6a4a; }
+.card-pardon .card-url { color: #8b0000; opacity: 0.9; }
+.card-pardon .card-tagline { color: #5a4a2a; font-style: italic; }
+/* ── END PARDON JOHN KIRIAKOU ── */
 
 .card-cbnc { background: #0a1520; border-color: rgba(91,156,200,0.2); }
 .card-cbnc:hover { border-color: rgba(91,156,200,0.5); }
@@ -290,8 +303,6 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
         <div class="card-desc">A premium tribute and news hub dedicated to the legacy of the world's greatest designer.</div>
         <div class="card-url">sirjonyive.com</div>
       </a>
-
-      <!-- ── SCIENCE SILENCED ── -->
       <a class="card card-scisilenced" href="https://sciencesilenced.com" target="_blank" rel="noopener">
         <div class="card-logo">
           <div class="scisilenced-logo">
@@ -304,8 +315,24 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
         <div class="card-tagline">THE STUDIES THEY DIDN'T WANT YOU TO READ</div>
         <div class="card-url">sciencesilenced.com</div>
       </a>
-      <!-- ── END SCIENCE SILENCED ── -->
+    </div>
 
+    <div class="cat-label">Advocacy</div>
+    <div class="cards-3col">
+      <!-- ── PARDON JOHN KIRIAKOU ── -->
+      <a class="card card-pardon" href="https://pardonjohnkiriakou.com" target="_blank" rel="noopener">
+        <div class="card-logo">
+          <div class="pardon-logo">
+            <span class="p-pardon">PARDON</span>
+            <span class="p-name">John Kiriakou</span>
+            <small>He told the truth. They put him in prison.</small>
+          </div>
+        </div>
+        <div class="card-desc">Independent advocacy site for a presidential pardon for the CIA whistleblower who confirmed waterboarding — the only American jailed for the torture program. Sign the petition.</div>
+        <div class="card-tagline">The torturers went free. He didn't.</div>
+        <div class="card-url">pardonjohnkiriakou.com</div>
+      </a>
+      <!-- ── END PARDON JOHN KIRIAKOU ── -->
     </div>
 
     <div class="cat-label">Travel</div>

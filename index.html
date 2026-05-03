@@ -139,7 +139,6 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .card-scisilenced .card-desc { color: #7a5a3a; }
 .card-scisilenced .card-url { color: #8b1010; opacity: 0.85; }
 .card-scisilenced .card-tagline { color: #5a3a1a; }
-/* ── END SCIENCE SILENCED ── */
 
 /* ── PARDON JOHN KIRIAKOU ── */
 .pardon-logo { font-size: 11px; font-weight: 700; line-height: 1.3; letter-spacing: 0.18em; text-transform: uppercase; font-family: 'Georgia', serif; }
@@ -152,7 +151,6 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .card-pardon .card-desc { color: #7a6a4a; }
 .card-pardon .card-url { color: #8b0000; opacity: 0.9; }
 .card-pardon .card-tagline { color: #5a4a2a; font-style: italic; }
-/* ── END PARDON JOHN KIRIAKOU ── */
 
 /* ── FREE ELIZABETH HOLMES ── */
 .holmes-logo { font-size: 11px; font-weight: 700; line-height: 1.3; letter-spacing: 0.18em; text-transform: uppercase; font-family: 'Georgia', serif; }
@@ -165,7 +163,33 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .card-holmes .card-desc { color: #7a5a5a; }
 .card-holmes .card-url { color: #8B1A1A; opacity: 0.9; }
 .card-holmes .card-tagline { color: #5a3a3a; font-style: italic; }
-/* ── END FREE ELIZABETH HOLMES ── */
+
+/* ── DIAMOND HANDS DAILY ── */
+.dhd-logo { font-size: 15px; font-weight: 700; line-height: 1.1; letter-spacing: 0.04em; font-family: 'Georgia', serif; }
+.dhd-logo .dhd-diamond { color: #F5C518; font-size: 18px; display: inline; }
+.dhd-logo .dhd-name { color: #F5C518; display: block; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Courier New', monospace; font-weight: 700; }
+.dhd-logo small { display: block; font-size: 9px; color: #8a7020; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; font-weight: 400; font-family: 'Courier New', monospace; }
+.card-dhd {
+  background: #0E0D0B;
+  border-color: rgba(245,197,24,0.25);
+  position: relative;
+  overflow: hidden;
+}
+.card-dhd::before {
+  content: '💎';
+  position: absolute;
+  font-size: 80px;
+  opacity: 0.04;
+  bottom: -10px;
+  right: -10px;
+  pointer-events: none;
+  line-height: 1;
+}
+.card-dhd:hover { border-color: rgba(245,197,24,0.6); transform: translateY(-2px); }
+.card-dhd .card-desc { color: #7a7040; }
+.card-dhd .card-url { color: #F5C518; opacity: 0.85; }
+.card-dhd .card-tagline { color: #5a5020; letter-spacing: 0.14em; }
+/* ── END DIAMOND HANDS DAILY ── */
 
 .card-cbnc { background: #0a1520; border-color: rgba(91,156,200,0.2); }
 .card-cbnc:hover { border-color: rgba(91,156,200,0.5); }
@@ -281,6 +305,24 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       </a>
     </div>
 
+    <div class="cat-label">Finance &amp; Crypto</div>
+    <div class="cards-3col">
+      <!-- ── DIAMOND HANDS DAILY ── -->
+      <a class="card card-dhd" href="https://diamondhandsdaily.com" target="_blank" rel="noopener">
+        <div class="card-logo">
+          <div class="dhd-logo">
+            <span class="dhd-diamond">💎</span>
+            <span class="dhd-name">Diamond Hands Daily</span>
+            <small>Hold the Line.</small>
+          </div>
+        </div>
+        <div class="card-desc">Banksy-meets-crypto news and culture aggregator for long-term believers. Bitcoin. Ethereum. DeFi. Memes. Markets. AI-curated 4x daily.</div>
+        <div class="card-tagline">THE NEWS FOR PEOPLE WHO DON'T SELL</div>
+        <div class="card-url">diamondhandsdaily.com</div>
+      </a>
+      <!-- ── END DIAMOND HANDS DAILY ── -->
+    </div>
+
     <div class="cat-label">News &amp; Aggregators</div>
     <div class="cards-3col">
       <a class="card" href="https://globalpolitics360.com" target="_blank" rel="noopener">
@@ -327,8 +369,6 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
         <div class="card-tagline">The torturers went free. He didn't.</div>
         <div class="card-url">pardonjohnkiriakou.com</div>
       </a>
-
-      <!-- ── FREE ELIZABETH HOLMES ── -->
       <a class="card card-holmes" href="https://freeelizabetholmes.com" target="_blank" rel="noopener">
         <div class="card-logo">
           <div class="holmes-logo">
@@ -341,7 +381,6 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
         <div class="card-tagline">She saw the future. They punished her for it.</div>
         <div class="card-url">freeelizabetholmes.com</div>
       </a>
-      <!-- ── END FREE ELIZABETH HOLMES ── -->
     </div>
 
     <div class="cat-label">Travel</div>

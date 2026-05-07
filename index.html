@@ -141,6 +141,46 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .card-voxvega .card-desc { color: #6a4a7a; }
 .card-voxvega .card-url { color: #a855f7; }
 
+/* Crypto — Diamond Hands Daily */
+.dhd-logo { font-size: 14px; font-weight: 800; line-height: 1.1; letter-spacing: 0.04em; }
+.dhd-logo .d1 { color: #F5C518; }
+.dhd-logo .d2 { color: #FF1A1A; }
+.dhd-logo small { display: block; font-size: 9px; color: #7a6020; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; font-weight: 400; }
+.card-dhd { background: #0e0d0b; border-color: rgba(245,197,24,0.2); }
+.card-dhd:hover { border-color: rgba(245,197,24,0.55); }
+.card-dhd .card-desc { color: #5a5030; }
+.card-dhd .card-url { color: #F5C518; }
+
+/* Advocacy — Free Elizabeth Holmes */
+.feh-logo { font-size: 12.5px; font-weight: 600; line-height: 1.3; letter-spacing: 0.02em; }
+.feh-logo .f1 { color: #c0a060; }
+.feh-logo .f2 { color: #d0c0a0; }
+.feh-logo small { display: block; font-size: 9px; color: #7a6040; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 3px; font-weight: 400; font-style: italic; }
+.card-feh { background: #14100a; border-color: rgba(180,140,60,0.2); }
+.card-feh:hover { border-color: rgba(200,160,80,0.55); }
+.card-feh .card-desc { color: #5a4a30; }
+.card-feh .card-url { color: #c0a060; }
+
+/* Advocacy — Pardon John Kiriakou */
+.pjk-logo { font-size: 12px; font-weight: 600; line-height: 1.3; letter-spacing: 0.02em; }
+.pjk-logo .p1 { color: #8090b0; }
+.pjk-logo .p2 { color: #b0c0d8; }
+.pjk-logo small { display: block; font-size: 9px; color: #506080; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 3px; font-weight: 400; font-style: italic; }
+.card-pjk { background: #0a0e16; border-color: rgba(80,100,160,0.2); }
+.card-pjk:hover { border-color: rgba(100,130,200,0.55); }
+.card-pjk .card-desc { color: #405060; }
+.card-pjk .card-url { color: #7090c0; }
+
+/* Science Silenced */
+.sci-logo { font-size: 12.5px; font-weight: 600; line-height: 1.3; letter-spacing: 0.02em; font-family: monospace; }
+.sci-logo .sc1 { color: #60a060; }
+.sci-logo .sc2 { color: #c0c0c0; }
+.sci-logo small { display: block; font-size: 9px; color: #406040; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 3px; font-weight: 400; font-family: monospace; }
+.card-sci { background: #080e08; border-color: rgba(60,120,60,0.2); }
+.card-sci:hover { border-color: rgba(80,160,80,0.5); }
+.card-sci .card-desc { color: #3a5a3a; }
+.card-sci .card-url { color: #60a060; }
+
 .books-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .book-card { display: flex; flex-direction: column; }
 .book-cover { width: 100%; aspect-ratio: 2/3; border-radius: 6px; margin-bottom: 0.85rem; overflow: hidden; }
@@ -202,20 +242,22 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
   <div id="tab-tech" class="tab-content active">
     <div class="sec-label">Ventures &amp; Projects</div>
 
+    <!-- DATING -->
     <div class="cat-label" style="margin-top:0;">Dating</div>
     <div class="cards-3col">
       <a class="card card-kyzmyt" href="https://kyzmyt.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="kyzmyt-logo"><span class="kw">Kyzm</span><span class="kg">yt</span><small>like kismet — but real.</small></div></div>
-        <div class="card-desc">Fate-based dating platform. The world's first verified dating experience.</div>
+        <div class="card-desc">The world's first triple-verified dating platform. Background check, face liveness scan, and government ID on every member. Real people only.</div>
         <div class="card-url">kyzmyt.com</div>
       </a>
     </div>
 
+    <!-- MARKETPLACES -->
     <div class="cat-label">Marketplaces</div>
     <div class="cards-3col">
       <a class="card" href="https://xekie.com" target="_blank" rel="noopener">
         <div class="card-logo"><img src="xekie-logo-wide.svg" alt="XEKIE"></div>
-        <div class="card-desc">Demand-side marketplace where buyers post what they want and sellers respond.</div>
+        <div class="card-desc">The world's first demand-side marketplace — buyers post what they want, sellers come to them.</div>
         <div class="card-tagline">TRADE DIFFERENT</div>
         <div class="card-url">xekie.com</div>
       </a>
@@ -226,51 +268,84 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
             <div class="silque-logo-text"><span class="s1">Silque</span> <span class="s2">Road</span><small>The Bazaar is Open</small></div>
           </div>
         </div>
-        <div class="card-desc">We carry what the internet won't. Legal products, vetted sellers, 100% anonymous checkout. Pay with crypto.</div>
+        <div class="card-desc">Legal products mainstream platforms won't carry. Vetted sellers, anonymous checkout, crypto payments.</div>
         <div class="card-url">silqueroad.com</div>
       </a>
     </div>
 
+    <!-- PLATFORMS -->
     <div class="cat-label">Platforms</div>
     <div class="cards-3col">
       <a class="card card-voxvega" href="https://voxvega.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="voxvega-logo"><span class="v1">Vox</span><span class="v2">Vega</span><small>Your Voice. Their Star.</small></div></div>
-        <div class="card-desc">Creator monetization platform. Personalized shoutouts, subscriptions, paid DMs, live calls, and digital downloads. Creators keep 90%.</div>
+        <div class="card-desc">Creator monetization — the Cameo competitor built for creators. Shoutouts, subscriptions, paid DMs, live calls, digital downloads. Creators keep 90%. No gatekeeping. Crypto payouts.</div>
         <div class="card-url">voxvega.com</div>
       </a>
     </div>
 
+    <!-- ADVOCACY -->
+    <div class="cat-label">Advocacy</div>
+    <div class="cards-3col">
+      <a class="card card-feh" href="https://freeelizabethholmes.com" target="_blank" rel="noopener">
+        <div class="card-logo"><div class="feh-logo"><span class="f1">Free Elizabeth</span> <span class="f2">Holmes</span><small>"Failure is not fraud."</small></div></div>
+        <div class="card-desc">Independent advocacy for proportional justice. Acquitted on every patient count. Never enriched herself. Serving 11.25 years. Petition, rep contact tools, daily AI news.</div>
+        <div class="card-url">freeelizabethholmes.com</div>
+      </a>
+      <a class="card card-pjk" href="https://pardonjohnkiriakou.com" target="_blank" rel="noopener">
+        <div class="card-logo"><div class="pjk-logo"><span class="p1">Pardon John</span> <span class="p2">Kiriakou</span><small>"The torturers went free."</small></div></div>
+        <div class="card-desc">The only American jailed for the CIA torture program — for telling the truth about it. 23 months served. Zero torturers charged. Demanding a presidential pardon.</div>
+        <div class="card-url">pardonjohnkiriakou.com</div>
+      </a>
+    </div>
+
+    <!-- CRYPTO -->
+    <div class="cat-label">Crypto</div>
+    <div class="cards-3col">
+      <a class="card card-dhd" href="https://diamondhandsdaily.com" target="_blank" rel="noopener">
+        <div class="card-logo"><div class="dhd-logo"><span class="d1">Diamond Hands</span> <span class="d2">Daily</span><small>Hold the Line.</small></div></div>
+        <div class="card-desc">Banksy-meets-crypto news and culture aggregator. Live market data on 250 coins, Satoshi shrine, legislation tracker, 35 top voices, meme zone. 4x daily.</div>
+        <div class="card-url">diamondhandsdaily.com</div>
+      </a>
+    </div>
+
+    <!-- SPORTS -->
     <div class="cat-label">Sports</div>
     <div class="cards-3col">
       <a class="card card-golazo" href="https://golazoglobal.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="golazo-logo"><span class="g1">GOLAZO</span> <span class="g2">GLOBAL</span><small>Every Goal. Every League. Every Nation.</small></div></div>
-        <div class="card-desc">AI-curated global football hub — news, scores, standings, and stats across 12 leagues. World Cup 2026 all summer.</div>
+        <div class="card-desc">AI-curated global football hub — news, scores, standings, and stats across 12 leagues. World Cup 2026 hub live now.</div>
         <div class="card-url">golazoglobal.com</div>
       </a>
       <a class="card" href="https://majesticwicket.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="wicket-logo"><span class="mj">Majestic</span><span class="wk">Wicket</span><small>Where the World Watches Cricket</small></div></div>
-        <div class="card-desc">AI-curated global cricket hub covering 20+ leagues, every nation, 4x daily updates.</div>
+        <div class="card-desc">AI-curated global cricket hub covering tests, ODIs, T20s — every format, every nation, 4x daily.</div>
         <div class="card-url">majesticwicket.com</div>
       </a>
       <a class="card card-kayfabe" href="https://kayfabeheat.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="kayfabe-logo"><span class="k1">Kayfabe</span> <span class="k2">Heat</span><small>Work . Shoot . Heat</small></div></div>
-        <div class="card-desc">Pro wrestling news aggregator — AI-curated, updated 4x daily. Work. Shoot. Heat.</div>
+        <div class="card-desc">Pro wrestling news aggregator and Ohio indie promotion directory. AI-curated, updated 4x daily.</div>
         <div class="card-url">kayfabeheat.com</div>
       </a>
     </div>
 
+    <!-- NEWS & AGGREGATORS -->
     <div class="cat-label">News &amp; Aggregators</div>
     <div class="cards-3col">
       <a class="card" href="https://globalpolitics360.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="gp360">GLOBAL POLITICS <span>360</span></div></div>
-        <div class="card-desc">AI-powered global news and podcast aggregator with editorial integrity.</div>
+        <div class="card-desc">AI-powered global politics and podcast aggregator. Geopolitics, AI policy, digital freedom. Refreshes every 3 hours.</div>
         <div class="card-tagline">INDEPENDENT VOICES ◆ UNFILTERED PERSPECTIVES</div>
         <div class="card-url">globalpolitics360.com</div>
       </a>
       <a class="card" href="https://yamanakafactors.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="yama-logo">Yamanaka Factors<small>Cellular Reprogramming Report</small></div></div>
-        <div class="card-desc">Automated longevity and cellular reprogramming science news hub.</div>
+        <div class="card-desc">Automated longevity and cellular reprogramming science news hub. Updated Mon/Thu via AI pipeline.</div>
         <div class="card-url">yamanakafactors.com</div>
+      </a>
+      <a class="card card-sci" href="https://sciencesilenced.com" target="_blank" rel="noopener">
+        <div class="card-logo"><div class="sci-logo"><span class="sc1">Science</span> <span class="sc2">Silenced</span><small>The research they don't want you reading.</small></div></div>
+        <div class="card-desc">Suppressed, heterodox, and contrarian scientific research. Five pillar sections. Four automated updates daily.</div>
+        <div class="card-url">sciencesilenced.com</div>
       </a>
       <a class="card" href="https://sirjonyive.com" target="_blank" rel="noopener">
         <div class="card-logo"><div class="jony-logo">Sir Jony Ive<small>Premium Tribute &amp; News</small></div></div>
@@ -279,15 +354,17 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       </a>
     </div>
 
+    <!-- TRAVEL -->
     <div class="cat-label">Travel</div>
     <div class="cards-3col">
       <a class="card card-cbnc" href="https://ilovecbnc.com" target="_blank" rel="noopener">
         <div class="card-logo"><img src="cbnc-logo.png" alt="I Love CBNC"></div>
-        <div class="card-desc">The independent community guide and news hub for Carolina Beach, NC. Restaurants, bars, events, and local news. Updated 3x daily.</div>
+        <div class="card-desc">The independent community guide and news hub for Carolina Beach, NC. Restaurants, bars, events, local news. Updated 3x daily.</div>
         <div class="card-url">ilovecbnc.com</div>
       </a>
     </div>
 
+    <!-- UNDERGROUND -->
     <div class="cat-label">Underground</div>
     <div class="cards-3col">
       <a class="card card-lulz" href="https://lulz-sec.com" target="_blank" rel="noopener">
@@ -299,30 +376,32 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 
   </div>
 
+  <!-- BOOKS TAB -->
   <div id="tab-books" class="tab-content">
     <div class="sec-label">Novels</div>
     <div class="books-grid">
       <div class="book-card">
         <div class="book-cover"><img src="cover-spyder-byte.jpg" alt="Spyder Byte by Zach Myers"></div>
         <div class="book-title">Spyder Byte</div>
-        <div class="book-desc">A surveillance nanotechnology thriller set in a fictional Ohio suburb — where the watchers become the watched.</div>
+        <div class="book-desc">A surveillance nanotechnology thriller. DARPA drones the size of a grain of sand, deployed domestically — and the analyst who finds the classified file proving it. The technology is not fictional.</div>
       </div>
       <div class="book-card">
         <div class="book-cover"><img src="cover-2084.jpg" alt="2084 by Zach Myers"></div>
         <div class="book-title">2084</div>
-        <div class="book-desc">A dystopian look at power, control, and what happens when the future arrives ahead of schedule.</div>
+        <div class="book-desc">Dystopian fiction set in the UCE — a global surveillance superstate where your Compliance Score controls where you live, who you see, and whether your children qualify for education. Orwell gave us the blueprint. This is what got built from it.</div>
       </div>
       <div class="book-card">
         <div class="book-cover"><img src="cover-crooked-river.jpg" alt="Crooked River Politics by Zach Myers"></div>
         <div class="book-title">Crooked River Politics</div>
-        <div class="book-desc">Political fiction set deep in the corruption of a small Northeast Ohio city — where loyalty is currency and truth is a liability.</div>
+        <div class="book-desc">Political fiction set in fictional Millhaven, Ohio — a Rust Belt city run by a machine that hasn't lost an election in sixty years. A budget analyst runs against it without yet understanding what that means.</div>
       </div>
     </div>
   </div>
 
+  <!-- KPOP TAB -->
   <div id="tab-kpop" class="tab-content">
     <div class="sec-label">K-Pop Network</div>
-    <div class="kpop-intro">A 12-site automated content network covering the K-pop universe — from BTS to HYBE and beyond. Built with my wife, who knows this world better than anyone. AI-curated, twice-daily updates across all properties.</div>
+    <div class="kpop-intro">A 14-site automated content network covering the K-pop universe — from BTS to HYBE and beyond. Built with my wife, who knows this world better than anyone. AI-curated, twice-daily updates across all properties.</div>
 
     <div class="bucket-label bucket-label-bts">BTS Bucket</div>
     <div class="cards-3col" style="margin-bottom:0.5rem;">
@@ -385,9 +464,10 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
     </div>
   </div>
 
+  <!-- ABOUT TAB -->
   <div id="tab-about" class="tab-content">
     <div class="sec-label">About Zach Myers</div>
-    <div class="about-text">Founder, PhD student, author of three dystopian and political thriller fiction novels. Builder of next-generation retail marketplaces, the world's most secure dating site, and automated content networks. Currently based in Northeast Ohio where he lives with his wife, four boys, and three rescue dogs.</div>
+    <div class="about-text">Founder, PhD candidate, and author of three novels spanning dystopian fiction, surveillance thrillers, and political fiction. Builder of dating platforms, creator monetization tools, demand-side marketplaces, crypto aggregators, advocacy sites, and automated content networks. Currently based in Northeast Ohio where he lives with his wife, four boys, and three rescue dogs.</div>
     <div class="tags">
       <div class="tag">Founder</div>
       <div class="tag">Author</div>
@@ -397,6 +477,8 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       <div class="tag">K-Pop media</div>
       <div class="tag">Cricket</div>
       <div class="tag">Dating tech</div>
+      <div class="tag">Crypto</div>
+      <div class="tag">Advocacy</div>
       <div class="tag">Northeast Ohio</div>
     </div>
   </div>

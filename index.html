@@ -177,6 +177,16 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 .card-sci .card-desc { color: #3a5a3a; }
 .card-sci .card-url { color: #60a060; }
 
+/* ExtraterrestrEAL — UAP/Disclosure */
+.etr-logo { font-size: 13px; font-weight: 800; line-height: 1.15; letter-spacing: 0.06em; text-transform: uppercase; }
+.etr-logo .e1 { color: #00FF88; }
+.etr-logo .e2 { background: linear-gradient(90deg, #00DCFF, #B400FF, #FF2D55); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.etr-logo small { display: block; font-size: 8.5px; color: #1a4a3a; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; font-weight: 400; font-family: monospace; -webkit-text-fill-color: #1a5a3a; }
+.card-etr { background: #000000; border-color: rgba(0,255,136,0.15); }
+.card-etr:hover { border-color: rgba(0,255,136,0.5); transform: translateY(-2px); }
+.card-etr .card-desc { color: #2a5a40; }
+.card-etr .card-url { color: #00FF88; opacity: 0.8; }
+
 .books-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 .book-card { display: flex; flex-direction: column; }
 .book-cover { width: 100%; aspect-ratio: 2/3; border-radius: 6px; margin-bottom: 0.85rem; overflow: hidden; }
@@ -238,6 +248,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
   <div id="tab-tech" class="tab-content active">
     <div class="sec-label">Ventures &amp; Projects</div>
 
+    <!-- DATING -->
     <div class="cat-label" style="margin-top:0;">Dating</div>
     <div class="cards-3col">
       <a class="card card-kyzmyt" href="https://kyzmyt.com" target="_blank" rel="noopener">
@@ -247,6 +258,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       </a>
     </div>
 
+    <!-- MARKETPLACES -->
     <div class="cat-label">Marketplaces</div>
     <div class="cards-3col">
       <a class="card" href="https://xekie.com" target="_blank" rel="noopener">
@@ -267,6 +279,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       </a>
     </div>
 
+    <!-- PLATFORMS -->
     <div class="cat-label">Platforms</div>
     <div class="cards-3col">
       <a class="card card-voxvega" href="https://voxvega.com" target="_blank" rel="noopener">
@@ -276,6 +289,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       </a>
     </div>
 
+    <!-- ADVOCACY -->
     <div class="cat-label">Advocacy</div>
     <div class="cards-3col">
       <a class="card card-feh" href="https://freeelizabethholmes.com" target="_blank" rel="noopener">
@@ -290,6 +304,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       </a>
     </div>
 
+    <!-- CRYPTO -->
     <div class="cat-label">Crypto</div>
     <div class="cards-3col">
       <a class="card card-dhd" href="https://diamondhandsdaily.com" target="_blank" rel="noopener">
@@ -299,6 +314,23 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       </a>
     </div>
 
+    <!-- UAP / DISCLOSURE -->
+    <div class="cat-label">UAP &amp; Disclosure</div>
+    <div class="cards-3col">
+      <a class="card card-etr" href="https://extraterrestreal.com" target="_blank" rel="noopener">
+        <div class="card-logo">
+          <div class="etr-logo">
+            <span class="e1">EXTRATERREST</span><br>
+            <span class="e2">REAL</span>
+            <small>🛸 UFOs ARE REAL · THE GOVERNMENT KNOWS</small>
+          </div>
+        </div>
+        <div class="card-desc">Serious UAP/UFO disclosure aggregator. Congressional whistleblowers, declassified docs, military testimony, top voices. News, videos, podcasts, FOIA docs. 6x daily. Verified Real.</div>
+        <div class="card-url">extraterrestreal.com</div>
+      </a>
+    </div>
+
+    <!-- SPORTS -->
     <div class="cat-label">Sports</div>
     <div class="cards-3col">
       <a class="card card-golazo" href="https://golazoglobal.com" target="_blank" rel="noopener">
@@ -318,6 +350,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       </a>
     </div>
 
+    <!-- NEWS & AGGREGATORS -->
     <div class="cat-label">News &amp; Aggregators</div>
     <div class="cards-3col">
       <a class="card" href="https://globalpolitics360.com" target="_blank" rel="noopener">
@@ -343,6 +376,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       </a>
     </div>
 
+    <!-- TRAVEL -->
     <div class="cat-label">Travel</div>
     <div class="cards-3col">
       <a class="card card-cbnc" href="https://ilovecbnc.com" target="_blank" rel="noopener">
@@ -352,6 +386,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       </a>
     </div>
 
+    <!-- UNDERGROUND -->
     <div class="cat-label">Underground</div>
     <div class="cards-3col">
       <a class="card card-lulz" href="https://lulz-sec.com" target="_blank" rel="noopener">
@@ -363,6 +398,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
 
   </div>
 
+  <!-- BOOKS TAB -->
   <div id="tab-books" class="tab-content">
     <div class="sec-label">Novels</div>
     <div class="books-grid">
@@ -384,6 +420,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
     </div>
   </div>
 
+  <!-- KPOP TAB -->
   <div id="tab-kpop" class="tab-content">
     <div class="sec-label">K-Pop Network</div>
     <div class="kpop-intro">A 14-site automated content network covering the K-pop universe — from BTS to HYBE and beyond. Built with my wife, who knows this world better than anyone. AI-curated, twice-daily updates across all properties.</div>
@@ -449,9 +486,10 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
     </div>
   </div>
 
+  <!-- ABOUT TAB -->
   <div id="tab-about" class="tab-content">
     <div class="sec-label">About Zach Myers</div>
-    <div class="about-text">Founder, PhD candidate, and author of three novels spanning dystopian fiction, surveillance thrillers, and political fiction. Builder of dating platforms, creator monetization tools, demand-side marketplaces, crypto aggregators, advocacy sites, and automated content networks. Currently based in Northeast Ohio where he lives with his wife, four boys, and three rescue dogs.</div>
+    <div class="about-text">Founder, PhD candidate, and author of three novels spanning dystopian fiction, surveillance thrillers, and political fiction. Builder of dating platforms, creator monetization tools, demand-side marketplaces, crypto aggregators, UAP disclosure sites, advocacy sites, and automated content networks. Currently based in Northeast Ohio where he lives with his wife, four boys, and three rescue dogs.</div>
     <div class="tags">
       <div class="tag">Founder</div>
       <div class="tag">Author</div>
@@ -462,6 +500,7 @@ body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; m
       <div class="tag">Cricket</div>
       <div class="tag">Dating tech</div>
       <div class="tag">Crypto</div>
+      <div class="tag">UAP Disclosure</div>
       <div class="tag">Advocacy</div>
       <div class="tag">Northeast Ohio</div>
     </div>

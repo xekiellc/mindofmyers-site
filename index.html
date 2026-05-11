@@ -33,7 +33,6 @@
   --ice-bright: #c8e8ff;
   --ice-dim: #4a7a9b;
   --white: #f0f4f8;
-  --black: #000000;
   --bg: #030508;
   --bg2: #080c12;
   --surface: rgba(168,212,245,0.04);
@@ -58,7 +57,6 @@ body {
   cursor: none;
 }
 
-/* CURSOR */
 .cursor {
   position: fixed;
   width: 6px; height: 6px;
@@ -81,35 +79,14 @@ body {
   transition: all .5s cubic-bezier(0.23,1,0.32,1);
 }
 
-/* HERO — full viewport with Three.js canvas */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
-
-#hero-canvas {
-  position: absolute;
+#bg-canvas {
+  position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: 0;
-}
-
-/* HERO UI over canvas */
-.hero-ui {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 2;
   pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0 40px 40px;
 }
 
-/* NAV */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -118,7 +95,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(to bottom, rgba(3,5,8,0.85), transparent);
+  background: linear-gradient(to bottom, rgba(3,5,8,0.9), transparent);
 }
 .nav-logo {
   font-family: var(--font-display);
@@ -144,73 +121,77 @@ nav {
 }
 .nav-link:hover { color: var(--ice-bright); }
 
-/* HERO TEXT — bottom left */
-.hero-bottom {
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding-top: 80px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 40px 80px;
+  overflow: hidden;
 }
-.hero-text { max-width: 420px; }
 .hero-eyebrow {
   font-size: 9px;
   letter-spacing: .28em;
   text-transform: uppercase;
-  color: rgba(168,212,245,0.4);
-  margin-bottom: 14px;
+  color: var(--ice-dim);
+  margin-bottom: 20px;
   opacity: 0;
-  animation: slideUp .8s ease .3s forwards;
+  animation: slideUp .8s ease .2s forwards;
 }
 .hero-h1 {
   font-family: var(--font-display);
-  font-size: clamp(64px, 10vw, 120px);
+  font-size: clamp(72px, 12vw, 140px);
   line-height: .88;
   letter-spacing: -.01em;
   color: var(--white);
   text-transform: uppercase;
   opacity: 0;
-  animation: slideUp .9s ease .5s forwards;
+  animation: slideUp .9s ease .4s forwards;
 }
 .hero-h1 .of {
   display: block;
   font-family: var(--font-serif);
   font-style: italic;
   text-transform: none;
-  font-size: clamp(70px, 11vw, 130px);
+  font-size: clamp(80px, 13vw, 155px);
   color: var(--ice);
   letter-spacing: -.02em;
   line-height: .9;
 }
 .hero-h1 .ghost {
   display: block;
-  -webkit-text-stroke: 1px rgba(168,212,245,0.18);
+  -webkit-text-stroke: 1px rgba(168,212,245,0.2);
   color: transparent;
-  font-size: clamp(52px, 8vw, 100px);
+  font-size: clamp(60px, 10vw, 120px);
   letter-spacing: .02em;
 }
 .hero-sub {
-  font-size: 12px;
-  color: rgba(168,212,245,0.35);
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--text-dim);
+  max-width: 360px;
   line-height: 1.7;
   letter-spacing: .04em;
-  margin-top: 20px;
   opacity: 0;
-  animation: slideUp .8s ease .8s forwards;
+  animation: slideUp .8s ease .7s forwards;
 }
 .hero-sub strong { color: var(--text); font-weight: 500; }
-
-/* HERO STATS — bottom right */
 .hero-stats {
+  position: absolute;
+  right: 40px;
+  bottom: 80px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
   text-align: right;
   opacity: 0;
   animation: slideUp .8s ease 1s forwards;
 }
 .hero-stat-n {
   font-family: var(--font-display);
-  font-size: 48px;
+  font-size: 52px;
   color: var(--white);
   line-height: 1;
   letter-spacing: -.02em;
@@ -223,22 +204,19 @@ nav {
   color: var(--text-dim);
   margin-top: 2px;
 }
-
-/* SCROLL HINT */
 .hero-scroll {
   position: absolute;
-  bottom: 28px;
+  bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   opacity: 0;
-  animation: fadeIn .8s ease 1.4s forwards;
-  z-index: 3;
+  animation: fadeIn .8s ease 1.2s forwards;
 }
 .hero-scroll-line {
-  width: 36px; height: 1px;
+  width: 40px; height: 1px;
   background: linear-gradient(to right, var(--ice-dim), transparent);
 }
 .hero-scroll-text {
@@ -248,27 +226,6 @@ nav {
   color: var(--text-dim);
 }
 
-/* SCAN LABEL — top right of hero */
-.scan-label {
-  position: absolute;
-  top: 88px;
-  right: 40px;
-  font-size: 8px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(168,212,245,0.2);
-  z-index: 3;
-  opacity: 0;
-  animation: fadeIn 1s ease 1.2s forwards;
-}
-.scan-label span {
-  display: block;
-  color: rgba(168,212,245,0.08);
-  margin-top: 4px;
-  font-size: 7px;
-}
-
-/* TICKER */
 .ticker {
   position: relative;
   z-index: 1;
@@ -283,10 +240,7 @@ nav {
   animation: ticker 35s linear infinite;
   white-space: nowrap;
 }
-@keyframes ticker {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
+@keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 .ticker-item {
   font-size: 9px;
   font-weight: 500;
@@ -297,7 +251,6 @@ nav {
 }
 .ticker-sep { color: rgba(168,212,245,0.12); padding: 0 4px; }
 
-/* SECTIONS */
 .section {
   position: relative;
   z-index: 1;
@@ -323,7 +276,6 @@ nav {
   text-transform: uppercase;
 }
 
-/* MANIFESTO */
 .manifesto {
   position: relative;
   z-index: 1;
@@ -351,7 +303,6 @@ nav {
 }
 .manifesto-body em { font-style: italic; color: var(--ice); }
 
-/* PROJECT LIST */
 .proj-list { display: flex; flex-direction: column; }
 .proj-row {
   display: grid;
@@ -402,7 +353,6 @@ nav {
   text-align: right;
 }
 
-/* ADVOCACY */
 .feat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -451,7 +401,6 @@ nav {
 }
 .feat-block:hover .feat-link { color: var(--ice-bright); }
 
-/* BOOKS */
 .books-grid {
   display: grid;
   grid-template-columns: repeat(3,1fr);
@@ -507,7 +456,6 @@ nav {
   line-height: 1.65;
 }
 
-/* BOTTOM ROW */
 .bottom-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -517,10 +465,7 @@ nav {
   z-index: 1;
   border-bottom: 1px solid var(--border);
 }
-.bottom-block {
-  background: var(--bg);
-  padding: 40px;
-}
+.bottom-block { background: var(--bg); padding: 40px; }
 .bottom-label {
   font-size: 9px;
   letter-spacing: .22em;
@@ -571,7 +516,6 @@ nav {
   border-radius: 2px;
 }
 
-/* FOOTER */
 footer {
   position: relative;
   z-index: 1;
@@ -600,7 +544,6 @@ footer {
 .footer-right a { color: var(--ice-dim); text-decoration: none; }
 .footer-right a:hover { color: var(--ice); }
 
-/* REVEAL */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -612,10 +555,7 @@ footer {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
@@ -623,9 +563,8 @@ footer {
 
 @media (max-width: 768px) {
   nav { padding: 16px 20px; }
-  .hero-ui { padding: 0 20px 32px; }
-  .hero-h1 { font-size: 56px; }
-  .hero-h1 .of { font-size: 62px; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-stats { right: 20px; bottom: 60px; }
   .manifesto { grid-template-columns: 1fr; padding: 48px 20px; }
   .section { padding: 48px 20px; }
   .proj-row { grid-template-columns: 36px 1fr 24px; }
@@ -634,7 +573,6 @@ footer {
   .books-grid { grid-template-columns: 1fr; }
   .bottom-row { grid-template-columns: 1fr; }
   footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
-  .scan-label { display: none; }
 }
 </style>
 </head>
@@ -642,8 +580,8 @@ footer {
 
 <div class="cursor" id="cur"></div>
 <div class="cursor-ring" id="curR"></div>
+<canvas id="bg-canvas"></canvas>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">MIND <em>of Myers</em></div>
   <div class="nav-links">
@@ -654,54 +592,28 @@ footer {
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <canvas id="hero-canvas"></canvas>
-
-  <div class="scan-label">
-    Neural Scan Active
-    <span>mindofmyers.com · v2026</span>
+  <div class="hero-eyebrow">mindofmyers.com &nbsp;·&nbsp; Northeast Ohio &nbsp;·&nbsp; Est. 2026</div>
+  <h1 class="hero-h1">
+    MIND
+    <span class="of">of Myers</span>
+    <span class="ghost">UNAFRAID</span>
+  </h1>
+  <p class="hero-sub">
+    <strong>Founder. Novelist. Builder.</strong><br>
+    Nineteen live projects. Three novels. One laptop. Zero investors. Zero apologies.
+  </p>
+  <div class="hero-stats">
+    <div><div class="hero-stat-n"><span>19</span></div><div class="hero-stat-l">Live Projects</div></div>
+    <div><div class="hero-stat-n"><span>3</span></div><div class="hero-stat-l">Novels</div></div>
+    <div><div class="hero-stat-n"><span>1</span></div><div class="hero-stat-l">Laptop</div></div>
   </div>
-
-  <div class="hero-ui">
-    <div></div>
-    <div class="hero-bottom">
-      <div class="hero-text">
-        <div class="hero-eyebrow">Northeast Ohio &nbsp;·&nbsp; Est. 2026</div>
-        <h1 class="hero-h1">
-          MIND
-          <span class="of">of Myers</span>
-          <span class="ghost">UNAFRAID</span>
-        </h1>
-        <p class="hero-sub">
-          <strong>Founder. Novelist. Builder.</strong><br>
-          Nineteen live projects. Three novels. One laptop. Zero investors. Zero apologies.
-        </p>
-      </div>
-      <div class="hero-stats">
-        <div>
-          <div class="hero-stat-n"><span>19</span></div>
-          <div class="hero-stat-l">Live Projects</div>
-        </div>
-        <div>
-          <div class="hero-stat-n"><span>3</span></div>
-          <div class="hero-stat-l">Novels</div>
-        </div>
-        <div>
-          <div class="hero-stat-n"><span>1</span></div>
-          <div class="hero-stat-l">Laptop</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
     <div class="hero-scroll-text">Scroll to explore</div>
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker">
   <div class="ticker-track">
     <span class="ticker-item">Kyzmyt</span><span class="ticker-sep">·</span>
@@ -745,7 +657,6 @@ footer {
   </div>
 </div>
 
-<!-- MANIFESTO -->
 <div class="manifesto reveal">
   <div class="manifesto-side">Manifesto</div>
   <div class="manifesto-body">
@@ -754,7 +665,6 @@ footer {
   </div>
 </div>
 
-<!-- VENTURES -->
 <section class="section reveal" id="ventures">
   <div class="section-header">
     <div class="section-label">Ventures &amp; Projects</div>
@@ -869,7 +779,7 @@ footer {
       <div class="proj-url">pardonjohnkiriakou.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://diamondhandsdaily.com" target="_blank" rel="noopener">
+    <a class="proj-row" href="#kpop" rel="noopener">
       <div class="proj-num">19</div>
       <div class="proj-info"><div class="proj-name">K-Pop Digital Network</div><div class="proj-cat">14 Sites · BTS · HYBE · Twice Daily</div></div>
       <div class="proj-url">14 domains</div>
@@ -878,7 +788,6 @@ footer {
   </div>
 </section>
 
-<!-- ADVOCACY FEATURE -->
 <section class="section reveal">
   <div class="section-header">
     <div class="section-label">Advocacy</div>
@@ -900,7 +809,6 @@ footer {
   </div>
 </section>
 
-<!-- BOOKS -->
 <section class="section reveal" id="books">
   <div class="section-header">
     <div class="section-label">Novels</div>
@@ -931,7 +839,6 @@ footer {
   </div>
 </section>
 
-<!-- KPOP + ABOUT -->
 <div class="bottom-row reveal" id="kpop">
   <div class="bottom-block">
     <div class="bottom-label">K-Pop Digital Network</div>
@@ -951,7 +858,7 @@ footer {
   </div>
   <div class="bottom-block" id="about">
     <div class="bottom-label">About Zach Myers</div>
-    <div class="bottom-title" id="about">Founder. Novelist. PhD Candidate.</div>
+    <div class="bottom-title">Founder. Novelist. PhD Candidate.</div>
     <div class="bottom-body">Northeast Ohio. Married father of four boys. Three rescue dogs. BBA Finance + MPA, Kent State. PhD candidate in Health Sciences at Youngstown State University. Building things that don't exist yet since long before it was cool.</div>
     <div class="about-tags">
       <span class="about-tag">Founder</span>
@@ -966,7 +873,6 @@ footer {
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">MIND <em>of Myers</em></div>
   <div class="footer-right">
@@ -975,233 +881,112 @@ footer {
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-// ── CUSTOM CURSOR ──────────────────────────────────────
+// CURSOR
 const cur = document.getElementById('cur');
 const curR = document.getElementById('curR');
-let mx = 0, my = 0, rx = 0, ry = 0;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cur.style.left = mx + 'px';
-  cur.style.top = my + 'px';
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX; my=e.clientY;
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
 });
 (function animRing(){
-  rx += (mx - rx) * 0.1;
-  ry += (my - ry) * 0.1;
-  curR.style.left = rx + 'px';
-  curR.style.top = ry + 'px';
+  rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+  curR.style.left=rx+'px'; curR.style.top=ry+'px';
   requestAnimationFrame(animRing);
 })();
-
-document.querySelectorAll('a, .proj-row, .feat-block, .book-block').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    cur.style.width = '12px'; cur.style.height = '12px';
-    curR.style.width = '56px'; curR.style.height = '56px';
-    curR.style.borderColor = 'rgba(168,212,245,0.7)';
+document.querySelectorAll('a,.proj-row,.feat-block,.book-block').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{
+    cur.style.width='12px'; cur.style.height='12px';
+    curR.style.width='56px'; curR.style.height='56px';
+    curR.style.borderColor='rgba(168,212,245,0.7)';
   });
-  el.addEventListener('mouseleave', () => {
-    cur.style.width = '6px'; cur.style.height = '6px';
-    curR.style.width = '36px'; curR.style.height = '36px';
-    curR.style.borderColor = 'rgba(168,212,245,0.4)';
+  el.addEventListener('mouseleave',()=>{
+    cur.style.width='6px'; cur.style.height='6px';
+    curR.style.width='36px'; curR.style.height='36px';
+    curR.style.borderColor='rgba(168,212,245,0.4)';
   });
 });
 
-// ── THREE.JS WIREFRAME HEAD ────────────────────────────
-const canvas = document.getElementById('hero-canvas');
-const W = canvas.offsetWidth;
-const H = canvas.offsetHeight;
+// PARTICLE CANVAS
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let W,H,particles=[],mouse={x:-999,y:-999},frame=0;
+function resize(){ W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
+resize();
+window.addEventListener('resize',resize);
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 100);
-camera.position.set(0, 0.15, 5);
-
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
-renderer.setSize(W, H);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setClearColor(0x030508, 1);
-
-const ICE = 0xa8d4f5;
-
-// HEAD — displaced sphere
-const geo = new THREE.SphereGeometry(1.5, 52, 40);
-const pos = geo.attributes.position;
-for (let i = 0; i < pos.count; i++) {
-  let x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i);
-  // Elongate vertically
-  y *= 1.2;
-  // Taper chin
-  const chin = y < -1.0 ? 1 - (-y - 1.0) * 0.4 : 1;
-  // Narrow crown
-  const crown = y > 0.9 ? 1 - (y - 0.9) * 0.12 : 1;
-  // Flatten back slightly
-  const back = z < -0.4 ? 1 + (z + 0.4) * 0.07 : 1;
-  // Forehead ridge
-  const fore = (y > 0.5 && z > 0.2) ? 1 + (y - 0.5) * 0.06 : 1;
-  // Subtle nose
-  const nose = (y > -0.25 && y < 0.1 && z > 1.0 && Math.abs(x) < 0.22) ? 1.05 : 1;
-  const s = chin * crown * back * fore * nose;
-  pos.setXYZ(i, x * s, y * s, z * s);
-}
-geo.computeVertexNormals();
-
-// Main wireframe
-const wireMat = new THREE.MeshBasicMaterial({
-  color: ICE, wireframe: true,
-  transparent: true, opacity: 0.16
-});
-const head = new THREE.Mesh(geo, wireMat);
-scene.add(head);
-
-// Outer shell — slightly bigger, dimmer
-const outerMat = new THREE.MeshBasicMaterial({
-  color: 0x1e3a58, wireframe: true,
-  transparent: true, opacity: 0.07
-});
-const outerHead = new THREE.Mesh(geo.clone(), outerMat);
-outerHead.scale.setScalar(1.055);
-scene.add(outerHead);
-
-// Horizontal scan line sweeping top to bottom
-const scanGeo = new THREE.PlaneGeometry(8, 0.003);
-const scanMat = new THREE.MeshBasicMaterial({
-  color: ICE, transparent: true, opacity: 0.7,
-  side: THREE.DoubleSide
-});
-const scanLine = new THREE.Mesh(scanGeo, scanMat);
-scene.add(scanLine);
-
-// Glow band around scan
-const glowMat = new THREE.MeshBasicMaterial({
-  color: ICE, transparent: true, opacity: 0.04,
-  side: THREE.DoubleSide
-});
-const glowBand = new THREE.Mesh(new THREE.PlaneGeometry(8, 0.5), glowMat);
-scene.add(glowBand);
-
-// Equatorial ring
-const ringGeo = new THREE.RingGeometry(1.48, 1.50, 80);
-const ringMat = new THREE.MeshBasicMaterial({
-  color: ICE, transparent: true, opacity: 0.25,
-  side: THREE.DoubleSide
-});
-const ring = new THREE.Mesh(ringGeo, ringMat);
-ring.rotation.x = Math.PI / 2;
-scene.add(ring);
-
-// Second ring — tilted
-const ring2 = new THREE.Mesh(
-  new THREE.RingGeometry(1.55, 1.57, 80),
-  new THREE.MeshBasicMaterial({ color: 0x1e3a58, transparent: true, opacity: 0.15, side: THREE.DoubleSide })
-);
-ring2.rotation.x = Math.PI / 2.5;
-ring2.rotation.z = 0.4;
-scene.add(ring2);
-
-// Particles
-const PART = 300;
-const pGeo = new THREE.BufferGeometry();
-const pArr = new Float32Array(PART * 3);
-const pData = [];
-for (let i = 0; i < PART; i++) {
-  const theta = Math.random() * Math.PI * 2;
-  const phi = Math.acos(2 * Math.random() - 1);
-  const r = 1.9 + Math.random() * 1.6;
-  pArr[i*3]   = r * Math.sin(phi) * Math.cos(theta);
-  pArr[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
-  pArr[i*3+2] = r * Math.cos(phi);
-  pData.push({ theta, phi, r, dTheta: (Math.random()-.5)*0.004, dPhi: (Math.random()-.5)*0.002 });
-}
-pGeo.setAttribute('position', new THREE.BufferAttribute(pArr, 3));
-const pMat = new THREE.PointsMaterial({ color: ICE, size: 0.022, transparent: true, opacity: 0.45 });
-const pts = new THREE.Points(pGeo, pMat);
-scene.add(pts);
-
-// Subtle grid floor
-const grid = new THREE.GridHelper(14, 24, 0x0a1a2a, 0x050f1a);
-grid.position.y = -2.6;
-grid.material.transparent = true;
-grid.material.opacity = 0.55;
-scene.add(grid);
-
-// Ambient fog
-scene.fog = new THREE.FogExp2(0x030508, 0.09);
-
-// Mouse tracking
-let mouseX = 0, mouseY = 0, tX = 0, tY = 0;
-document.addEventListener('mousemove', e => {
-  mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-  mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
-});
-
-const clock = new THREE.Clock();
-let scanY = 2.2;
-
-function animate() {
-  requestAnimationFrame(animate);
-  const t = clock.getElapsedTime();
-
-  // Smooth mouse
-  tX += (mouseX * 0.35 - tX) * 0.035;
-  tY += (-mouseY * 0.22 - tY) * 0.035;
-
-  // Head rotate
-  head.rotation.y = t * 0.15 + tX * 0.7;
-  head.rotation.x = tY * 0.3;
-  outerHead.rotation.y = head.rotation.y;
-  outerHead.rotation.x = head.rotation.x;
-
-  // Breathe
-  const breathe = 1 + Math.sin(t * 0.7) * 0.01;
-  head.scale.setScalar(breathe);
-
-  // Scan sweep
-  scanY -= 0.014;
-  if (scanY < -2.4) scanY = 2.4;
-  scanLine.position.y = scanY;
-  glowBand.position.y = scanY;
-  scanMat.opacity = 0.5 + Math.sin(t * 4) * 0.2;
-
-  // Rings
-  ring.rotation.y = t * 0.35;
-  ring2.rotation.y = -t * 0.22;
-  ring.position.y = Math.sin(t * 0.4) * 0.06;
-
-  // Particles
-  const pa = pGeo.attributes.position.array;
-  for (let i = 0; i < PART; i++) {
-    pData[i].theta += pData[i].dTheta;
-    pData[i].phi   += pData[i].dPhi * 0.4;
-    const d = pData[i];
-    const off = t * 0.04;
-    pa[i*3]   = d.r * Math.sin(d.phi) * Math.cos(d.theta + off);
-    pa[i*3+1] = d.r * Math.cos(d.phi);
-    pa[i*3+2] = d.r * Math.sin(d.phi) * Math.sin(d.theta + off);
+class Particle {
+  constructor(){ this.reset(); }
+  reset(){
+    this.x=Math.random()*W; this.y=Math.random()*H;
+    this.size=Math.random()*1.2+0.2;
+    this.vx=(Math.random()-.5)*.25; this.vy=(Math.random()-.5)*.25;
+    this.alpha=Math.random()*.4+.05;
+    this.pulse=Math.random()*Math.PI*2;
+    this.isBlue=Math.random()>.8;
   }
-  pGeo.attributes.position.needsUpdate = true;
-
-  // Wireframe opacity pulse
-  wireMat.opacity = 0.13 + Math.sin(t * 0.6) * 0.04;
-
-  renderer.render(scene, camera);
+  update(){
+    this.pulse+=.012; this.x+=this.vx; this.y+=this.vy;
+    const dx=mouse.x-this.x, dy=mouse.y-this.y;
+    const d=Math.sqrt(dx*dx+dy*dy);
+    if(d<120){ this.x-=dx*.01; this.y-=dy*.01; }
+    if(this.x<0||this.x>W) this.vx*=-1;
+    if(this.y<0||this.y>H) this.vy*=-1;
+  }
+  draw(){
+    const a=this.alpha*(.6+Math.sin(this.pulse)*.4);
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fillStyle=this.isBlue?`rgba(168,212,245,${a})`:`rgba(200,216,232,${a*.4})`;
+    ctx.fill();
+  }
 }
-animate();
+for(let i=0;i<100;i++) particles.push(new Particle());
 
-// Resize
-window.addEventListener('resize', () => {
-  const w = canvas.offsetWidth, h = canvas.offsetHeight;
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
-  renderer.setSize(w, h);
-});
+function drawLines(){
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<80){
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.strokeStyle=`rgba(168,212,245,${(1-d/80)*.07})`;
+        ctx.lineWidth=.5; ctx.stroke();
+      }
+    }
+  }
+}
+function drawGrid(){
+  ctx.strokeStyle='rgba(168,212,245,0.025)'; ctx.lineWidth=.5;
+  for(let x=0;x<W;x+=80){ ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H);ctx.stroke(); }
+  for(let y=0;y<H;y+=80){ ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke(); }
+}
+function drawMouseGlow(){
+  if(mouse.x<0) return;
+  const g=ctx.createRadialGradient(mouse.x,mouse.y,0,mouse.x,mouse.y,200);
+  g.addColorStop(0,'rgba(168,212,245,0.04)');
+  g.addColorStop(1,'rgba(168,212,245,0)');
+  ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+}
+function loop(){
+  frame++;
+  ctx.fillStyle='rgba(3,5,8,0.25)'; ctx.fillRect(0,0,W,H);
+  drawGrid(); drawMouseGlow(); drawLines();
+  particles.forEach(p=>{p.update();p.draw();});
+  requestAnimationFrame(loop);
+}
+loop();
+document.addEventListener('mousemove',e=>{ mouse.x=e.clientX; mouse.y=e.clientY; });
 
-// ── SCROLL REVEAL ──────────────────────────────────────
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08 });
-reveals.forEach(r => observer.observe(r));
+// SCROLL REVEAL
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.08});
+reveals.forEach(r=>observer.observe(r));
 </script>
 </body>
 </html>

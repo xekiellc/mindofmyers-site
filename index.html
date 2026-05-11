@@ -23,522 +23,1121 @@
   gtag('config', 'G-SHFYM489TT');
 </script>
 
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: system-ui, -apple-system, sans-serif; background: #080a0f; min-height: 100vh; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
-.sw {
-  background: #0f1117;
-  max-width: 960px;
-  margin: 2rem auto;
-  border-radius: 14px;
-  overflow: hidden;
-  color: #e8e8e8;
-  display: flex;
-  flex-direction: column;
+<style>
+:root {
+  --ice: #a8d4f5;
+  --ice-bright: #c8e8ff;
+  --ice-dim: #4a7a9b;
+  --white: #f0f4f8;
+  --black: #000000;
+  --bg: #030508;
+  --bg2: #080c12;
+  --surface: rgba(168,212,245,0.04);
+  --border: rgba(168,212,245,0.1);
+  --border-bright: rgba(168,212,245,0.25);
+  --text: #c8d8e8;
+  --text-dim: rgba(168,212,245,0.3);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
 }
 
-.hero { padding: 3rem 2.5rem 2rem; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
-.hero-ey { font-size: 11px; letter-spacing: 0.14em; color: #7a8899; text-transform: uppercase; margin-bottom: 0.5rem; }
-.hero-name { font-size: 40px; font-weight: 500; color: #f0f0f0; line-height: 1.1; margin-bottom: 0.4rem; }
-.hero-name span { color: #4fc8a0; }
-.hero-sub { font-size: 14px; color: #7a8899; max-width: 480px; line-height: 1.6; font-style: italic; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-.tab-nav { display: flex; padding: 0 2.5rem; background: #0f1117; border-bottom: 0.5px solid rgba(255,255,255,0.08); overflow-x: auto; }
-.tab-btn { padding: 0.85rem 1.2rem; font-size: 13px; color: #7a8899; background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; white-space: nowrap; font-family: inherit; }
-.tab-btn.active { color: #4fc8a0; border-bottom-color: #4fc8a0; }
-.tab-btn:hover:not(.active) { color: #c0c8d0; }
+html { scroll-behavior: smooth; }
 
-.tab-content { padding: 2rem 2.5rem; display: none; flex: 1; }
-.tab-content.active { display: block; }
-.sec-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #7a8899; margin-bottom: 0.75rem; }
-.cat-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: #4a5560; margin-bottom: 0.75rem; margin-top: 1.5rem; font-weight: 500; padding-left: 2px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  overflow-x: hidden;
+  cursor: none;
+}
 
-.cards-3col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 0.5rem; }
+/* CUSTOM CURSOR */
+.cursor {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: var(--ice-bright);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width .2s, height .2s, background .2s;
+  mix-blend-mode: screen;
+}
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(168,212,245,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: all .5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+body:hover .cursor { opacity: 1; }
 
-.card {
-  background: #1a1d25;
-  border: 0.5px solid rgba(255,255,255,0.07);
-  border-radius: 12px;
-  padding: 1.1rem 1.1rem 1rem;
-  transition: border-color 0.15s, transform 0.15s;
+/* CANVAS */
+#bg-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(3,5,8,0.9), transparent);
+  backdrop-filter: blur(0px);
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: .08em;
+  color: var(--white);
+}
+.nav-logo em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ice);
+  font-size: 20px;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+.nav-link {
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color .3s;
+  cursor: none;
+}
+.nav-link:hover { color: var(--ice-bright); }
+
+/* HERO */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 40px 80px;
+  overflow: hidden;
+}
+.hero-eyebrow {
+  font-size: 9px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--ice-dim);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: slideUp .8s ease .2s forwards;
+}
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(72px, 12vw, 140px);
+  line-height: .88;
+  letter-spacing: -.01em;
+  color: var(--white);
+  text-transform: uppercase;
+  opacity: 0;
+  animation: slideUp .9s ease .4s forwards;
+}
+.hero-h1 .of {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  text-transform: none;
+  font-size: clamp(80px, 13vw, 155px);
+  color: var(--ice);
+  letter-spacing: -.02em;
+  line-height: .9;
+}
+.hero-h1 .ghost {
+  display: block;
+  -webkit-text-stroke: 1px rgba(168,212,245,0.2);
+  color: transparent;
+  font-size: clamp(60px, 10vw, 120px);
+  letter-spacing: .02em;
+}
+.hero-sub {
+  margin-top: 32px;
+  font-size: 13px;
+  color: var(--text-dim);
+  max-width: 360px;
+  line-height: 1.7;
+  letter-spacing: .04em;
+  opacity: 0;
+  animation: slideUp .8s ease .7s forwards;
+}
+.hero-sub strong { color: var(--text); font-weight: 500; }
+.hero-stats {
+  position: absolute;
+  right: 40px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: right;
+  opacity: 0;
+  animation: slideUp .8s ease 1s forwards;
+}
+.hero-stat-n {
+  font-family: var(--font-display);
+  font-size: 52px;
+  color: var(--white);
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.hero-stat-n span { color: var(--ice); }
+.hero-stat-l {
+  font-size: 8px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: fadeIn .8s ease 1.2s forwards;
+}
+.hero-scroll-line {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, var(--ice-dim), transparent);
+}
+.hero-scroll-text {
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+/* TICKER */
+.ticker {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+  overflow: hidden;
+  background: var(--surface);
+}
+.ticker-track {
+  display: inline-flex;
+  animation: ticker 30s linear infinite;
+  white-space: nowrap;
+}
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-item {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 0 24px;
+  transition: color .3s;
+}
+.ticker-sep { color: rgba(168,212,245,0.15); padding: 0 4px; }
+
+/* SECTION WRAPPER */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 80px 40px;
+  border-bottom: 1px solid var(--border);
+}
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.section-label {
+  font-size: 9px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--ice-dim);
+}
+.section-count {
+  font-size: 9px;
+  letter-spacing: .14em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* MANIFESTO */
+.manifesto {
+  position: relative;
+  z-index: 1;
+  padding: 80px 40px;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.manifesto-side {
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding-top: 6px;
+}
+.manifesto-body {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+.manifesto-body em {
+  font-style: italic;
+  color: var(--ice);
+}
+
+/* PROJECTS LIST */
+.proj-list { display: flex; flex-direction: column; }
+.proj-row {
+  display: grid;
+  grid-template-columns: 48px 1fr 160px 32px;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: none;
+  transition: background .2s;
+  text-decoration: none;
+  color: inherit;
+}
+.proj-row:first-child { border-top: 1px solid var(--border); }
+.proj-row:hover { background: var(--surface); }
+.proj-row:hover .proj-name { color: var(--ice-bright); }
+.proj-row:hover .proj-arrow { color: var(--ice); opacity: 1; }
+.proj-num {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: rgba(168,212,245,0.15);
+  letter-spacing: .06em;
+}
+.proj-info {}
+.proj-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: -.02em;
+  transition: color .2s;
+  line-height: 1;
+}
+.proj-cat {
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 3px;
+}
+.proj-url {
+  font-size: 9px;
+  letter-spacing: .08em;
+  color: var(--text-dim);
+  text-transform: lowercase;
+}
+.proj-arrow {
+  font-size: 16px;
+  color: var(--text-dim);
+  opacity: 0;
+  transition: opacity .2s, color .2s;
+  text-align: right;
+}
+
+/* FEATURED GRID */
+.feat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+}
+.feat-block {
+  background: var(--bg);
+  padding: 32px;
+  transition: background .2s;
+  cursor: none;
   text-decoration: none;
   color: inherit;
   display: block;
-  cursor: pointer;
 }
-.card:hover { border-color: rgba(79,200,160,0.5); transform: translateY(-2px); }
-.card-logo { height: 52px; display: flex; align-items: center; margin-bottom: 0.8rem; }
-.card-logo img { height: 44px; max-width: 180px; object-fit: contain; }
-.card-desc { font-size: 11.5px; color: #5a6470; line-height: 1.5; }
-.card-url { font-size: 11px; color: #4fc8a0; margin-top: 0.55rem; opacity: 0.7; }
-.card-tagline { font-size: 9.5px; letter-spacing: 0.1em; color: #4a5560; text-transform: uppercase; margin-top: 0.4rem; }
+.feat-block:hover { background: var(--bg2); }
+.feat-eyebrow {
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ice-dim);
+  margin-bottom: 14px;
+}
+.feat-title {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 10px;
+  letter-spacing: -.01em;
+}
+.feat-body {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.feat-link {
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ice-dim);
+  margin-top: 16px;
+  display: block;
+  transition: color .2s;
+}
+.feat-block:hover .feat-link { color: var(--ice-bright); }
 
-.gp360 { font-size: 13px; font-weight: 500; color: #f0f0f0; line-height: 1.2; }
-.gp360 span { color: #e63946; }
+/* BOOKS */
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+}
+.book-block {
+  background: var(--bg2);
+  padding: 28px;
+  transition: background .2s;
+  cursor: none;
+}
+.book-block:hover { background: #0c1018; }
+.book-n {
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(168,212,245,0.15);
+  margin-bottom: 16px;
+}
+.book-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  color: var(--white);
+  line-height: .9;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+.book-title-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--ice);
+  line-height: 1;
+  letter-spacing: -.01em;
+  text-transform: none;
+  display: block;
+  margin-top: 2px;
+  margin-bottom: 16px;
+}
+.book-genre {
+  font-size: 8px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(168,212,245,0.2);
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+.book-desc {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
 
-.yama-logo { font-size: 12.5px; font-weight: 500; color: #d4a94a; line-height: 1.3; }
-.yama-logo small { display: block; font-size: 9.5px; color: #8a7040; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
+/* KPOP + ABOUT ROW */
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid var(--border);
+}
+.bottom-block {
+  background: var(--bg);
+  padding: 40px;
+}
+.bottom-label {
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ice-dim);
+  margin-bottom: 16px;
+}
+.bottom-title {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--white);
+  margin-bottom: 12px;
+  letter-spacing: -.01em;
+}
+.bottom-body {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+.kpop-domains {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+.kpop-tag {
+  font-size: 9px;
+  letter-spacing: .08em;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 2px;
+  transition: border-color .2s, color .2s;
+}
+.kpop-tag:hover {
+  border-color: var(--border-bright);
+  color: var(--ice);
+}
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+.about-tag {
+  font-size: 9px;
+  letter-spacing: .08em;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 2px;
+}
 
-.jony-logo { font-size: 12.5px; font-weight: 500; color: #c0c8d4; line-height: 1.3; }
-.jony-logo small { display: block; font-size: 9.5px; color: #5a6470; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
+/* FOOTER */
+footer {
+  position: relative;
+  z-index: 1;
+  padding: 24px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: .08em;
+  color: rgba(168,212,245,0.3);
+}
+.footer-logo em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ice-dim);
+}
+.footer-right {
+  font-size: 9px;
+  letter-spacing: .12em;
+  color: rgba(168,212,245,0.2);
+  text-transform: uppercase;
+}
+.footer-right a {
+  color: var(--ice-dim);
+  text-decoration: none;
+}
+.footer-right a:hover { color: var(--ice); }
 
-.wicket-logo { font-size: 13px; font-weight: 500; line-height: 1.3; }
-.wicket-logo .mj { color: #c8a84b; }
-.wicket-logo .wk { color: #e8e8e8; }
-.wicket-logo small { display: block; font-size: 9.5px; color: #4a7a4a; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
+/* REVEAL ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-.card-kyzmyt { background: #0d1122; border-color: rgba(180,150,100,0.2); }
-.card-kyzmyt:hover { border-color: rgba(200,168,75,0.5); }
-.kyzmyt-logo { font-size: 17px; font-weight: 500; line-height: 1.2; letter-spacing: 0.01em; }
-.kyzmyt-logo .kw { color: #f0f0f0; }
-.kyzmyt-logo .kg { color: #c8924a; }
-.kyzmyt-logo small { display: block; font-size: 9.5px; color: #6a7a9a; letter-spacing: 0.06em; font-style: italic; font-weight: 400; margin-top: 3px; text-transform: none; }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-.golazo-logo { font-size: 15px; font-weight: 700; line-height: 1.1; letter-spacing: 0.02em; }
-.golazo-logo .g1 { color: #f0f0f0; }
-.golazo-logo .g2 { color: #5bb8f5; }
-.golazo-logo small { display: block; font-size: 9px; color: #2d6e4a; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; font-weight: 400; }
-.card-golazo { background: #0a1a0f; border-color: rgba(45,110,74,0.3); }
-.card-golazo:hover { border-color: rgba(91,184,100,0.5); }
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
 
-.silque-logo { display: flex; align-items: center; gap: 10px; }
-.silque-logo img { height: 40px; width: 40px; object-fit: cover; border-radius: 50%; }
-.silque-logo-text { font-size: 15px; font-weight: 500; line-height: 1.2; }
-.silque-logo-text .s1 { color: #c8a84b; }
-.silque-logo-text .s2 { color: #e8e0d0; }
-.silque-logo-text small { display: block; font-size: 9px; color: #6a5a3a; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
-.card-silque { background: #120e08; border-color: rgba(180,140,60,0.2); }
-.card-silque:hover { border-color: rgba(200,168,75,0.5); }
-
-.kayfabe-logo { font-size: 14px; font-weight: 800; line-height: 1.1; letter-spacing: 0.04em; text-transform: uppercase; }
-.kayfabe-logo .k1 { color: #f5a623; }
-.kayfabe-logo .k2 { color: #e040a0; }
-.kayfabe-logo small { display: block; font-size: 9px; color: #7a4a7a; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; font-weight: 400; }
-.card-kayfabe { background: #160a1a; border-color: rgba(180,60,160,0.2); }
-.card-kayfabe:hover { border-color: rgba(224,64,160,0.5); }
-
-.lulz-logo { font-size: 16px; font-weight: 700; line-height: 1.1; letter-spacing: 0.06em; font-family: monospace; }
-.lulz-logo .l1 { color: #00ff41; }
-.lulz-logo .l2 { color: #ff2d2d; }
-.lulz-logo small { display: block; font-size: 9px; color: #006620; letter-spacing: 0.08em; font-style: italic; margin-top: 4px; font-weight: 400; font-family: monospace; text-transform: none; }
-.card-lulz { background: #030b03; border-color: rgba(0,255,65,0.15); }
-.card-lulz:hover { border-color: rgba(0,255,65,0.45); }
-.card-lulz .card-desc { color: #3a6640; }
-.card-lulz .card-url { color: #00ff41; }
-
-.card-cbnc { background: #0a1520; border-color: rgba(91,156,200,0.2); }
-.card-cbnc:hover { border-color: rgba(91,156,200,0.5); }
-.card-cbnc .card-desc { color: #4a6a7a; }
-.card-cbnc .card-url { color: #5ba8c8; }
-
-.voxvega-logo { font-size: 16px; font-weight: 700; line-height: 1.1; letter-spacing: 0.03em; }
-.voxvega-logo .v1 { color: #a855f7; }
-.voxvega-logo .v2 { color: #ec4899; }
-.voxvega-logo small { display: block; font-size: 9px; color: #6a3a7a; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 3px; font-weight: 400; }
-.card-voxvega { background: #150a20; border-color: rgba(168,85,247,0.2); }
-.card-voxvega:hover { border-color: rgba(168,85,247,0.5); }
-.card-voxvega .card-desc { color: #6a4a7a; }
-.card-voxvega .card-url { color: #a855f7; }
-
-.dhd-logo { font-size: 14px; font-weight: 800; line-height: 1.1; letter-spacing: 0.04em; }
-.dhd-logo .d1 { color: #F5C518; }
-.dhd-logo .d2 { color: #FF1A1A; }
-.dhd-logo small { display: block; font-size: 9px; color: #7a6020; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; font-weight: 400; }
-.card-dhd { background: #0e0d0b; border-color: rgba(245,197,24,0.2); }
-.card-dhd:hover { border-color: rgba(245,197,24,0.55); }
-.card-dhd .card-desc { color: #5a5030; }
-.card-dhd .card-url { color: #F5C518; }
-
-.feh-logo { font-size: 12.5px; font-weight: 600; line-height: 1.3; letter-spacing: 0.02em; }
-.feh-logo .f1 { color: #c0a060; }
-.feh-logo .f2 { color: #d0c0a0; }
-.feh-logo small { display: block; font-size: 9px; color: #7a6040; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 3px; font-weight: 400; font-style: italic; }
-.card-feh { background: #14100a; border-color: rgba(180,140,60,0.2); }
-.card-feh:hover { border-color: rgba(200,160,80,0.55); }
-.card-feh .card-desc { color: #5a4a30; }
-.card-feh .card-url { color: #c0a060; }
-
-.pjk-logo { font-size: 12px; font-weight: 600; line-height: 1.3; letter-spacing: 0.02em; }
-.pjk-logo .p1 { color: #8090b0; }
-.pjk-logo .p2 { color: #b0c0d8; }
-.pjk-logo small { display: block; font-size: 9px; color: #506080; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 3px; font-weight: 400; font-style: italic; }
-.card-pjk { background: #0a0e16; border-color: rgba(80,100,160,0.2); }
-.card-pjk:hover { border-color: rgba(100,130,200,0.55); }
-.card-pjk .card-desc { color: #405060; }
-.card-pjk .card-url { color: #7090c0; }
-
-.sci-logo { font-size: 12.5px; font-weight: 600; line-height: 1.3; letter-spacing: 0.02em; font-family: monospace; }
-.sci-logo .sc1 { color: #60a060; }
-.sci-logo .sc2 { color: #c0c0c0; }
-.sci-logo small { display: block; font-size: 9px; color: #406040; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 3px; font-weight: 400; font-family: monospace; }
-.card-sci { background: #080e08; border-color: rgba(60,120,60,0.2); }
-.card-sci:hover { border-color: rgba(80,160,80,0.5); }
-.card-sci .card-desc { color: #3a5a3a; }
-.card-sci .card-url { color: #60a060; }
-
-.etr-logo { font-size: 13px; font-weight: 800; line-height: 1.15; letter-spacing: 0.06em; text-transform: uppercase; }
-.etr-logo .e1 { color: #00FF88; }
-.etr-logo .e2 { background: linear-gradient(90deg, #00DCFF, #B400FF, #FF2D55); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.etr-logo small { display: block; font-size: 8.5px; color: #1a5a3a; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; font-weight: 400; font-family: monospace; -webkit-text-fill-color: #1a5a3a; }
-.card-etr { background: #000000; border-color: rgba(0,255,136,0.15); }
-.card-etr:hover { border-color: rgba(0,255,136,0.5); transform: translateY(-2px); }
-.card-etr .card-desc { color: #2a5a40; }
-.card-etr .card-url { color: #00FF88; opacity: 0.8; }
-
-/* YSU — scarlet/charcoal */
-.ysu-logo { font-size: 13px; font-weight: 800; line-height: 1.2; letter-spacing: 0.05em; text-transform: uppercase; }
-.ysu-logo .y1 { color: #CC0000; }
-.ysu-logo .y2 { color: #e8e0d8; }
-.ysu-logo small { display: block; font-size: 9px; color: #6a3030; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; font-weight: 400; }
-.card-ysu { background: #120808; border-color: rgba(204,0,0,0.2); }
-.card-ysu:hover { border-color: rgba(204,0,0,0.55); transform: translateY(-2px); }
-.card-ysu .card-desc { color: #5a3030; }
-.card-ysu .card-url { color: #CC0000; opacity: 0.85; }
-
-.books-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
-.book-card { display: flex; flex-direction: column; }
-.book-cover { width: 100%; aspect-ratio: 2/3; border-radius: 6px; margin-bottom: 0.85rem; overflow: hidden; }
-.book-cover img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; transition: transform 0.3s; }
-.book-cover img:hover { transform: scale(1.03); }
-.book-title { font-size: 14px; font-weight: 500; color: #dde4ec; margin-bottom: 0.3rem; }
-.book-desc { font-size: 12px; color: #5a6470; line-height: 1.5; }
-
-.kpop-intro { font-size: 13px; color: #7a8899; margin-bottom: 0.5rem; line-height: 1.7; max-width: 560px; }
-.bucket-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; margin-top: 1.5rem; font-weight: 500; }
-.bucket-label-bts { color: #9b7fe8; }
-.bucket-label-hybe { color: #5b9cf6; }
-.bucket-label-kpop { color: #d46fa0; }
-
-.card-bts { background: #16112a; border: 0.5px solid rgba(140,100,200,0.2); border-radius: 12px; padding: 1rem; transition: border-color 0.15s, transform 0.15s; text-decoration: none; color: inherit; display: block; }
-.card-bts:hover { border-color: rgba(155,127,232,0.6); transform: translateY(-2px); }
-.card-bts .kpop-name { color: #c9b8f0; }
-.card-bts .kpop-url { color: #7a6a9a; }
-
-.card-hybe { background: #0d1525; border: 0.5px solid rgba(80,120,200,0.2); border-radius: 12px; padding: 1rem; transition: border-color 0.15s, transform 0.15s; text-decoration: none; color: inherit; display: block; }
-.card-hybe:hover { border-color: rgba(91,156,246,0.6); transform: translateY(-2px); }
-.card-hybe .kpop-name { color: #90b8f0; }
-.card-hybe .kpop-url { color: #4a6a9a; }
-
-.card-kpop-gen { background: #250d1a; border: 0.5px solid rgba(200,80,140,0.2); border-radius: 12px; padding: 1rem; transition: border-color 0.15s, transform 0.15s; text-decoration: none; color: inherit; display: block; }
-.card-kpop-gen:hover { border-color: rgba(212,111,160,0.6); transform: translateY(-2px); }
-.card-kpop-gen .kpop-name { color: #f0a8c8; }
-.card-kpop-gen .kpop-url { color: #9a4a70; }
-
-.kpop-name { font-size: 13px; font-weight: 500; margin-bottom: 0.2rem; }
-.kpop-url { font-size: 10px; opacity: 0.8; }
-
-.about-text { font-size: 14px; color: #8a9499; line-height: 1.8; max-width: 560px; }
-.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; }
-.tag { font-size: 11px; padding: 4px 12px; border-radius: 20px; background: #1a1d25; border: 0.5px solid rgba(255,255,255,0.08); color: #7a8899; }
-
-.footer { padding: 1.25rem 2.5rem; border-top: 0.5px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-.footer-l { font-size: 11px; color: #3a4450; }
-.footer-e { font-size: 12px; color: #4fc8a0; opacity: 0.7; text-decoration: none; }
-.footer-e:hover { opacity: 1; }
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .hero { padding: 100px 20px 60px; }
+  .hero-stats { right: 20px; bottom: 60px; }
+  .manifesto { grid-template-columns: 1fr; padding: 48px 20px; }
+  .section { padding: 48px 20px; }
+  .proj-row { grid-template-columns: 36px 1fr 24px; }
+  .proj-url { display: none; }
+  .feat-grid { grid-template-columns: 1fr; }
+  .books-grid { grid-template-columns: 1fr; }
+  .bottom-row { grid-template-columns: 1fr; }
+  footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+}
 </style>
 </head>
 <body>
 
-<div class="sw">
-  <div class="hero">
-    <div class="hero-ey">mindofmyers.com</div>
-    <div class="hero-name">Mind of <span>Myers</span></div>
-    <div class="hero-sub">Entrepreneur. Novelist. Builder of things that don't exist yet.</div>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MIND <em>of Myers</em></div>
+  <div class="nav-links">
+    <a href="#ventures" class="nav-link">Ventures</a>
+    <a href="#books" class="nav-link">Books</a>
+    <a href="#kpop" class="nav-link">K-Pop</a>
+    <a href="#about" class="nav-link">About</a>
   </div>
+</nav>
 
-  <div class="tab-nav">
-    <button class="tab-btn active" onclick="switchTab('tech',this)">Ventures</button>
-    <button class="tab-btn" onclick="switchTab('books',this)">Books</button>
-    <button class="tab-btn" onclick="switchTab('kpop',this)">K-Pop Network</button>
-    <button class="tab-btn" onclick="switchTab('about',this)">About</button>
-  </div>
-
-  <div id="tab-tech" class="tab-content active">
-    <div class="sec-label">Ventures &amp; Projects</div>
-
-    <!-- DATING -->
-    <div class="cat-label" style="margin-top:0;">Dating</div>
-    <div class="cards-3col">
-      <a class="card card-kyzmyt" href="https://kyzmyt.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="kyzmyt-logo"><span class="kw">Kyzm</span><span class="kg">yt</span><small>like kismet — but real.</small></div></div>
-        <div class="card-desc">The world's first triple-verified dating platform. Background check, face liveness scan, and government ID on every member. Real people only.</div>
-        <div class="card-url">kyzmyt.com</div>
-      </a>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">mindofmyers.com &nbsp;·&nbsp; Northeast Ohio &nbsp;·&nbsp; Est. 2026</div>
+  <h1 class="hero-h1">
+    MIND
+    <span class="of">of Myers</span>
+    <span class="ghost">UNAFRAID</span>
+  </h1>
+  <p class="hero-sub">
+    <strong>Founder. Novelist. Builder.</strong><br>
+    Nineteen live projects. Three novels. One laptop. Zero investors. Zero apologies.
+  </p>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-n"><span>19</span></div>
+      <div class="hero-stat-l">Live Projects</div>
     </div>
-
-    <!-- MARKETPLACES -->
-    <div class="cat-label">Marketplaces</div>
-    <div class="cards-3col">
-      <a class="card" href="https://xekie.com" target="_blank" rel="noopener">
-        <div class="card-logo"><img src="xekie-logo-wide.svg" alt="XEKIE"></div>
-        <div class="card-desc">The world's first demand-side marketplace — buyers post what they want, sellers come to them.</div>
-        <div class="card-tagline">TRADE DIFFERENT</div>
-        <div class="card-url">xekie.com</div>
-      </a>
-      <a class="card card-silque" href="https://silqueroad.com" target="_blank" rel="noopener">
-        <div class="card-logo">
-          <div class="silque-logo">
-            <img src="silqueroad-logo.png" alt="Silque Road">
-            <div class="silque-logo-text"><span class="s1">Silque</span> <span class="s2">Road</span><small>The Bazaar is Open</small></div>
-          </div>
-        </div>
-        <div class="card-desc">Legal products mainstream platforms won't carry. Vetted sellers, anonymous checkout, crypto payments.</div>
-        <div class="card-url">silqueroad.com</div>
-      </a>
+    <div>
+      <div class="hero-stat-n"><span>3</span></div>
+      <div class="hero-stat-l">Novels</div>
     </div>
-
-    <!-- PLATFORMS -->
-    <div class="cat-label">Platforms</div>
-    <div class="cards-3col">
-      <a class="card card-voxvega" href="https://voxvega.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="voxvega-logo"><span class="v1">Vox</span><span class="v2">Vega</span><small>Your Voice. Their Star.</small></div></div>
-        <div class="card-desc">Creator monetization — the Cameo competitor built for creators. Shoutouts, subscriptions, paid DMs, live calls, digital downloads. Creators keep 90%. No gatekeeping. Crypto payouts.</div>
-        <div class="card-url">voxvega.com</div>
-      </a>
-    </div>
-
-    <!-- ADVOCACY -->
-    <div class="cat-label">Advocacy</div>
-    <div class="cards-3col">
-      <a class="card card-feh" href="https://freeelizabethholmes.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="feh-logo"><span class="f1">Free Elizabeth</span> <span class="f2">Holmes</span><small>"Failure is not fraud."</small></div></div>
-        <div class="card-desc">Independent advocacy for proportional justice. Acquitted on every patient count. Never enriched herself. Serving 11.25 years. Petition, rep contact tools, daily AI news.</div>
-        <div class="card-url">freeelizabethholmes.com</div>
-      </a>
-      <a class="card card-pjk" href="https://pardonjohnkiriakou.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="pjk-logo"><span class="p1">Pardon John</span> <span class="p2">Kiriakou</span><small>"The torturers went free."</small></div></div>
-        <div class="card-desc">The only American jailed for the CIA torture program — for telling the truth about it. 23 months served. Zero torturers charged. Demanding a presidential pardon.</div>
-        <div class="card-url">pardonjohnkiriakou.com</div>
-      </a>
-    </div>
-
-    <!-- CRYPTO -->
-    <div class="cat-label">Crypto</div>
-    <div class="cards-3col">
-      <a class="card card-dhd" href="https://diamondhandsdaily.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="dhd-logo"><span class="d1">Diamond Hands</span> <span class="d2">Daily</span><small>Hold the Line.</small></div></div>
-        <div class="card-desc">Banksy-meets-crypto news and culture aggregator. Live market data on 250 coins, Satoshi shrine, legislation tracker, 35 top voices, meme zone. 4x daily.</div>
-        <div class="card-url">diamondhandsdaily.com</div>
-      </a>
-    </div>
-
-    <!-- UAP & DISCLOSURE -->
-    <div class="cat-label">UAP &amp; Disclosure</div>
-    <div class="cards-3col">
-      <a class="card card-etr" href="https://extraterrestreal.com" target="_blank" rel="noopener">
-        <div class="card-logo">
-          <div class="etr-logo">
-            <span class="e1">EXTRATERREST</span><br>
-            <span class="e2">REAL</span>
-            <small>🛸 UFOs ARE REAL · THE GOVERNMENT KNOWS</small>
-          </div>
-        </div>
-        <div class="card-desc">Serious UAP/UFO disclosure aggregator. Congressional whistleblowers, declassified docs, military testimony, top voices. News, videos, podcasts, FOIA docs. 6x daily. Verified Real.</div>
-        <div class="card-url">extraterrestreal.com</div>
-      </a>
-    </div>
-
-    <!-- SPORTS -->
-    <div class="cat-label">Sports</div>
-    <div class="cards-3col">
-      <a class="card card-golazo" href="https://golazoglobal.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="golazo-logo"><span class="g1">GOLAZO</span> <span class="g2">GLOBAL</span><small>Every Goal. Every League. Every Nation.</small></div></div>
-        <div class="card-desc">AI-curated global football hub — news, scores, standings, and stats across 12 leagues. World Cup 2026 hub live now.</div>
-        <div class="card-url">golazoglobal.com</div>
-      </a>
-      <a class="card" href="https://majesticwicket.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="wicket-logo"><span class="mj">Majestic</span><span class="wk">Wicket</span><small>Where the World Watches Cricket</small></div></div>
-        <div class="card-desc">AI-curated global cricket hub covering tests, ODIs, T20s — every format, every nation, 4x daily.</div>
-        <div class="card-url">majesticwicket.com</div>
-      </a>
-      <a class="card card-kayfabe" href="https://kayfabeheat.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="kayfabe-logo"><span class="k1">Kayfabe</span> <span class="k2">Heat</span><small>Work . Shoot . Heat</small></div></div>
-        <div class="card-desc">Pro wrestling news aggregator and Ohio indie promotion directory. AI-curated, updated 4x daily.</div>
-        <div class="card-url">kayfabeheat.com</div>
-      </a>
-    </div>
-
-    <!-- NEWS & AGGREGATORS -->
-    <div class="cat-label">News &amp; Aggregators</div>
-    <div class="cards-3col">
-      <a class="card" href="https://globalpolitics360.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="gp360">GLOBAL POLITICS <span>360</span></div></div>
-        <div class="card-desc">AI-powered global politics and podcast aggregator. Geopolitics, AI policy, digital freedom. Refreshes every 3 hours.</div>
-        <div class="card-tagline">INDEPENDENT VOICES ◆ UNFILTERED PERSPECTIVES</div>
-        <div class="card-url">globalpolitics360.com</div>
-      </a>
-      <a class="card" href="https://yamanakafactors.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="yama-logo">Yamanaka Factors<small>Cellular Reprogramming Report</small></div></div>
-        <div class="card-desc">Automated longevity and cellular reprogramming science news hub. Updated Mon/Thu via AI pipeline.</div>
-        <div class="card-url">yamanakafactors.com</div>
-      </a>
-      <a class="card card-sci" href="https://sciencesilenced.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="sci-logo"><span class="sc1">Science</span> <span class="sc2">Silenced</span><small>The research they don't want you reading.</small></div></div>
-        <div class="card-desc">Suppressed, heterodox, and contrarian scientific research. Five pillar sections. Four automated updates daily.</div>
-        <div class="card-url">sciencesilenced.com</div>
-      </a>
-      <a class="card" href="https://sirjonyive.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="jony-logo">Sir Jony Ive<small>Premium Tribute &amp; News</small></div></div>
-        <div class="card-desc">A premium tribute and news hub dedicated to the legacy of the world's greatest designer.</div>
-        <div class="card-url">sirjonyive.com</div>
-      </a>
-    </div>
-
-    <!-- COMMUNITY -->
-    <div class="cat-label">Community</div>
-    <div class="cards-3col">
-      <a class="card card-ysu" href="https://youngstownstateuniversity.com" target="_blank" rel="noopener">
-        <div class="card-logo">
-          <div class="ysu-logo">
-            <span class="y1">Youngstown State</span><br>
-            <span class="y2">University</span>
-            <small>Positive YSU News — Every Day</small>
-          </div>
-        </div>
-        <div class="card-desc">Independent fan-built pro-YSU news hub covering academics, athletics, research, students, faculty, and alumni. AI-curated, 6x daily. Go Penguins.</div>
-        <div class="card-url">youngstownstateuniversity.com</div>
-      </a>
-      <a class="card card-cbnc" href="https://ilovecbnc.com" target="_blank" rel="noopener">
-        <div class="card-logo"><img src="cbnc-logo.png" alt="I Love CBNC"></div>
-        <div class="card-desc">The independent community guide and news hub for Carolina Beach, NC. Restaurants, bars, events, local news. Updated 3x daily.</div>
-        <div class="card-url">ilovecbnc.com</div>
-      </a>
-    </div>
-
-    <!-- UNDERGROUND -->
-    <div class="cat-label">Underground</div>
-    <div class="cards-3col">
-      <a class="card card-lulz" href="https://lulz-sec.com" target="_blank" rel="noopener">
-        <div class="card-logo"><div class="lulz-logo"><span class="l1">LULZ</span><span class="l2">-SEC</span><small>still laughing. still watching.</small></div></div>
-        <div class="card-desc">Legal tribute to LulzSec, whistleblowers, and digital freedom fighters. AI-curated Zero Day feed, 4x daily.</div>
-        <div class="card-url">lulz-sec.com</div>
-      </a>
-    </div>
-
-  </div>
-
-  <!-- BOOKS TAB -->
-  <div id="tab-books" class="tab-content">
-    <div class="sec-label">Novels</div>
-    <div class="books-grid">
-      <div class="book-card">
-        <div class="book-cover"><img src="cover-spyder-byte.jpg" alt="Spyder Byte by Zach Myers"></div>
-        <div class="book-title">Spyder Byte</div>
-        <div class="book-desc">A surveillance nanotechnology thriller. DARPA drones the size of a grain of sand, deployed domestically — and the analyst who finds the classified file proving it. The technology is not fictional.</div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover"><img src="cover-2084.jpg" alt="2084 by Zach Myers"></div>
-        <div class="book-title">2084</div>
-        <div class="book-desc">Dystopian fiction set in the UCE — a global surveillance superstate where your Compliance Score controls where you live, who you see, and whether your children qualify for education. Orwell gave us the blueprint. This is what got built from it.</div>
-      </div>
-      <div class="book-card">
-        <div class="book-cover"><img src="cover-crooked-river.jpg" alt="Crooked River Politics by Zach Myers"></div>
-        <div class="book-title">Crooked River Politics</div>
-        <div class="book-desc">Political fiction set in fictional Millhaven, Ohio — a Rust Belt city run by a machine that hasn't lost an election in sixty years. A budget analyst runs against it without yet understanding what that means.</div>
-      </div>
+    <div>
+      <div class="hero-stat-n"><span>1</span></div>
+      <div class="hero-stat-l">Laptop</div>
     </div>
   </div>
-
-  <!-- KPOP TAB -->
-  <div id="tab-kpop" class="tab-content">
-    <div class="sec-label">K-Pop Network</div>
-    <div class="kpop-intro">A 14-site automated content network covering the K-pop universe — from BTS to HYBE and beyond. Built with my wife, who knows this world better than anyone. AI-curated, twice-daily updates across all properties.</div>
-
-    <div class="bucket-label bucket-label-bts">BTS Bucket</div>
-    <div class="cards-3col" style="margin-bottom:0.5rem;">
-      <a class="card-bts" href="https://btstxt.com" target="_blank" rel="noopener">
-        <div class="kpop-name">BTS TXT</div>
-        <div class="kpop-url">btstxt.com</div>
-      </a>
-      <a class="card-bts" href="https://armypulse.com" target="_blank" rel="noopener">
-        <div class="kpop-name">Army Pulse</div>
-        <div class="kpop-url">armypulse.com</div>
-      </a>
-      <a class="card-bts" href="https://bangtanbeat.com" target="_blank" rel="noopener">
-        <div class="kpop-name">Bangtan Beat</div>
-        <div class="kpop-url">bangtanbeat.com</div>
-      </a>
-      <a class="card-bts" href="https://txtbts.com" target="_blank" rel="noopener">
-        <div class="kpop-name">TXT BTS</div>
-        <div class="kpop-url">txtbts.com</div>
-      </a>
-    </div>
-
-    <div class="bucket-label bucket-label-hybe">HYBE Bucket</div>
-    <div class="cards-3col" style="margin-bottom:0.5rem;">
-      <a class="card-hybe" href="https://hybefandom.com" target="_blank" rel="noopener">
-        <div class="kpop-name">HYBE Fandom</div>
-        <div class="kpop-url">hybefandom.com</div>
-      </a>
-      <a class="card-hybe" href="https://hybeworld.com" target="_blank" rel="noopener">
-        <div class="kpop-name">HYBE World</div>
-        <div class="kpop-url">hybeworld.com</div>
-      </a>
-      <a class="card-hybe" href="https://bighitnation.com" target="_blank" rel="noopener">
-        <div class="kpop-name">Big Hit Nation</div>
-        <div class="kpop-url">bighitnation.com</div>
-      </a>
-      <a class="card-hybe" href="https://bighitworld.com" target="_blank" rel="noopener">
-        <div class="kpop-name">Big Hit World</div>
-        <div class="kpop-url">bighitworld.com</div>
-      </a>
-    </div>
-
-    <div class="bucket-label bucket-label-kpop">K-Pop Bucket</div>
-    <div class="cards-3col" style="margin-bottom:0.5rem;">
-      <a class="card-kpop-gen" href="https://iheartkpop.com" target="_blank" rel="noopener">
-        <div class="kpop-name">I Heart K-Pop</div>
-        <div class="kpop-url">iheartkpop.com</div>
-      </a>
-      <a class="card-kpop-gen" href="https://kpoppulse.com" target="_blank" rel="noopener">
-        <div class="kpop-name">K-Pop Pulse</div>
-        <div class="kpop-url">kpoppulse.com</div>
-      </a>
-      <a class="card-kpop-gen" href="https://idolrush.com" target="_blank" rel="noopener">
-        <div class="kpop-name">Idol Rush</div>
-        <div class="kpop-url">idolrush.com</div>
-      </a>
-      <a class="card-kpop-gen" href="https://biashaven.com" target="_blank" rel="noopener">
-        <div class="kpop-name">Bias Haven</div>
-        <div class="kpop-url">biashaven.com</div>
-      </a>
-    </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <div class="hero-scroll-text">Scroll to explore</div>
   </div>
+</section>
 
-  <!-- ABOUT TAB -->
-  <div id="tab-about" class="tab-content">
-    <div class="sec-label">About Zach Myers</div>
-    <div class="about-text">Founder, PhD candidate at Youngstown State University, and author of three novels spanning dystopian fiction, surveillance thrillers, and political fiction. Builder of dating platforms, creator monetization tools, demand-side marketplaces, crypto aggregators, UAP disclosure sites, community news hubs, advocacy sites, and automated content networks. Currently based in Northeast Ohio where he lives with his wife, four boys, and three rescue dogs.</div>
-    <div class="tags">
-      <div class="tag">Founder</div>
-      <div class="tag">Author</div>
-      <div class="tag">PhD Candidate — YSU</div>
-      <div class="tag">Longevity science</div>
-      <div class="tag">Political fiction</div>
-      <div class="tag">K-Pop media</div>
-      <div class="tag">Cricket</div>
-      <div class="tag">Dating tech</div>
-      <div class="tag">Crypto</div>
-      <div class="tag">UAP Disclosure</div>
-      <div class="tag">Advocacy</div>
-      <div class="tag">Northeast Ohio</div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <div class="footer-l">© 2026 Mind of Myers</div>
-    <a class="footer-e" href="mailto:info@mindofmyers.com">info@mindofmyers.com</a>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Kyzmyt</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">XEKIE</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Silque Road</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">VoxVega</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">ExtraterrestrEAL</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Diamond Hands Daily</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Free Elizabeth Holmes</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Pardon John Kiriakou</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Golazo Global</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Science Silenced</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Yamanaka Factors</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Kayfabe Heat</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Majestic Wicket</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Global Politics 360</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Spyder Byte</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">2084</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Crooked River Politics</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">YSU</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">K-Pop Network</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Kyzmyt</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">XEKIE</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Silque Road</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">VoxVega</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">ExtraterrestrEAL</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Diamond Hands Daily</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Free Elizabeth Holmes</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Pardon John Kiriakou</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Golazo Global</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Science Silenced</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Yamanaka Factors</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Kayfabe Heat</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Majestic Wicket</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Global Politics 360</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Spyder Byte</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">2084</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Crooked River Politics</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">YSU</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">K-Pop Network</span><span class="ticker-sep">·</span>
   </div>
 </div>
 
+<!-- MANIFESTO -->
+<div class="manifesto reveal">
+  <div class="manifesto-side">Manifesto</div>
+  <div class="manifesto-body">
+    Nobody gave me permission to build any of this.<br>
+    <em>That's exactly the point.</em>
+  </div>
+</div>
+
+<!-- VENTURES -->
+<section class="section reveal" id="ventures">
+  <div class="section-header">
+    <div class="section-label">Ventures &amp; Projects</div>
+    <div class="section-count">19 Live · Counting</div>
+  </div>
+
+  <div class="proj-list">
+    <a class="proj-row" href="https://kyzmyt.com" target="_blank" rel="noopener">
+      <div class="proj-num">01</div>
+      <div class="proj-info">
+        <div class="proj-name">Kyzmyt</div>
+        <div class="proj-cat">Dating · Triple Verified · World's First</div>
+      </div>
+      <div class="proj-url">kyzmyt.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://xekie.com" target="_blank" rel="noopener">
+      <div class="proj-num">02</div>
+      <div class="proj-info">
+        <div class="proj-name">XEKIE</div>
+        <div class="proj-cat">Marketplace · Demand-Side · World's First</div>
+      </div>
+      <div class="proj-url">xekie.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://silqueroad.com" target="_blank" rel="noopener">
+      <div class="proj-num">03</div>
+      <div class="proj-info">
+        <div class="proj-name">Silque Road</div>
+        <div class="proj-cat">Marketplace · Legal · Anonymous · Crypto</div>
+      </div>
+      <div class="proj-url">silqueroad.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://voxvega.com" target="_blank" rel="noopener">
+      <div class="proj-num">04</div>
+      <div class="proj-info">
+        <div class="proj-name">VoxVega</div>
+        <div class="proj-cat">Creator Platform · 90/10 · Cameo Competitor</div>
+      </div>
+      <div class="proj-url">voxvega.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://extraterrestreal.com" target="_blank" rel="noopener">
+      <div class="proj-num">05</div>
+      <div class="proj-info">
+        <div class="proj-name">ExtraterrestrEAL</div>
+        <div class="proj-cat">UAP Disclosure · Whistleblowers · 6x Daily</div>
+      </div>
+      <div class="proj-url">extraterrestreal.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://diamondhandsdaily.com" target="_blank" rel="noopener">
+      <div class="proj-num">06</div>
+      <div class="proj-info">
+        <div class="proj-name">Diamond Hands Daily</div>
+        <div class="proj-cat">Crypto · 250 Coins Live · Satoshi Shrine</div>
+      </div>
+      <div class="proj-url">diamondhandsdaily.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://golazoglobal.com" target="_blank" rel="noopener">
+      <div class="proj-num">07</div>
+      <div class="proj-info">
+        <div class="proj-name">Golazo Global</div>
+        <div class="proj-cat">Soccer · 12 Leagues · World Cup 2026</div>
+      </div>
+      <div class="proj-url">golazoglobal.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://sciencesilenced.com" target="_blank" rel="noopener">
+      <div class="proj-num">08</div>
+      <div class="proj-info">
+        <div class="proj-name">Science Silenced</div>
+        <div class="proj-cat">Suppressed Research · Heterodox Science · 4x Daily</div>
+      </div>
+      <div class="proj-url">sciencesilenced.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://yamanakafactors.com" target="_blank" rel="noopener">
+      <div class="proj-num">09</div>
+      <div class="proj-info">
+        <div class="proj-name">Yamanaka Factors</div>
+        <div class="proj-cat">Longevity Science · Cellular Reprogramming</div>
+      </div>
+      <div class="proj-url">yamanakafactors.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://kayfabeheat.com" target="_blank" rel="noopener">
+      <div class="proj-num">10</div>
+      <div class="proj-info">
+        <div class="proj-name">Kayfabe Heat</div>
+        <div class="proj-cat">Pro Wrestling · Ohio Indie Promotions · 4x Daily</div>
+      </div>
+      <div class="proj-url">kayfabeheat.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://majesticwicket.com" target="_blank" rel="noopener">
+      <div class="proj-num">11</div>
+      <div class="proj-info">
+        <div class="proj-name">Majestic Wicket</div>
+        <div class="proj-cat">Cricket · All Formats · All Nations · 4x Daily</div>
+      </div>
+      <div class="proj-url">majesticwicket.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://globalpolitics360.com" target="_blank" rel="noopener">
+      <div class="proj-num">12</div>
+      <div class="proj-info">
+        <div class="proj-name">Global Politics 360</div>
+        <div class="proj-cat">Geopolitics · AI Policy · Digital Freedom · 3hr</div>
+      </div>
+      <div class="proj-url">globalpolitics360.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://youngstownstateuniversity.com" target="_blank" rel="noopener">
+      <div class="proj-num">13</div>
+      <div class="proj-info">
+        <div class="proj-name">Youngstown State University</div>
+        <div class="proj-cat">Community · Pro-YSU · Positive News · 6x Daily</div>
+      </div>
+      <div class="proj-url">youngstownstateuniversity.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://ilovecbnc.com" target="_blank" rel="noopener">
+      <div class="proj-num">14</div>
+      <div class="proj-info">
+        <div class="proj-name">I Love CBNC</div>
+        <div class="proj-cat">Community · Carolina Beach, NC · Local News</div>
+      </div>
+      <div class="proj-url">ilovecbnc.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://lulz-sec.com" target="_blank" rel="noopener">
+      <div class="proj-num">15</div>
+      <div class="proj-info">
+        <div class="proj-name">Lulz-Sec</div>
+        <div class="proj-cat">Underground · Digital Freedom · Whistleblowers</div>
+      </div>
+      <div class="proj-url">lulz-sec.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://sirjonyive.com" target="_blank" rel="noopener">
+      <div class="proj-num">16</div>
+      <div class="proj-info">
+        <div class="proj-name">Sir Jony Ive</div>
+        <div class="proj-cat">Tribute · Design Legacy · Daily News</div>
+      </div>
+      <div class="proj-url">sirjonyive.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- ADVOCACY -->
+<section class="section reveal">
+  <div class="section-header">
+    <div class="section-label">Advocacy</div>
+    <div class="section-count">Two Fights Worth Having</div>
+  </div>
+  <div class="feat-grid">
+    <a class="feat-block" href="https://freeelizabethholmes.com" target="_blank" rel="noopener">
+      <div class="feat-eyebrow">Justice Campaign · Petition Live</div>
+      <div class="feat-title">Free Elizabeth Holmes</div>
+      <div class="feat-body">Acquitted on every patient count. Never enriched herself. Serving 11.25 years while the science she pioneered is commercialized by others without consequence. The sentence is wrong. The precedent is dangerous.</div>
+      <span class="feat-link">freeelizabethholmes.com →</span>
+    </a>
+    <a class="feat-block" href="https://pardonjohnkiriakou.com" target="_blank" rel="noopener">
+      <div class="feat-eyebrow">Presidential Pardon · Petition Live</div>
+      <div class="feat-title">Pardon John Kiriakou</div>
+      <div class="feat-body">The only American jailed for the CIA torture program — for telling the truth about it. 23 months served. Every torturer walked free. The truth-teller went to prison. That message cannot stand.</div>
+      <span class="feat-link">pardonjohnkiriakou.com →</span>
+    </a>
+  </div>
+</section>
+
+<!-- BOOKS -->
+<section class="section reveal" id="books">
+  <div class="section-header">
+    <div class="section-label">Novels</div>
+    <div class="section-count">Three Standalone Works · Querying Agents</div>
+  </div>
+  <div class="books-grid">
+    <div class="book-block">
+      <div class="book-n">Novel 01 · Surveillance Thriller</div>
+      <div class="book-title">SPYDER</div>
+      <span class="book-title-serif">Byte</span>
+      <div class="book-genre">Nanotechnology · DARPA · Domestic Deployment</div>
+      <div class="book-desc">Sand-sized autonomous surveillance drones deployed against American citizens. One analyst finds the classified file. The technology is not fictional — it's in patent filings right now.</div>
+    </div>
+    <div class="book-block">
+      <div class="book-n">Novel 02 · Dystopian Fiction</div>
+      <div class="book-title">20</div>
+      <span class="book-title-serif">84</span>
+      <div class="book-genre">Global Surveillance · UCE · Compliance Score</div>
+      <div class="book-desc">The United Cooperative of Earth. 214 data streams feeding your Compliance Score. Dissent isn't punished — it's diagnosed. Every system in this novel has a working prototype today.</div>
+    </div>
+    <div class="book-block">
+      <div class="book-n">Novel 03 · Political Fiction</div>
+      <div class="book-title">CROOKED</div>
+      <span class="book-title-serif">River Politics</span>
+      <div class="book-genre">Northeast Ohio · Rust Belt · Machine Politics</div>
+      <div class="book-desc">Millhaven, Ohio. A machine that hasn't lost an election in sixty years. A budget analyst who read the wrong financials. The machine doesn't ask you to do anything wrong.</div>
+    </div>
+  </div>
+</section>
+
+<!-- KPOP + ABOUT -->
+<div class="bottom-row reveal" id="kpop">
+  <div class="bottom-block" id="about">
+    <div class="bottom-label">K-Pop Digital Network</div>
+    <div class="bottom-title">14 Sites. One Universe.</div>
+    <div class="bottom-body">BTS, HYBE, and the full Korean music world. Built with my wife, who is the actual expert. AI-curated, twice daily. AI podcast with hosts Mia &amp; Kai in development.</div>
+    <div class="kpop-domains">
+      <span class="kpop-tag">btstxt.com</span>
+      <span class="kpop-tag">armypulse.com</span>
+      <span class="kpop-tag">bangtanbeat.com</span>
+      <span class="kpop-tag">hybefandom.com</span>
+      <span class="kpop-tag">hybeworld.com</span>
+      <span class="kpop-tag">iheartkpop.com</span>
+      <span class="kpop-tag">kpoppulse.com</span>
+      <span class="kpop-tag">idolrush.com</span>
+      <span class="kpop-tag">biashaven.com</span>
+    </div>
+  </div>
+  <div class="bottom-block">
+    <div class="bottom-label">About Zach Myers</div>
+    <div class="bottom-title">Founder. Novelist. PhD Candidate.</div>
+    <div class="bottom-body">Northeast Ohio. Married father of four boys. Three rescue dogs. BBA Finance + MPA, Kent State. PhD candidate in Health Sciences at Youngstown State University. Building things that don't exist yet since long before it was cool.</div>
+    <div class="about-tags">
+      <span class="about-tag">Founder</span>
+      <span class="about-tag">Novelist</span>
+      <span class="about-tag">PhD Candidate — YSU</span>
+      <span class="about-tag">Northeast Ohio</span>
+      <span class="about-tag">Builder</span>
+      <span class="about-tag">Crypto</span>
+      <span class="about-tag">UAP Disclosure</span>
+      <span class="about-tag">Advocacy</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MIND <em>of Myers</em></div>
+  <div class="footer-right">
+    © 2026 &nbsp;·&nbsp; Northeast Ohio &nbsp;·&nbsp;
+    <a href="mailto:info@mindofmyers.com">info@mindofmyers.com</a>
+  </div>
+</footer>
+
 <script>
-function switchTab(id,btn){
-  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-  btn.classList.add('active');
+// CUSTOM CURSOR
+const cur = document.getElementById('cur');
+const curR = document.getElementById('curR');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cur.style.left = mx + 'px';
+  cur.style.top = my + 'px';
+});
+
+function animRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  curR.style.left = rx + 'px';
+  curR.style.top = ry + 'px';
+  requestAnimationFrame(animRing);
 }
+animRing();
+
+document.querySelectorAll('a, button, .proj-row, .feat-block, .book-block').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cur.style.width = '12px';
+    cur.style.height = '12px';
+    curR.style.width = '56px';
+    curR.style.height = '56px';
+    curR.style.borderColor = 'rgba(168,212,245,0.7)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cur.style.width = '6px';
+    cur.style.height = '6px';
+    curR.style.width = '36px';
+    curR.style.height = '36px';
+    curR.style.borderColor = 'rgba(168,212,245,0.4)';
+  });
+});
+
+// PARTICLE CANVAS
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [], mouse = {x: -999, y: -999}, frame = 0;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 1.2 + 0.2;
+    this.vx = (Math.random() - 0.5) * 0.25;
+    this.vy = (Math.random() - 0.5) * 0.25;
+    this.alpha = Math.random() * 0.4 + 0.05;
+    this.pulse = Math.random() * Math.PI * 2;
+    this.isBlue = Math.random() > 0.8;
+  }
+  update() {
+    this.pulse += 0.012;
+    this.x += this.vx;
+    this.y += this.vy;
+    const dx = mouse.x - this.x;
+    const dy = mouse.y - this.y;
+    const d = Math.sqrt(dx * dx + dy * dy);
+    if (d < 120) {
+      this.x -= dx * 0.01;
+      this.y -= dy * 0.01;
+    }
+    if (this.x < 0 || this.x > W) this.vx *= -1;
+    if (this.y < 0 || this.y > H) this.vy *= -1;
+  }
+  draw() {
+    const a = this.alpha * (0.6 + Math.sin(this.pulse) * 0.4);
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    if (this.isBlue) {
+      ctx.fillStyle = `rgba(168,212,245,${a})`;
+    } else {
+      ctx.fillStyle = `rgba(200,216,232,${a * 0.4})`;
+    }
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 100; i++) particles.push(new Particle());
+
+function drawLines() {
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 80) {
+        const a = (1 - d / 80) * 0.07;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(168,212,245,${a})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function drawGrid() {
+  const sp = 80;
+  ctx.strokeStyle = 'rgba(168,212,245,0.025)';
+  ctx.lineWidth = 0.5;
+  for (let x = 0; x < W; x += sp) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+  }
+  for (let y = 0; y < H; y += sp) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+  }
+}
+
+function drawMouseGlow() {
+  if (mouse.x < 0) return;
+  const g = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 200);
+  g.addColorStop(0, 'rgba(168,212,245,0.04)');
+  g.addColorStop(1, 'rgba(168,212,245,0)');
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, W, H);
+}
+
+function loop() {
+  frame++;
+  ctx.fillStyle = 'rgba(3,5,8,0.25)';
+  ctx.fillRect(0, 0, W, H);
+  drawGrid();
+  drawMouseGlow();
+  drawLines();
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(loop);
+}
+loop();
+
+document.addEventListener('mousemove', e => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+// SCROLL REVEAL
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => observer.observe(r));
 </script>
 </body>
 </html>

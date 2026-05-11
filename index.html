@@ -47,7 +47,6 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
 
 body {
@@ -59,39 +58,55 @@ body {
   cursor: none;
 }
 
-/* CUSTOM CURSOR */
+/* CURSOR */
 .cursor {
   position: fixed;
-  width: 6px;
-  height: 6px;
+  width: 6px; height: 6px;
   background: var(--ice-bright);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width .2s, height .2s, background .2s;
+  transform: translate(-50%,-50%);
+  transition: width .2s, height .2s;
   mix-blend-mode: screen;
 }
 .cursor-ring {
   position: fixed;
-  width: 36px;
-  height: 36px;
+  width: 36px; height: 36px;
   border: 1px solid rgba(168,212,245,0.4);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: all .5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translate(-50%,-50%);
+  transition: all .5s cubic-bezier(0.23,1,0.32,1);
 }
-body:hover .cursor { opacity: 1; }
 
-/* CANVAS */
-#bg-canvas {
-  position: fixed;
+/* HERO — full viewport with Three.js canvas */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#hero-canvas {
+  position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: 0;
+}
+
+/* HERO UI over canvas */
+.hero-ui {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 2;
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 40px 40px;
 }
 
 /* NAV */
@@ -99,12 +114,11 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 20px 40px;
+  padding: 22px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(to bottom, rgba(3,5,8,0.9), transparent);
-  backdrop-filter: blur(0px);
+  background: linear-gradient(to bottom, rgba(3,5,8,0.85), transparent);
 }
 .nav-logo {
   font-family: var(--font-display);
@@ -118,10 +132,7 @@ nav {
   color: var(--ice);
   font-size: 20px;
 }
-.nav-links {
-  display: flex;
-  gap: 32px;
-}
+.nav-links { display: flex; gap: 32px; }
 .nav-link {
   font-size: 10px;
   letter-spacing: .2em;
@@ -133,78 +144,73 @@ nav {
 }
 .nav-link:hover { color: var(--ice-bright); }
 
-/* HERO */
-.hero {
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
+/* HERO TEXT — bottom left */
+.hero-bottom {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 120px 40px 80px;
-  overflow: hidden;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 80px;
 }
+.hero-text { max-width: 420px; }
 .hero-eyebrow {
   font-size: 9px;
-  letter-spacing: .3em;
+  letter-spacing: .28em;
   text-transform: uppercase;
-  color: var(--ice-dim);
-  margin-bottom: 20px;
+  color: rgba(168,212,245,0.4);
+  margin-bottom: 14px;
   opacity: 0;
-  animation: slideUp .8s ease .2s forwards;
+  animation: slideUp .8s ease .3s forwards;
 }
 .hero-h1 {
   font-family: var(--font-display);
-  font-size: clamp(72px, 12vw, 140px);
+  font-size: clamp(64px, 10vw, 120px);
   line-height: .88;
   letter-spacing: -.01em;
   color: var(--white);
   text-transform: uppercase;
   opacity: 0;
-  animation: slideUp .9s ease .4s forwards;
+  animation: slideUp .9s ease .5s forwards;
 }
 .hero-h1 .of {
   display: block;
   font-family: var(--font-serif);
   font-style: italic;
   text-transform: none;
-  font-size: clamp(80px, 13vw, 155px);
+  font-size: clamp(70px, 11vw, 130px);
   color: var(--ice);
   letter-spacing: -.02em;
   line-height: .9;
 }
 .hero-h1 .ghost {
   display: block;
-  -webkit-text-stroke: 1px rgba(168,212,245,0.2);
+  -webkit-text-stroke: 1px rgba(168,212,245,0.18);
   color: transparent;
-  font-size: clamp(60px, 10vw, 120px);
+  font-size: clamp(52px, 8vw, 100px);
   letter-spacing: .02em;
 }
 .hero-sub {
-  margin-top: 32px;
-  font-size: 13px;
-  color: var(--text-dim);
-  max-width: 360px;
+  font-size: 12px;
+  color: rgba(168,212,245,0.35);
   line-height: 1.7;
   letter-spacing: .04em;
+  margin-top: 20px;
   opacity: 0;
-  animation: slideUp .8s ease .7s forwards;
+  animation: slideUp .8s ease .8s forwards;
 }
 .hero-sub strong { color: var(--text); font-weight: 500; }
+
+/* HERO STATS — bottom right */
 .hero-stats {
-  position: absolute;
-  right: 40px;
-  bottom: 80px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   text-align: right;
   opacity: 0;
   animation: slideUp .8s ease 1s forwards;
 }
 .hero-stat-n {
   font-family: var(--font-display);
-  font-size: 52px;
+  font-size: 48px;
   color: var(--white);
   line-height: 1;
   letter-spacing: -.02em;
@@ -217,19 +223,22 @@ nav {
   color: var(--text-dim);
   margin-top: 2px;
 }
+
+/* SCROLL HINT */
 .hero-scroll {
   position: absolute;
-  bottom: 32px;
-  left: 40px;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   opacity: 0;
-  animation: fadeIn .8s ease 1.2s forwards;
+  animation: fadeIn .8s ease 1.4s forwards;
+  z-index: 3;
 }
 .hero-scroll-line {
-  width: 40px;
-  height: 1px;
+  width: 36px; height: 1px;
   background: linear-gradient(to right, var(--ice-dim), transparent);
 }
 .hero-scroll-text {
@@ -239,19 +248,39 @@ nav {
   color: var(--text-dim);
 }
 
+/* SCAN LABEL — top right of hero */
+.scan-label {
+  position: absolute;
+  top: 88px;
+  right: 40px;
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(168,212,245,0.2);
+  z-index: 3;
+  opacity: 0;
+  animation: fadeIn 1s ease 1.2s forwards;
+}
+.scan-label span {
+  display: block;
+  color: rgba(168,212,245,0.08);
+  margin-top: 4px;
+  font-size: 7px;
+}
+
 /* TICKER */
 .ticker {
   position: relative;
   z-index: 1;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 12px 0;
+  padding: 11px 0;
   overflow: hidden;
   background: var(--surface);
 }
 .ticker-track {
   display: inline-flex;
-  animation: ticker 30s linear infinite;
+  animation: ticker 35s linear infinite;
   white-space: nowrap;
 }
 @keyframes ticker {
@@ -261,15 +290,14 @@ nav {
 .ticker-item {
   font-size: 9px;
   font-weight: 500;
-  letter-spacing: .2em;
+  letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--text-dim);
-  padding: 0 24px;
-  transition: color .3s;
+  padding: 0 22px;
 }
-.ticker-sep { color: rgba(168,212,245,0.15); padding: 0 4px; }
+.ticker-sep { color: rgba(168,212,245,0.12); padding: 0 4px; }
 
-/* SECTION WRAPPER */
+/* SECTIONS */
 .section {
   position: relative;
   z-index: 1;
@@ -321,16 +349,13 @@ nav {
   line-height: 1.25;
   letter-spacing: -.01em;
 }
-.manifesto-body em {
-  font-style: italic;
-  color: var(--ice);
-}
+.manifesto-body em { font-style: italic; color: var(--ice); }
 
-/* PROJECTS LIST */
+/* PROJECT LIST */
 .proj-list { display: flex; flex-direction: column; }
 .proj-row {
   display: grid;
-  grid-template-columns: 48px 1fr 160px 32px;
+  grid-template-columns: 48px 1fr 180px 32px;
   align-items: center;
   padding: 18px 0;
   border-bottom: 1px solid var(--border);
@@ -346,10 +371,9 @@ nav {
 .proj-num {
   font-family: var(--font-display);
   font-size: 14px;
-  color: rgba(168,212,245,0.15);
+  color: rgba(168,212,245,0.12);
   letter-spacing: .06em;
 }
-.proj-info {}
 .proj-name {
   font-size: 18px;
   font-weight: 500;
@@ -360,7 +384,7 @@ nav {
 }
 .proj-cat {
   font-size: 9px;
-  letter-spacing: .16em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--text-dim);
   margin-top: 3px;
@@ -369,7 +393,6 @@ nav {
   font-size: 9px;
   letter-spacing: .08em;
   color: var(--text-dim);
-  text-transform: lowercase;
 }
 .proj-arrow {
   font-size: 16px;
@@ -379,7 +402,7 @@ nav {
   text-align: right;
 }
 
-/* FEATURED GRID */
+/* ADVOCACY */
 .feat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -411,7 +434,6 @@ nav {
   color: var(--white);
   line-height: 1.1;
   margin-bottom: 10px;
-  letter-spacing: -.01em;
 }
 .feat-body {
   font-size: 12px;
@@ -432,7 +454,7 @@ nav {
 /* BOOKS */
 .books-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3,1fr);
   gap: 1px;
   background: var(--border);
 }
@@ -447,7 +469,7 @@ nav {
   font-size: 8px;
   letter-spacing: .22em;
   text-transform: uppercase;
-  color: rgba(168,212,245,0.15);
+  color: rgba(168,212,245,0.12);
   margin-bottom: 16px;
 }
 .book-title {
@@ -457,7 +479,6 @@ nav {
   line-height: .9;
   letter-spacing: .02em;
   text-transform: uppercase;
-  margin-bottom: 0;
 }
 .book-title-serif {
   font-family: var(--font-serif);
@@ -475,7 +496,7 @@ nav {
   font-size: 8px;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: rgba(168,212,245,0.2);
+  color: rgba(168,212,245,0.18);
   padding-top: 14px;
   border-top: 1px solid var(--border);
   margin-bottom: 10px;
@@ -486,7 +507,7 @@ nav {
   line-height: 1.65;
 }
 
-/* KPOP + ABOUT ROW */
+/* BOTTOM ROW */
 .bottom-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -513,7 +534,6 @@ nav {
   font-style: italic;
   color: var(--white);
   margin-bottom: 12px;
-  letter-spacing: -.01em;
 }
 .bottom-body {
   font-size: 12px;
@@ -535,10 +555,7 @@ nav {
   border-radius: 2px;
   transition: border-color .2s, color .2s;
 }
-.kpop-tag:hover {
-  border-color: var(--border-bright);
-  color: var(--ice);
-}
+.kpop-tag:hover { border-color: var(--border-bright); color: var(--ice); }
 .about-tags {
   display: flex;
   flex-wrap: wrap;
@@ -567,7 +584,7 @@ footer {
   font-family: var(--font-display);
   font-size: 16px;
   letter-spacing: .08em;
-  color: rgba(168,212,245,0.3);
+  color: rgba(168,212,245,0.25);
 }
 .footer-logo em {
   font-family: var(--font-serif);
@@ -580,22 +597,16 @@ footer {
   color: rgba(168,212,245,0.2);
   text-transform: uppercase;
 }
-.footer-right a {
-  color: var(--ice-dim);
-  text-decoration: none;
-}
+.footer-right a { color: var(--ice-dim); text-decoration: none; }
 .footer-right a:hover { color: var(--ice); }
 
-/* REVEAL ANIMATION */
+/* REVEAL */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity .8s ease, transform .8s ease;
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -606,15 +617,15 @@ footer {
   to { opacity: 1; }
 }
 
-/* SCROLLBAR */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
 
 @media (max-width: 768px) {
   nav { padding: 16px 20px; }
-  .hero { padding: 100px 20px 60px; }
-  .hero-stats { right: 20px; bottom: 60px; }
+  .hero-ui { padding: 0 20px 32px; }
+  .hero-h1 { font-size: 56px; }
+  .hero-h1 .of { font-size: 62px; }
   .manifesto { grid-template-columns: 1fr; padding: 48px 20px; }
   .section { padding: 48px 20px; }
   .proj-row { grid-template-columns: 36px 1fr 24px; }
@@ -623,6 +634,7 @@ footer {
   .books-grid { grid-template-columns: 1fr; }
   .bottom-row { grid-template-columns: 1fr; }
   footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+  .scan-label { display: none; }
 }
 </style>
 </head>
@@ -630,7 +642,6 @@ footer {
 
 <div class="cursor" id="cur"></div>
 <div class="cursor-ring" id="curR"></div>
-<canvas id="bg-canvas"></canvas>
 
 <!-- NAV -->
 <nav>
@@ -645,30 +656,45 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">mindofmyers.com &nbsp;·&nbsp; Northeast Ohio &nbsp;·&nbsp; Est. 2026</div>
-  <h1 class="hero-h1">
-    MIND
-    <span class="of">of Myers</span>
-    <span class="ghost">UNAFRAID</span>
-  </h1>
-  <p class="hero-sub">
-    <strong>Founder. Novelist. Builder.</strong><br>
-    Nineteen live projects. Three novels. One laptop. Zero investors. Zero apologies.
-  </p>
-  <div class="hero-stats">
-    <div>
-      <div class="hero-stat-n"><span>19</span></div>
-      <div class="hero-stat-l">Live Projects</div>
-    </div>
-    <div>
-      <div class="hero-stat-n"><span>3</span></div>
-      <div class="hero-stat-l">Novels</div>
-    </div>
-    <div>
-      <div class="hero-stat-n"><span>1</span></div>
-      <div class="hero-stat-l">Laptop</div>
+  <canvas id="hero-canvas"></canvas>
+
+  <div class="scan-label">
+    Neural Scan Active
+    <span>mindofmyers.com · v2026</span>
+  </div>
+
+  <div class="hero-ui">
+    <div></div>
+    <div class="hero-bottom">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Northeast Ohio &nbsp;·&nbsp; Est. 2026</div>
+        <h1 class="hero-h1">
+          MIND
+          <span class="of">of Myers</span>
+          <span class="ghost">UNAFRAID</span>
+        </h1>
+        <p class="hero-sub">
+          <strong>Founder. Novelist. Builder.</strong><br>
+          Nineteen live projects. Three novels. One laptop. Zero investors. Zero apologies.
+        </p>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-n"><span>19</span></div>
+          <div class="hero-stat-l">Live Projects</div>
+        </div>
+        <div>
+          <div class="hero-stat-n"><span>3</span></div>
+          <div class="hero-stat-l">Novels</div>
+        </div>
+        <div>
+          <div class="hero-stat-n"><span>1</span></div>
+          <div class="hero-stat-l">Laptop</div>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
     <div class="hero-scroll-text">Scroll to explore</div>
@@ -734,156 +760,125 @@ footer {
     <div class="section-label">Ventures &amp; Projects</div>
     <div class="section-count">19 Live · Counting</div>
   </div>
-
   <div class="proj-list">
     <a class="proj-row" href="https://kyzmyt.com" target="_blank" rel="noopener">
       <div class="proj-num">01</div>
-      <div class="proj-info">
-        <div class="proj-name">Kyzmyt</div>
-        <div class="proj-cat">Dating · Triple Verified · World's First</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Kyzmyt</div><div class="proj-cat">Dating · Triple Verified · World's First</div></div>
       <div class="proj-url">kyzmyt.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://xekie.com" target="_blank" rel="noopener">
       <div class="proj-num">02</div>
-      <div class="proj-info">
-        <div class="proj-name">XEKIE</div>
-        <div class="proj-cat">Marketplace · Demand-Side · World's First</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">XEKIE</div><div class="proj-cat">Marketplace · Demand-Side · World's First</div></div>
       <div class="proj-url">xekie.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://silqueroad.com" target="_blank" rel="noopener">
       <div class="proj-num">03</div>
-      <div class="proj-info">
-        <div class="proj-name">Silque Road</div>
-        <div class="proj-cat">Marketplace · Legal · Anonymous · Crypto</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Silque Road</div><div class="proj-cat">Marketplace · Legal · Anonymous · Crypto</div></div>
       <div class="proj-url">silqueroad.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://voxvega.com" target="_blank" rel="noopener">
       <div class="proj-num">04</div>
-      <div class="proj-info">
-        <div class="proj-name">VoxVega</div>
-        <div class="proj-cat">Creator Platform · 90/10 · Cameo Competitor</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">VoxVega</div><div class="proj-cat">Creator Platform · 90/10 · Cameo Competitor</div></div>
       <div class="proj-url">voxvega.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://extraterrestreal.com" target="_blank" rel="noopener">
       <div class="proj-num">05</div>
-      <div class="proj-info">
-        <div class="proj-name">ExtraterrestrEAL</div>
-        <div class="proj-cat">UAP Disclosure · Whistleblowers · 6x Daily</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">ExtraterrestrEAL</div><div class="proj-cat">UAP Disclosure · Whistleblowers · 6x Daily</div></div>
       <div class="proj-url">extraterrestreal.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://diamondhandsdaily.com" target="_blank" rel="noopener">
       <div class="proj-num">06</div>
-      <div class="proj-info">
-        <div class="proj-name">Diamond Hands Daily</div>
-        <div class="proj-cat">Crypto · 250 Coins Live · Satoshi Shrine</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Diamond Hands Daily</div><div class="proj-cat">Crypto · 250 Coins Live · Satoshi Shrine</div></div>
       <div class="proj-url">diamondhandsdaily.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://golazoglobal.com" target="_blank" rel="noopener">
       <div class="proj-num">07</div>
-      <div class="proj-info">
-        <div class="proj-name">Golazo Global</div>
-        <div class="proj-cat">Soccer · 12 Leagues · World Cup 2026</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Golazo Global</div><div class="proj-cat">Soccer · 12 Leagues · World Cup 2026</div></div>
       <div class="proj-url">golazoglobal.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://sciencesilenced.com" target="_blank" rel="noopener">
       <div class="proj-num">08</div>
-      <div class="proj-info">
-        <div class="proj-name">Science Silenced</div>
-        <div class="proj-cat">Suppressed Research · Heterodox Science · 4x Daily</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Science Silenced</div><div class="proj-cat">Suppressed Research · Heterodox Science · 4x Daily</div></div>
       <div class="proj-url">sciencesilenced.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://yamanakafactors.com" target="_blank" rel="noopener">
       <div class="proj-num">09</div>
-      <div class="proj-info">
-        <div class="proj-name">Yamanaka Factors</div>
-        <div class="proj-cat">Longevity Science · Cellular Reprogramming</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Yamanaka Factors</div><div class="proj-cat">Longevity Science · Cellular Reprogramming</div></div>
       <div class="proj-url">yamanakafactors.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://kayfabeheat.com" target="_blank" rel="noopener">
       <div class="proj-num">10</div>
-      <div class="proj-info">
-        <div class="proj-name">Kayfabe Heat</div>
-        <div class="proj-cat">Pro Wrestling · Ohio Indie Promotions · 4x Daily</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Kayfabe Heat</div><div class="proj-cat">Pro Wrestling · Ohio Indie Promotions · 4x Daily</div></div>
       <div class="proj-url">kayfabeheat.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://majesticwicket.com" target="_blank" rel="noopener">
       <div class="proj-num">11</div>
-      <div class="proj-info">
-        <div class="proj-name">Majestic Wicket</div>
-        <div class="proj-cat">Cricket · All Formats · All Nations · 4x Daily</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Majestic Wicket</div><div class="proj-cat">Cricket · All Formats · All Nations · 4x Daily</div></div>
       <div class="proj-url">majesticwicket.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://globalpolitics360.com" target="_blank" rel="noopener">
       <div class="proj-num">12</div>
-      <div class="proj-info">
-        <div class="proj-name">Global Politics 360</div>
-        <div class="proj-cat">Geopolitics · AI Policy · Digital Freedom · 3hr</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Global Politics 360</div><div class="proj-cat">Geopolitics · AI Policy · Digital Freedom · 3hr</div></div>
       <div class="proj-url">globalpolitics360.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://youngstownstateuniversity.com" target="_blank" rel="noopener">
       <div class="proj-num">13</div>
-      <div class="proj-info">
-        <div class="proj-name">Youngstown State University</div>
-        <div class="proj-cat">Community · Pro-YSU · Positive News · 6x Daily</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Youngstown State University</div><div class="proj-cat">Community · Pro-YSU · Positive News · 6x Daily</div></div>
       <div class="proj-url">youngstownstateuniversity.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://ilovecbnc.com" target="_blank" rel="noopener">
       <div class="proj-num">14</div>
-      <div class="proj-info">
-        <div class="proj-name">I Love CBNC</div>
-        <div class="proj-cat">Community · Carolina Beach, NC · Local News</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">I Love CBNC</div><div class="proj-cat">Community · Carolina Beach, NC · Local News</div></div>
       <div class="proj-url">ilovecbnc.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://lulz-sec.com" target="_blank" rel="noopener">
       <div class="proj-num">15</div>
-      <div class="proj-info">
-        <div class="proj-name">Lulz-Sec</div>
-        <div class="proj-cat">Underground · Digital Freedom · Whistleblowers</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Lulz-Sec</div><div class="proj-cat">Underground · Digital Freedom · Whistleblowers</div></div>
       <div class="proj-url">lulz-sec.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://sirjonyive.com" target="_blank" rel="noopener">
       <div class="proj-num">16</div>
-      <div class="proj-info">
-        <div class="proj-name">Sir Jony Ive</div>
-        <div class="proj-cat">Tribute · Design Legacy · Daily News</div>
-      </div>
+      <div class="proj-info"><div class="proj-name">Sir Jony Ive</div><div class="proj-cat">Tribute · Design Legacy · Daily News</div></div>
       <div class="proj-url">sirjonyive.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://freeelizabethholmes.com" target="_blank" rel="noopener">
+      <div class="proj-num">17</div>
+      <div class="proj-info"><div class="proj-name">Free Elizabeth Holmes</div><div class="proj-cat">Advocacy · Petition Live · Justice Campaign</div></div>
+      <div class="proj-url">freeelizabethholmes.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://pardonjohnkiriakou.com" target="_blank" rel="noopener">
+      <div class="proj-num">18</div>
+      <div class="proj-info"><div class="proj-name">Pardon John Kiriakou</div><div class="proj-cat">Advocacy · Petition Live · Presidential Pardon</div></div>
+      <div class="proj-url">pardonjohnkiriakou.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://diamondhandsdaily.com" target="_blank" rel="noopener">
+      <div class="proj-num">19</div>
+      <div class="proj-info"><div class="proj-name">K-Pop Digital Network</div><div class="proj-cat">14 Sites · BTS · HYBE · Twice Daily</div></div>
+      <div class="proj-url">14 domains</div>
       <div class="proj-arrow">→</div>
     </a>
   </div>
 </section>
 
-<!-- ADVOCACY -->
+<!-- ADVOCACY FEATURE -->
 <section class="section reveal">
   <div class="section-header">
     <div class="section-label">Advocacy</div>
@@ -938,7 +933,7 @@ footer {
 
 <!-- KPOP + ABOUT -->
 <div class="bottom-row reveal" id="kpop">
-  <div class="bottom-block" id="about">
+  <div class="bottom-block">
     <div class="bottom-label">K-Pop Digital Network</div>
     <div class="bottom-title">14 Sites. One Universe.</div>
     <div class="bottom-body">BTS, HYBE, and the full Korean music world. Built with my wife, who is the actual expert. AI-curated, twice daily. AI podcast with hosts Mia &amp; Kai in development.</div>
@@ -954,9 +949,9 @@ footer {
       <span class="kpop-tag">biashaven.com</span>
     </div>
   </div>
-  <div class="bottom-block">
+  <div class="bottom-block" id="about">
     <div class="bottom-label">About Zach Myers</div>
-    <div class="bottom-title">Founder. Novelist. PhD Candidate.</div>
+    <div class="bottom-title" id="about">Founder. Novelist. PhD Candidate.</div>
     <div class="bottom-body">Northeast Ohio. Married father of four boys. Three rescue dogs. BBA Finance + MPA, Kent State. PhD candidate in Health Sciences at Youngstown State University. Building things that don't exist yet since long before it was cool.</div>
     <div class="about-tags">
       <span class="about-tag">Founder</span>
@@ -980,8 +975,9 @@ footer {
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-// CUSTOM CURSOR
+// ── CUSTOM CURSOR ──────────────────────────────────────
 const cur = document.getElementById('cur');
 const curR = document.getElementById('curR');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -991,152 +987,220 @@ document.addEventListener('mousemove', e => {
   cur.style.left = mx + 'px';
   cur.style.top = my + 'px';
 });
-
-function animRing() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
+(function animRing(){
+  rx += (mx - rx) * 0.1;
+  ry += (my - ry) * 0.1;
   curR.style.left = rx + 'px';
   curR.style.top = ry + 'px';
   requestAnimationFrame(animRing);
-}
-animRing();
+})();
 
-document.querySelectorAll('a, button, .proj-row, .feat-block, .book-block').forEach(el => {
+document.querySelectorAll('a, .proj-row, .feat-block, .book-block').forEach(el => {
   el.addEventListener('mouseenter', () => {
-    cur.style.width = '12px';
-    cur.style.height = '12px';
-    curR.style.width = '56px';
-    curR.style.height = '56px';
+    cur.style.width = '12px'; cur.style.height = '12px';
+    curR.style.width = '56px'; curR.style.height = '56px';
     curR.style.borderColor = 'rgba(168,212,245,0.7)';
   });
   el.addEventListener('mouseleave', () => {
-    cur.style.width = '6px';
-    cur.style.height = '6px';
-    curR.style.width = '36px';
-    curR.style.height = '36px';
+    cur.style.width = '6px'; cur.style.height = '6px';
+    curR.style.width = '36px'; curR.style.height = '36px';
     curR.style.borderColor = 'rgba(168,212,245,0.4)';
   });
 });
 
-// PARTICLE CANVAS
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-let W, H, particles = [], mouse = {x: -999, y: -999}, frame = 0;
+// ── THREE.JS WIREFRAME HEAD ────────────────────────────
+const canvas = document.getElementById('hero-canvas');
+const W = canvas.offsetWidth;
+const H = canvas.offsetHeight;
 
-function resize() {
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight;
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 100);
+camera.position.set(0, 0.15, 5);
+
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+renderer.setSize(W, H);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setClearColor(0x030508, 1);
+
+const ICE = 0xa8d4f5;
+
+// HEAD — displaced sphere
+const geo = new THREE.SphereGeometry(1.5, 52, 40);
+const pos = geo.attributes.position;
+for (let i = 0; i < pos.count; i++) {
+  let x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i);
+  // Elongate vertically
+  y *= 1.2;
+  // Taper chin
+  const chin = y < -1.0 ? 1 - (-y - 1.0) * 0.4 : 1;
+  // Narrow crown
+  const crown = y > 0.9 ? 1 - (y - 0.9) * 0.12 : 1;
+  // Flatten back slightly
+  const back = z < -0.4 ? 1 + (z + 0.4) * 0.07 : 1;
+  // Forehead ridge
+  const fore = (y > 0.5 && z > 0.2) ? 1 + (y - 0.5) * 0.06 : 1;
+  // Subtle nose
+  const nose = (y > -0.25 && y < 0.1 && z > 1.0 && Math.abs(x) < 0.22) ? 1.05 : 1;
+  const s = chin * crown * back * fore * nose;
+  pos.setXYZ(i, x * s, y * s, z * s);
 }
-resize();
-window.addEventListener('resize', resize);
+geo.computeVertexNormals();
 
-class Particle {
-  constructor() { this.reset(); }
-  reset() {
-    this.x = Math.random() * W;
-    this.y = Math.random() * H;
-    this.size = Math.random() * 1.2 + 0.2;
-    this.vx = (Math.random() - 0.5) * 0.25;
-    this.vy = (Math.random() - 0.5) * 0.25;
-    this.alpha = Math.random() * 0.4 + 0.05;
-    this.pulse = Math.random() * Math.PI * 2;
-    this.isBlue = Math.random() > 0.8;
-  }
-  update() {
-    this.pulse += 0.012;
-    this.x += this.vx;
-    this.y += this.vy;
-    const dx = mouse.x - this.x;
-    const dy = mouse.y - this.y;
-    const d = Math.sqrt(dx * dx + dy * dy);
-    if (d < 120) {
-      this.x -= dx * 0.01;
-      this.y -= dy * 0.01;
-    }
-    if (this.x < 0 || this.x > W) this.vx *= -1;
-    if (this.y < 0 || this.y > H) this.vy *= -1;
-  }
-  draw() {
-    const a = this.alpha * (0.6 + Math.sin(this.pulse) * 0.4);
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    if (this.isBlue) {
-      ctx.fillStyle = `rgba(168,212,245,${a})`;
-    } else {
-      ctx.fillStyle = `rgba(200,216,232,${a * 0.4})`;
-    }
-    ctx.fill();
-  }
+// Main wireframe
+const wireMat = new THREE.MeshBasicMaterial({
+  color: ICE, wireframe: true,
+  transparent: true, opacity: 0.16
+});
+const head = new THREE.Mesh(geo, wireMat);
+scene.add(head);
+
+// Outer shell — slightly bigger, dimmer
+const outerMat = new THREE.MeshBasicMaterial({
+  color: 0x1e3a58, wireframe: true,
+  transparent: true, opacity: 0.07
+});
+const outerHead = new THREE.Mesh(geo.clone(), outerMat);
+outerHead.scale.setScalar(1.055);
+scene.add(outerHead);
+
+// Horizontal scan line sweeping top to bottom
+const scanGeo = new THREE.PlaneGeometry(8, 0.003);
+const scanMat = new THREE.MeshBasicMaterial({
+  color: ICE, transparent: true, opacity: 0.7,
+  side: THREE.DoubleSide
+});
+const scanLine = new THREE.Mesh(scanGeo, scanMat);
+scene.add(scanLine);
+
+// Glow band around scan
+const glowMat = new THREE.MeshBasicMaterial({
+  color: ICE, transparent: true, opacity: 0.04,
+  side: THREE.DoubleSide
+});
+const glowBand = new THREE.Mesh(new THREE.PlaneGeometry(8, 0.5), glowMat);
+scene.add(glowBand);
+
+// Equatorial ring
+const ringGeo = new THREE.RingGeometry(1.48, 1.50, 80);
+const ringMat = new THREE.MeshBasicMaterial({
+  color: ICE, transparent: true, opacity: 0.25,
+  side: THREE.DoubleSide
+});
+const ring = new THREE.Mesh(ringGeo, ringMat);
+ring.rotation.x = Math.PI / 2;
+scene.add(ring);
+
+// Second ring — tilted
+const ring2 = new THREE.Mesh(
+  new THREE.RingGeometry(1.55, 1.57, 80),
+  new THREE.MeshBasicMaterial({ color: 0x1e3a58, transparent: true, opacity: 0.15, side: THREE.DoubleSide })
+);
+ring2.rotation.x = Math.PI / 2.5;
+ring2.rotation.z = 0.4;
+scene.add(ring2);
+
+// Particles
+const PART = 300;
+const pGeo = new THREE.BufferGeometry();
+const pArr = new Float32Array(PART * 3);
+const pData = [];
+for (let i = 0; i < PART; i++) {
+  const theta = Math.random() * Math.PI * 2;
+  const phi = Math.acos(2 * Math.random() - 1);
+  const r = 1.9 + Math.random() * 1.6;
+  pArr[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+  pArr[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+  pArr[i*3+2] = r * Math.cos(phi);
+  pData.push({ theta, phi, r, dTheta: (Math.random()-.5)*0.004, dPhi: (Math.random()-.5)*0.002 });
 }
+pGeo.setAttribute('position', new THREE.BufferAttribute(pArr, 3));
+const pMat = new THREE.PointsMaterial({ color: ICE, size: 0.022, transparent: true, opacity: 0.45 });
+const pts = new THREE.Points(pGeo, pMat);
+scene.add(pts);
 
-for (let i = 0; i < 100; i++) particles.push(new Particle());
+// Subtle grid floor
+const grid = new THREE.GridHelper(14, 24, 0x0a1a2a, 0x050f1a);
+grid.position.y = -2.6;
+grid.material.transparent = true;
+grid.material.opacity = 0.55;
+scene.add(grid);
 
-function drawLines() {
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      if (d < 80) {
-        const a = (1 - d / 80) * 0.07;
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(168,212,245,${a})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-    }
-  }
-}
+// Ambient fog
+scene.fog = new THREE.FogExp2(0x030508, 0.09);
 
-function drawGrid() {
-  const sp = 80;
-  ctx.strokeStyle = 'rgba(168,212,245,0.025)';
-  ctx.lineWidth = 0.5;
-  for (let x = 0; x < W; x += sp) {
-    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
-  }
-  for (let y = 0; y < H; y += sp) {
-    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-  }
-}
-
-function drawMouseGlow() {
-  if (mouse.x < 0) return;
-  const g = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 200);
-  g.addColorStop(0, 'rgba(168,212,245,0.04)');
-  g.addColorStop(1, 'rgba(168,212,245,0)');
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, W, H);
-}
-
-function loop() {
-  frame++;
-  ctx.fillStyle = 'rgba(3,5,8,0.25)';
-  ctx.fillRect(0, 0, W, H);
-  drawGrid();
-  drawMouseGlow();
-  drawLines();
-  particles.forEach(p => { p.update(); p.draw(); });
-  requestAnimationFrame(loop);
-}
-loop();
-
+// Mouse tracking
+let mouseX = 0, mouseY = 0, tX = 0, tY = 0;
 document.addEventListener('mousemove', e => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
+  mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+  mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
 });
 
-// SCROLL REVEAL
+const clock = new THREE.Clock();
+let scanY = 2.2;
+
+function animate() {
+  requestAnimationFrame(animate);
+  const t = clock.getElapsedTime();
+
+  // Smooth mouse
+  tX += (mouseX * 0.35 - tX) * 0.035;
+  tY += (-mouseY * 0.22 - tY) * 0.035;
+
+  // Head rotate
+  head.rotation.y = t * 0.15 + tX * 0.7;
+  head.rotation.x = tY * 0.3;
+  outerHead.rotation.y = head.rotation.y;
+  outerHead.rotation.x = head.rotation.x;
+
+  // Breathe
+  const breathe = 1 + Math.sin(t * 0.7) * 0.01;
+  head.scale.setScalar(breathe);
+
+  // Scan sweep
+  scanY -= 0.014;
+  if (scanY < -2.4) scanY = 2.4;
+  scanLine.position.y = scanY;
+  glowBand.position.y = scanY;
+  scanMat.opacity = 0.5 + Math.sin(t * 4) * 0.2;
+
+  // Rings
+  ring.rotation.y = t * 0.35;
+  ring2.rotation.y = -t * 0.22;
+  ring.position.y = Math.sin(t * 0.4) * 0.06;
+
+  // Particles
+  const pa = pGeo.attributes.position.array;
+  for (let i = 0; i < PART; i++) {
+    pData[i].theta += pData[i].dTheta;
+    pData[i].phi   += pData[i].dPhi * 0.4;
+    const d = pData[i];
+    const off = t * 0.04;
+    pa[i*3]   = d.r * Math.sin(d.phi) * Math.cos(d.theta + off);
+    pa[i*3+1] = d.r * Math.cos(d.phi);
+    pa[i*3+2] = d.r * Math.sin(d.phi) * Math.sin(d.theta + off);
+  }
+  pGeo.attributes.position.needsUpdate = true;
+
+  // Wireframe opacity pulse
+  wireMat.opacity = 0.13 + Math.sin(t * 0.6) * 0.04;
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// Resize
+window.addEventListener('resize', () => {
+  const w = canvas.offsetWidth, h = canvas.offsetHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+});
+
+// ── SCROLL REVEAL ──────────────────────────────────────
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
 reveals.forEach(r => observer.observe(r));
 </script>
 </body>

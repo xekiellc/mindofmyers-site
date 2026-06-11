@@ -237,7 +237,7 @@ nav {
 }
 .ticker-track {
   display: inline-flex;
-  animation: ticker 46s linear infinite;
+  animation: ticker 80s linear infinite;
   white-space: nowrap;
 }
 @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
@@ -351,6 +351,16 @@ nav {
   opacity: 0;
   transition: opacity .2s, color .2s;
   text-align: right;
+}
+
+.section-divider {
+  font-size: 8px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ice-dim);
+  padding: 14px 0 6px;
+  border-bottom: 1px solid var(--border);
+  margin-top: 8px;
 }
 
 .feat-grid {
@@ -523,7 +533,7 @@ nav {
   line-height: 1.65;
 }
 
-.bottom-row {
+.about-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1px;
@@ -532,42 +542,26 @@ nav {
   z-index: 1;
   border-bottom: 1px solid var(--border);
 }
-.bottom-block { background: var(--bg); padding: 40px; }
-.bottom-label {
+.about-block { background: var(--bg); padding: 40px; }
+.about-label {
   font-size: 9px;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--ice-dim);
   margin-bottom: 16px;
 }
-.bottom-title {
+.about-title {
   font-family: var(--font-serif);
   font-size: 28px;
   font-style: italic;
   color: var(--white);
   margin-bottom: 12px;
 }
-.bottom-body {
+.about-body {
   font-size: 12px;
   color: var(--text-dim);
   line-height: 1.7;
 }
-.kpop-domains {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 16px;
-}
-.kpop-tag {
-  font-size: 9px;
-  letter-spacing: .08em;
-  color: var(--text-dim);
-  border: 1px solid var(--border);
-  padding: 4px 10px;
-  border-radius: 2px;
-  transition: border-color .2s, color .2s;
-}
-.kpop-tag:hover { border-color: var(--border-bright); color: var(--ice); }
 .about-tags {
   display: flex;
   flex-wrap: wrap;
@@ -638,7 +632,7 @@ footer {
   .proj-url { display: none; }
   .feat-grid { grid-template-columns: 1fr; }
   .books-grid { grid-template-columns: 1fr; }
-  .bottom-row { grid-template-columns: 1fr; }
+  .about-row { grid-template-columns: 1fr; }
   .fun-inner { padding: 28px 20px; }
   footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
 }
@@ -669,10 +663,10 @@ footer {
   </h1>
   <p class="hero-sub">
     <strong>Founder. Novelist. Builder.</strong><br>
-    Twenty-six live projects. Three novels. One mind. Zero investors. Zero apologies.
+    Thirty-nine live projects. Three novels. One mind. Zero investors. Zero apologies.
   </p>
   <div class="hero-stats">
-    <div><div class="hero-stat-n"><span>26</span></div><div class="hero-stat-l">Live Projects</div></div>
+    <div><div class="hero-stat-n"><span>39</span></div><div class="hero-stat-l">Live Projects</div></div>
     <div><div class="hero-stat-n"><span>3</span></div><div class="hero-stat-l">Novels</div></div>
     <div><div class="hero-stat-n"><span>1</span></div><div class="hero-stat-l">Mind</div></div>
   </div>
@@ -693,9 +687,19 @@ footer {
     <span class="ticker-item">ExtraterrestrEAL</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Diamond Hands Daily</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Uniparty Politics</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Free Elizabeth Holmes</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Pardon John Kiriakou</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Pardon Martin Shkreli</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Army Pulse</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Bangtan Beat</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">HYBE World</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">BTS TXT</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">TXT BTS</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">HYBE Fandom</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Big Hit Nation</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Big Hit World</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">I Heart K-Pop</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">K-Pop Pulse</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Idol Rush</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Bias Haven</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">5×7 Podcast</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Gonzo Diary</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Namjoon's Booklist</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Golazo Global</span><span class="ticker-sep">·</span>
@@ -705,7 +709,6 @@ footer {
     <span class="ticker-item">Majestic Wicket</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Global Politics 360</span><span class="ticker-sep">·</span>
     <span class="ticker-item">YSU</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">K-Pop Network</span><span class="ticker-sep">·</span>
     <span class="ticker-item">greg16676935420</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Kyzmyt</span><span class="ticker-sep">·</span>
     <span class="ticker-item">XEKIE</span><span class="ticker-sep">·</span>
@@ -716,9 +719,19 @@ footer {
     <span class="ticker-item">ExtraterrestrEAL</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Diamond Hands Daily</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Uniparty Politics</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Free Elizabeth Holmes</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Pardon John Kiriakou</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Pardon Martin Shkreli</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Army Pulse</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Bangtan Beat</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">HYBE World</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">BTS TXT</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">TXT BTS</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">HYBE Fandom</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Big Hit Nation</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Big Hit World</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">I Heart K-Pop</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">K-Pop Pulse</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Idol Rush</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Bias Haven</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">5×7 Podcast</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Gonzo Diary</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Namjoon's Booklist</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Golazo Global</span><span class="ticker-sep">·</span>
@@ -728,7 +741,6 @@ footer {
     <span class="ticker-item">Majestic Wicket</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Global Politics 360</span><span class="ticker-sep">·</span>
     <span class="ticker-item">YSU</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">K-Pop Network</span><span class="ticker-sep">·</span>
     <span class="ticker-item">greg16676935420</span><span class="ticker-sep">·</span>
   </div>
 </div>
@@ -744,9 +756,12 @@ footer {
 <section class="section reveal" id="ventures">
   <div class="section-header">
     <div class="section-label">Ventures &amp; Projects</div>
-    <div class="section-count">26 Live · Counting</div>
+    <div class="section-count">39 Live · Counting</div>
   </div>
   <div class="proj-list">
+
+    <!-- PLATFORMS -->
+    <div class="section-divider">Platforms</div>
     <a class="proj-row" href="https://kyzmyt.com" target="_blank" rel="noopener">
       <div class="proj-num">01</div>
       <div class="proj-info"><div class="proj-name">Kyzmyt</div><div class="proj-cat">Dating · Triple Verified · World's First</div></div>
@@ -783,6 +798,9 @@ footer {
       <div class="proj-url">vursyl.com</div>
       <div class="proj-arrow">→</div>
     </a>
+
+    <!-- AGGREGATORS -->
+    <div class="section-divider">Aggregators &amp; News</div>
     <a class="proj-row" href="https://extraterrestreal.com" target="_blank" rel="noopener">
       <div class="proj-num">07</div>
       <div class="proj-info"><div class="proj-name">ExtraterrestrEAL</div><div class="proj-cat">UAP Disclosure · Whistleblowers · 6x Daily</div></div>
@@ -861,48 +879,145 @@ footer {
       <div class="proj-url">sirjonyive.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://gonzodiary.com" target="_blank" rel="noopener">
-      <div class="proj-num">20</div>
-      <div class="proj-info"><div class="proj-name">Gonzo Diary</div><div class="proj-cat">HST Tribute · Gonzo Dispatches · Original Writing</div></div>
-      <div class="proj-url">gonzodiary.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://namjoonsbooklist.com" target="_blank" rel="noopener">
-      <div class="proj-num">21</div>
-      <div class="proj-info"><div class="proj-name">Namjoon's Booklist</div><div class="proj-cat">BTS · RM · Fan Archive · 89 Books · Sourced</div></div>
-      <div class="proj-url">namjoonsbooklist.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
+
+    <!-- ADVOCACY -->
+    <div class="section-divider">Advocacy</div>
     <a class="proj-row" href="https://freeelizabethholmes.com" target="_blank" rel="noopener">
-      <div class="proj-num">22</div>
+      <div class="proj-num">20</div>
       <div class="proj-info"><div class="proj-name">Free Elizabeth Holmes</div><div class="proj-cat">Advocacy · Petition Live · Justice Campaign</div></div>
       <div class="proj-url">freeelizabethholmes.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://pardonjohnkiriakou.com" target="_blank" rel="noopener">
-      <div class="proj-num">23</div>
+      <div class="proj-num">21</div>
       <div class="proj-info"><div class="proj-name">Pardon John Kiriakou</div><div class="proj-cat">Advocacy · Petition Live · Presidential Pardon</div></div>
       <div class="proj-url">pardonjohnkiriakou.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://pardonmartinshkreli.com" target="_blank" rel="noopener">
-      <div class="proj-num">24</div>
+      <div class="proj-num">22</div>
       <div class="proj-info"><div class="proj-name">Pardon Martin Shkreli</div><div class="proj-cat">Advocacy · Petition Live · Presidential Pardon</div></div>
       <div class="proj-url">pardonmartinshkreli.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="#kpop">
-      <div class="proj-num">25</div>
-      <div class="proj-info"><div class="proj-name">K-Pop Digital Network</div><div class="proj-cat">14 Sites · BTS · HYBE · Twice Daily</div></div>
-      <div class="proj-url">14 domains</div>
+
+    <!-- CULTURE -->
+    <div class="section-divider">Tribute &amp; Culture</div>
+    <a class="proj-row" href="https://gonzodiary.com" target="_blank" rel="noopener">
+      <div class="proj-num">23</div>
+      <div class="proj-info"><div class="proj-name">Gonzo Diary</div><div class="proj-cat">HST Tribute · Gonzo Dispatches · Original Writing</div></div>
+      <div class="proj-url">gonzodiary.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://namjoonsbooklist.com" target="_blank" rel="noopener">
+      <div class="proj-num">24</div>
+      <div class="proj-info"><div class="proj-name">Namjoon's Booklist</div><div class="proj-cat">BTS · RM · Fan Archive · 89 Books · Sourced</div></div>
+      <div class="proj-url">namjoonsbooklist.com</div>
       <div class="proj-arrow">→</div>
     </a>
     <a class="proj-row" href="https://greg16676935420.com" target="_blank" rel="noopener">
-      <div class="proj-num">26</div>
+      <div class="proj-num">25</div>
       <div class="proj-info"><div class="proj-name">greg16676935420.com</div><div class="proj-cat">Fun · Fan Site · Web 1.0 · Under Construction Forever</div></div>
       <div class="proj-url">greg16676935420.com</div>
       <div class="proj-arrow">→</div>
     </a>
+
+    <!-- K-POP BTS -->
+    <div class="section-divider">K-Pop Network — BTS</div>
+    <a class="proj-row" href="https://armypulse.com" target="_blank" rel="noopener">
+      <div class="proj-num">26</div>
+      <div class="proj-info"><div class="proj-name">Army Pulse</div><div class="proj-cat">BTS · ARMY · Magazine Layout · Twice Daily</div></div>
+      <div class="proj-url">armypulse.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://bangtanbeat.com" target="_blank" rel="noopener">
+      <div class="proj-num">27</div>
+      <div class="proj-info"><div class="proj-name">Bangtan Beat</div><div class="proj-cat">BTS · Music Blog Layout · Twice Daily</div></div>
+      <div class="proj-url">bangtanbeat.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <!-- K-POP HYBE -->
+    <div class="section-divider">K-Pop Network — HYBE</div>
+    <a class="proj-row" href="https://hybeworld.com" target="_blank" rel="noopener">
+      <div class="proj-num">28</div>
+      <div class="proj-info"><div class="proj-name">HYBE World</div><div class="proj-cat">HYBE · Terminal Layout · Twice Daily</div></div>
+      <div class="proj-url">hybeworld.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://btstxt.com" target="_blank" rel="noopener">
+      <div class="proj-num">29</div>
+      <div class="proj-info"><div class="proj-name">BTS TXT</div><div class="proj-cat">HYBE · Splitscreen Layout · Twice Daily</div></div>
+      <div class="proj-url">btstxt.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://txtbts.com" target="_blank" rel="noopener">
+      <div class="proj-num">30</div>
+      <div class="proj-info"><div class="proj-name">TXT BTS</div><div class="proj-cat">HYBE · Timeline Layout · Twice Daily</div></div>
+      <div class="proj-url">txtbts.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://hybefandom.com" target="_blank" rel="noopener">
+      <div class="proj-num">31</div>
+      <div class="proj-info"><div class="proj-name">HYBE Fandom</div><div class="proj-cat">HYBE · Luxury Layout · Twice Daily</div></div>
+      <div class="proj-url">hybefandom.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://bighitnation.com" target="_blank" rel="noopener">
+      <div class="proj-num">32</div>
+      <div class="proj-info"><div class="proj-name">Big Hit Nation</div><div class="proj-cat">HYBE · Nation Layout · Twice Daily</div></div>
+      <div class="proj-url">bighitnation.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://bighitworld.com" target="_blank" rel="noopener">
+      <div class="proj-num">33</div>
+      <div class="proj-info"><div class="proj-name">Big Hit World</div><div class="proj-cat">HYBE · World Layout · Twice Daily</div></div>
+      <div class="proj-url">bighitworld.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <!-- K-POP GENERAL -->
+    <div class="section-divider">K-Pop Network — General</div>
+    <a class="proj-row" href="https://iheartkpop.com" target="_blank" rel="noopener">
+      <div class="proj-num">34</div>
+      <div class="proj-info"><div class="proj-name">I Heart K-Pop</div><div class="proj-cat">K-Pop · Hype Layout · Twice Daily</div></div>
+      <div class="proj-url">iheartkpop.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://kpoppulse.com" target="_blank" rel="noopener">
+      <div class="proj-num">35</div>
+      <div class="proj-info"><div class="proj-name">K-Pop Pulse</div><div class="proj-cat">K-Pop · Breaking News Layout · Twice Daily</div></div>
+      <div class="proj-url">kpoppulse.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://idolrush.com" target="_blank" rel="noopener">
+      <div class="proj-num">36</div>
+      <div class="proj-info"><div class="proj-name">Idol Rush</div><div class="proj-cat">K-Pop · Social Grid Layout · Twice Daily</div></div>
+      <div class="proj-url">idolrush.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://biashaven.com" target="_blank" rel="noopener">
+      <div class="proj-num">37</div>
+      <div class="proj-info"><div class="proj-name">Bias Haven</div><div class="proj-cat">K-Pop · Blog Layout · Twice Daily</div></div>
+      <div class="proj-url">biashaven.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <!-- PODCAST -->
+    <div class="section-divider">K-Pop Network — Podcast</div>
+    <a class="proj-row" href="https://5x7pod.com" target="_blank" rel="noopener">
+      <div class="proj-num">38</div>
+      <div class="proj-info"><div class="proj-name">5×7 Podcast</div><div class="proj-cat">K-Pop · AI Podcast · Mia &amp; Kai · In Development</div></div>
+      <div class="proj-url">5x7pod.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+    <a class="proj-row" href="https://5x7podcast.com" target="_blank" rel="noopener">
+      <div class="proj-num">39</div>
+      <div class="proj-info"><div class="proj-name">5×7 Podcast</div><div class="proj-cat">K-Pop · AI Podcast · Mia &amp; Kai · In Development</div></div>
+      <div class="proj-url">5x7podcast.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
   </div>
 </section>
 
@@ -982,27 +1097,16 @@ footer {
   </div>
 </section>
 
-<div class="bottom-row reveal" id="kpop">
-  <div class="bottom-block">
-    <div class="bottom-label">K-Pop Digital Network</div>
-    <div class="bottom-title">14 Sites. One Universe.</div>
-    <div class="bottom-body">BTS, HYBE, and the full Korean music world. Built with my wife, who is the actual expert. AI-curated, twice daily. AI podcast with hosts Mia &amp; Kai in development.</div>
-    <div class="kpop-domains">
-      <span class="kpop-tag">btstxt.com</span>
-      <span class="kpop-tag">armypulse.com</span>
-      <span class="kpop-tag">bangtanbeat.com</span>
-      <span class="kpop-tag">hybefandom.com</span>
-      <span class="kpop-tag">hybeworld.com</span>
-      <span class="kpop-tag">iheartkpop.com</span>
-      <span class="kpop-tag">kpoppulse.com</span>
-      <span class="kpop-tag">idolrush.com</span>
-      <span class="kpop-tag">biashaven.com</span>
-    </div>
+<div class="about-row reveal" id="kpop">
+  <div class="about-block">
+    <div class="about-label">K-Pop Digital Network</div>
+    <div class="about-title">16 Sites. One Universe.</div>
+    <div class="about-body">BTS, HYBE, and the full Korean music world. 14 aggregators + AI podcast in development. Every site a unique layout and aesthetic. AI-curated, twice daily. Built with my wife, who is the actual expert.</div>
   </div>
-  <div class="bottom-block" id="about">
-    <div class="bottom-label">About Zach Myers</div>
-    <div class="bottom-title">Founder. Novelist. PhD Candidate.</div>
-    <div class="bottom-body">Northeast Ohio. Married father of four boys. Three rescue dogs. BBA Finance + MPA, Kent State. PhD candidate in Health Sciences at Youngstown State University. Building things that don't exist yet since long before it was cool.</div>
+  <div class="about-block" id="about">
+    <div class="about-label">About Zach Myers</div>
+    <div class="about-title">Founder. Novelist. PhD Candidate.</div>
+    <div class="about-body">Northeast Ohio. Married father of four boys. Three rescue dogs. BBA Finance + MPA, Kent State. PhD candidate in Health Sciences at Youngstown State University. Building things that don't exist yet since long before it was cool.</div>
     <div class="about-tags">
       <span class="about-tag">Founder</span>
       <span class="about-tag">Novelist</span>
@@ -1015,7 +1119,8 @@ footer {
       <span class="about-tag">Political Watchdog</span>
       <span class="about-tag">Free Speech</span>
       <span class="about-tag">Gonzo</span>
-      <span class="about-tag">AI & Emerging Tech</span>
+      <span class="about-tag">AI &amp; Emerging Tech</span>
+      <span class="about-tag">K-Pop</span>
     </div>
   </div>
 </div>

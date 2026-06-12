@@ -478,61 +478,6 @@ nav {
 }
 .fun-inner:hover .fun-link { color: var(--ice-bright); }
 
-.books-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 1px;
-  background: var(--border);
-}
-.book-block {
-  background: var(--bg2);
-  padding: 28px;
-  transition: background .2s;
-  cursor: none;
-}
-.book-block:hover { background: #0c1018; }
-.book-n {
-  font-size: 8px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(168,212,245,0.12);
-  margin-bottom: 16px;
-}
-.book-title {
-  font-family: var(--font-display);
-  font-size: 36px;
-  color: var(--white);
-  line-height: .9;
-  letter-spacing: .02em;
-  text-transform: uppercase;
-}
-.book-title-serif {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 28px;
-  color: var(--ice);
-  line-height: 1;
-  letter-spacing: -.01em;
-  text-transform: none;
-  display: block;
-  margin-top: 2px;
-  margin-bottom: 16px;
-}
-.book-genre {
-  font-size: 8px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: rgba(168,212,245,0.18);
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-  margin-bottom: 10px;
-}
-.book-desc {
-  font-size: 11px;
-  color: var(--text-dim);
-  line-height: 1.65;
-}
-
 .about-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -631,7 +576,6 @@ footer {
   .proj-row { grid-template-columns: 36px 1fr 24px; }
   .proj-url { display: none; }
   .feat-grid { grid-template-columns: 1fr; }
-  .books-grid { grid-template-columns: 1fr; }
   .about-row { grid-template-columns: 1fr; }
   .fun-inner { padding: 28px 20px; }
   footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
@@ -648,7 +592,6 @@ footer {
   <div class="nav-logo">MIND <em>of Myers</em></div>
   <div class="nav-links">
     <a href="#ventures" class="nav-link">Ventures</a>
-    <a href="#books" class="nav-link">Books</a>
     <a href="#kpop" class="nav-link">K-Pop</a>
     <a href="#about" class="nav-link">About</a>
   </div>
@@ -662,12 +605,11 @@ footer {
     <span class="ghost">UNAFRAID</span>
   </h1>
   <p class="hero-sub">
-    <strong>Founder. Novelist. Builder.</strong><br>
-    Forty live projects. Three novels. One mind. Zero investors. Zero apologies.
+    <strong>Founder. Builder.</strong><br>
+    Forty live projects. One mind. Zero investors. Zero apologies.
   </p>
   <div class="hero-stats">
     <div><div class="hero-stat-n"><span>40</span></div><div class="hero-stat-l">Live Projects</div></div>
-    <div><div class="hero-stat-n"><span>3</span></div><div class="hero-stat-l">Novels</div></div>
     <div><div class="hero-stat-n"><span>1</span></div><div class="hero-stat-l">Mind</div></div>
   </div>
   <div class="hero-scroll">
@@ -1067,36 +1009,6 @@ footer {
   </a>
 </div>
 
-<section class="section reveal" id="books">
-  <div class="section-header">
-    <div class="section-label">Novels</div>
-    <div class="section-count">Three Standalone Works · Querying Agents</div>
-  </div>
-  <div class="books-grid">
-    <div class="book-block">
-      <div class="book-n">Novel 01 · Surveillance Thriller</div>
-      <div class="book-title">SPYDER</div>
-      <span class="book-title-serif">Byte</span>
-      <div class="book-genre">Nanotechnology · DARPA · Domestic Deployment</div>
-      <div class="book-desc">Sand-sized autonomous surveillance drones deployed against American citizens. One analyst finds the classified file. The technology is not fictional — it's in patent filings right now.</div>
-    </div>
-    <div class="book-block">
-      <div class="book-n">Novel 02 · Dystopian Fiction</div>
-      <div class="book-title">20</div>
-      <span class="book-title-serif">84</span>
-      <div class="book-genre">Global Surveillance · UCE · Compliance Score</div>
-      <div class="book-desc">The United Cooperative of Earth. 214 data streams feeding your Compliance Score. Dissent isn't punished — it's diagnosed. Every system in this novel has a working prototype today.</div>
-    </div>
-    <div class="book-block">
-      <div class="book-n">Novel 03 · Political Fiction</div>
-      <div class="book-title">CROOKED</div>
-      <span class="book-title-serif">River Politics</span>
-      <div class="book-genre">Northeast Ohio · Rust Belt · Machine Politics</div>
-      <div class="book-desc">Millhaven, Ohio. A machine that hasn't lost an election in sixty years. A budget analyst who read the wrong financials. The machine doesn't ask you to do anything wrong.</div>
-    </div>
-  </div>
-</section>
-
 <div class="about-row reveal" id="kpop">
   <div class="about-block">
     <div class="about-label">K-Pop Digital Network</div>
@@ -1105,14 +1017,13 @@ footer {
   </div>
   <div class="about-block" id="about">
     <div class="about-label">About Zach Myers</div>
-    <div class="about-title">Founder. Novelist. PhD Candidate.</div>
+    <div class="about-title">Founder. Builder. PhD Candidate.</div>
     <div class="about-body">Northeast Ohio. Married father of four boys. Three rescue dogs. BBA Finance + MPA, Kent State. PhD candidate in Health Sciences at Youngstown State University. Building things that don't exist yet since long before it was cool.</div>
     <div class="about-tags">
       <span class="about-tag">Founder</span>
-      <span class="about-tag">Novelist</span>
+      <span class="about-tag">Builder</span>
       <span class="about-tag">PhD Candidate — YSU</span>
       <span class="about-tag">Northeast Ohio</span>
-      <span class="about-tag">Builder</span>
       <span class="about-tag">Crypto</span>
       <span class="about-tag">UAP Disclosure</span>
       <span class="about-tag">Advocacy</span>
@@ -1139,7 +1050,7 @@ const cur=document.getElementById('cur'),curR=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function animRing(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(animRing);})();
-document.querySelectorAll('a,.proj-row,.feat-block,.book-block,.fun-inner').forEach(el=>{
+document.querySelectorAll('a,.proj-row,.feat-block,.fun-inner').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.style.width='12px';cur.style.height='12px';curR.style.width='56px';curR.style.height='56px';curR.style.borderColor='rgba(168,212,245,0.7)';});
   el.addEventListener('mouseleave',()=>{cur.style.width='6px';cur.style.height='6px';curR.style.width='36px';curR.style.height='36px';curR.style.borderColor='rgba(168,212,245,0.4)';});
 });

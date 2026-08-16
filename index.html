@@ -40,7 +40,7 @@
   --border: rgba(168,212,245,0.1);
   --border-bright: rgba(168,212,245,0.25);
   --text: #c8d8e8;
-  --text-dim: rgba(168,212,245,0.3);
+  --text-dim: rgba(168,212,245,0.45);
   --font-display: 'Bebas Neue', sans-serif;
   --font-serif: 'DM Serif Display', Georgia, serif;
   --font-body: 'DM Sans', system-ui, sans-serif;
@@ -58,6 +58,7 @@ body {
   cursor: none;
 }
 
+/* ── CURSOR — toned down ── */
 .cursor {
   position: fixed;
   width: 6px; height: 6px;
@@ -71,8 +72,8 @@ body {
 }
 .cursor-ring {
   position: fixed;
-  width: 36px; height: 36px;
-  border: 1px solid rgba(168,212,245,0.4);
+  width: 24px; height: 24px;
+  border: 1px solid rgba(168,212,245,0.2);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -295,10 +296,10 @@ nav {
   font-weight: 500;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: rgba(168,212,245,0.25);
   padding: 0 22px;
 }
-.ticker-sep { color: rgba(168,212,245,0.12); padding: 0 4px; }
+.ticker-sep { color: rgba(168,212,245,0.1); padding: 0 4px; }
 
 /* ── MANIFESTO ── */
 .manifesto {
@@ -372,12 +373,22 @@ nav {
   color: var(--text);
   outline: none;
   transition: border-color .3s;
+  caret-color: var(--ice);
 }
 .search-input::placeholder {
-  color: var(--text-dim);
+  color: rgba(168,212,245,0.25);
+  animation: blink-placeholder 1.2s step-end infinite;
+}
+.search-input:focus::placeholder {
+  color: rgba(168,212,245,0.15);
+  animation: none;
 }
 .search-input:focus {
   border-bottom-color: var(--ice-dim);
+}
+@keyframes blink-placeholder {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
 /* ── PROJECT LIST ── */
@@ -418,11 +429,11 @@ nav {
   font-size: 9px;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: rgba(168,212,245,0.45);
 }
 .proj-sentence {
   font-size: 11px;
-  color: rgba(168,212,245,0.45);
+  color: rgba(168,212,245,0.65);
   line-height: 1.6;
   margin-top: 2px;
   font-weight: 300;
@@ -442,7 +453,7 @@ nav {
 .proj-url {
   font-size: 9px;
   letter-spacing: .08em;
-  color: var(--text-dim);
+  color: rgba(168,212,245,0.42);
   padding-top: 2px;
 }
 .proj-arrow {
@@ -507,7 +518,7 @@ nav {
 }
 .hp-sentence {
   font-size: 12px;
-  color: var(--text-dim);
+  color: rgba(168,212,245,0.6);
   line-height: 1.8;
   margin-bottom: 20px;
 }
@@ -568,12 +579,12 @@ nav {
   font-size: 8px;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: rgba(168,212,245,0.45);
 }
 .kpop-url {
   font-size: 8px;
   letter-spacing: .06em;
-  color: rgba(168,212,245,0.2);
+  color: rgba(168,212,245,0.25);
   margin-top: 4px;
 }
 
@@ -612,7 +623,7 @@ nav {
 }
 .feat-body {
   font-size: 12px;
-  color: var(--text-dim);
+  color: rgba(168,212,245,0.6);
   line-height: 1.7;
 }
 .feat-link {
@@ -653,7 +664,7 @@ nav {
 }
 .about-body {
   font-size: 13px;
-  color: var(--text-dim);
+  color: rgba(168,212,245,0.6);
   line-height: 1.9;
 }
 .about-tags {
@@ -665,8 +676,8 @@ nav {
 .about-tag {
   font-size: 9px;
   letter-spacing: .08em;
-  color: var(--text-dim);
-  border: 1px solid var(--border);
+  color: rgba(168,212,245,0.45);
+  border: 1px solid rgba(168,212,245,0.15);
   padding: 4px 10px;
   border-radius: 2px;
 }
@@ -726,9 +737,13 @@ footer {
 .proj-row.hidden { display: none; }
 
 /* ── MOBILE ── */
+@media (max-width: 1024px) {
+  .hover-preview { display: none; }
+}
 @media (max-width: 768px) {
   nav { padding: 16px 20px; }
-  .cat-nav { padding: 0 20px; }
+  .cat-nav { padding: 0 12px; }
+  .cat-nav-link { padding: 12px 10px; font-size: 8px; letter-spacing: .12em; }
   .hero { padding: 100px 20px 60px; }
   .hero-stats { right: 20px; bottom: 60px; }
   .manifesto { grid-template-columns: 1fr; padding: 48px 20px; }
@@ -737,9 +752,12 @@ footer {
   .proj-url { display: none; }
   .feat-grid { grid-template-columns: 1fr; }
   .about-row { grid-template-columns: 1fr; }
-  .hover-preview { display: none; }
   .kpop-grid { grid-template-columns: repeat(2, 1fr); }
   footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+}
+@media (max-width: 480px) {
+  .kpop-grid { grid-template-columns: 1fr; }
+  .proj-sentence { display: none; }
 }
 </style>
 </head>
@@ -853,7 +871,7 @@ footer {
       type="text"
       class="search-input"
       id="searchInput"
-      placeholder="Search the mind —"
+      placeholder="Search the mind — type to filter"
       autocomplete="off"
     >
   </div>
@@ -1445,7 +1463,7 @@ footer {
 
   <!-- K-POP NOTE -->
   <div style="padding: 24px 0; border-top: 1px solid var(--border); margin-top: 1px;">
-    <p style="font-size:11px; color:var(--text-dim); line-height:1.8;">
+    <p style="font-size:11px; color:rgba(168,212,245,0.6); line-height:1.8;">
       BTS, HYBE, and the full Korean music universe. 13 dedicated sites — each a completely unique layout and editorial identity. AI-curated twice daily. AI podcast with hosts Mia &amp; Kai in development. Built with my wife — the actual expert on all of it.
     </p>
   </div>
@@ -1527,14 +1545,14 @@ footer {
 </footer>
 
 <script>
-// ── CURSOR ──
+// ── CURSOR — toned down ring ──
 const cur=document.getElementById('cur'),curR=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function animRing(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(animRing);})();
 document.querySelectorAll('a,.proj-row,.feat-block,.kpop-cell').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='12px';cur.style.height='12px';curR.style.width='56px';curR.style.height='56px';curR.style.borderColor='rgba(168,212,245,0.7)';});
-  el.addEventListener('mouseleave',()=>{cur.style.width='6px';cur.style.height='6px';curR.style.width='36px';curR.style.height='36px';curR.style.borderColor='rgba(168,212,245,0.4)';});
+  el.addEventListener('mouseenter',()=>{cur.style.width='10px';cur.style.height='10px';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='6px';cur.style.height='6px';});
 });
 
 // ── PARTICLE BACKGROUND ──
@@ -1574,7 +1592,6 @@ searchInput.addEventListener('input',function(){
     const match=(name+cat+sentence+url).toLowerCase().includes(q);
     row.classList.toggle('hidden',!match);
   });
-  // Show/hide dividers based on visible rows
   document.querySelectorAll('.section-divider').forEach(div=>{
     let next=div.nextElementSibling;
     let hasVisible=false;

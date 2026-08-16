@@ -375,9 +375,7 @@ nav {
   color: rgba(168,212,245,0.15);
   animation: none;
 }
-.search-input:focus {
-  border-bottom-color: var(--ice-dim);
-}
+.search-input:focus { border-bottom-color: var(--ice-dim); }
 @keyframes blink-placeholder {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
@@ -408,6 +406,11 @@ nav {
   padding-top: 2px;
 }
 .proj-info { display: flex; flex-direction: column; gap: 4px; }
+.proj-name-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
 .proj-name {
   font-size: 18px;
   font-weight: 500;
@@ -415,6 +418,14 @@ nav {
   letter-spacing: -.02em;
   transition: color .2s;
   line-height: 1;
+}
+.proj-beta {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: var(--ice-dim);
+  text-transform: uppercase;
+  flex-shrink: 0;
 }
 .proj-cat {
   font-size: 9px;
@@ -429,17 +440,6 @@ nav {
   margin-top: 2px;
   font-weight: 300;
   max-width: 520px;
-}
-.proj-beta {
-  font-size: 8px;
-  letter-spacing: .16em;
-  color: var(--ice-dim);
-  border: 1px solid var(--ice-dim);
-  padding: 2px 6px;
-  border-radius: 2px;
-  display: inline-block;
-  margin-top: 4px;
-  text-transform: uppercase;
 }
 .proj-url {
   font-size: 9px;
@@ -717,9 +717,7 @@ footer {
 
 .proj-row.hidden { display: none; }
 
-@media (max-width: 1024px) {
-  .hover-preview { display: none; }
-}
+@media (max-width: 1024px) { .hover-preview { display: none; } }
 @media (max-width: 768px) {
   nav { padding: 16px 20px; }
   .cat-nav { padding: 0 12px; }
@@ -859,10 +857,12 @@ footer {
        data-url="xekie.com">
       <div class="proj-num">01</div>
       <div class="proj-info">
-        <div class="proj-name">XEKIE</div>
+        <div class="proj-name-row">
+          <div class="proj-name">XEKIE</div>
+          <span class="proj-beta">★ BETA</span>
+        </div>
         <div class="proj-cat">Marketplace · Demand-Side · World's First</div>
         <div class="proj-sentence">Thirty years of e-commerce ran one direction. XEKIE inverted it — buyers post what they want, sellers compete to fulfill it. Trade Different.</div>
-        <span class="proj-beta">★ Beta</span>
       </div>
       <div class="proj-url">xekie.com</div>
       <div class="proj-arrow">→</div>
@@ -874,10 +874,12 @@ footer {
        data-url="kyzmyt.com">
       <div class="proj-num">02</div>
       <div class="proj-info">
-        <div class="proj-name">Kyzmyt</div>
+        <div class="proj-name-row">
+          <div class="proj-name">Kyzmyt</div>
+          <span class="proj-beta">★ BETA</span>
+        </div>
         <div class="proj-cat">Dating · Triple Verified · World's First</div>
         <div class="proj-sentence">Every dating app ever built skipped identity verification. Kyzmyt does all three — background check, live face scan, government ID — before the first match.</div>
-        <span class="proj-beta">★ Beta</span>
       </div>
       <div class="proj-url">kyzmyt.com</div>
       <div class="proj-arrow">→</div>
@@ -889,10 +891,12 @@ footer {
        data-url="voxxee.com">
       <div class="proj-num">03</div>
       <div class="proj-info">
-        <div class="proj-name">Voxxee</div>
+        <div class="proj-name-row">
+          <div class="proj-name">Voxxee</div>
+          <span class="proj-beta">★ BETA</span>
+        </div>
         <div class="proj-cat">Social Platform · Free Speech · Verified Adults · Facebook Competitor</div>
         <div class="proj-sentence">Every moderation decision logged in a live public record. Facebook cannot build this without documenting thirty years of suppression.</div>
-        <span class="proj-beta">★ Beta</span>
       </div>
       <div class="proj-url">voxxee.com</div>
       <div class="proj-arrow">→</div>
@@ -904,10 +908,12 @@ footer {
        data-url="voxvega.com">
       <div class="proj-num">04</div>
       <div class="proj-info">
-        <div class="proj-name">VoxVega</div>
+        <div class="proj-name-row">
+          <div class="proj-name">VoxVega</div>
+          <span class="proj-beta">★ BETA</span>
+        </div>
         <div class="proj-cat">Creator Platform · Cameo Competitor</div>
         <div class="proj-sentence">Six creator revenue streams in one profile. Cameo takes 25%. VoxVega takes nothing.</div>
-        <span class="proj-beta">★ Beta</span>
       </div>
       <div class="proj-url">voxvega.com</div>
       <div class="proj-arrow">→</div>
@@ -919,10 +925,12 @@ footer {
        data-url="silqueroad.com">
       <div class="proj-num">05</div>
       <div class="proj-info">
-        <div class="proj-name">Silque Road</div>
+        <div class="proj-name-row">
+          <div class="proj-name">Silque Road</div>
+          <span class="proj-beta">★ BETA</span>
+        </div>
         <div class="proj-cat">Marketplace · Legal · Anonymous · Crypto</div>
         <div class="proj-sentence">A legal marketplace with anonymous checkout and crypto payments, carrying products major platforms stopped listing.</div>
-        <span class="proj-beta">★ Beta</span>
       </div>
       <div class="proj-url">silqueroad.com</div>
       <div class="proj-arrow">→</div>
@@ -939,7 +947,7 @@ footer {
        data-url="vursyl.com">
       <div class="proj-num">06</div>
       <div class="proj-info">
-        <div class="proj-name">Vursyl</div>
+        <div class="proj-name-row"><div class="proj-name">Vursyl</div></div>
         <div class="proj-cat">AI · Quantum · Biotech · Space · Zero Doom · 4x Daily</div>
         <div class="proj-sentence">Technology journalism chose fear as its business model. Vursyl chose the opposite — positive-only coverage of AI, quantum computing, biotech, robotics, and space.</div>
       </div>
@@ -953,7 +961,7 @@ footer {
        data-url="univursyl.com">
       <div class="proj-num">07</div>
       <div class="proj-info">
-        <div class="proj-name">Univursyl</div>
+        <div class="proj-name-row"><div class="proj-name">Univursyl</div></div>
         <div class="proj-cat">Space Science · Astronomy · Cosmology · NASA · SpaceX · 6x Daily</div>
         <div class="proj-sentence">The universe is the greatest story ever told. Univursyl covers it at the standard it deserves — astronomy, cosmology, astrophysics, James Webb, Starship. Six times daily.</div>
       </div>
@@ -967,7 +975,7 @@ footer {
        data-url="extraterrestreal.com">
       <div class="proj-num">08</div>
       <div class="proj-info">
-        <div class="proj-name">ExtraterrestrEAL</div>
+        <div class="proj-name-row"><div class="proj-name">ExtraterrestrEAL</div></div>
         <div class="proj-cat">UAP Disclosure · Whistleblowers · 6x Daily</div>
         <div class="proj-sentence">Congressional whistleblowers. Pentagon programs. Military pilots on camera. It's in the congressional record. Six times daily. No tabloid. ✦ VERIFIED REAL ✦</div>
       </div>
@@ -981,7 +989,7 @@ footer {
        data-url="diamondhandsdaily.com">
       <div class="proj-num">09</div>
       <div class="proj-info">
-        <div class="proj-name">Diamond Hands Daily</div>
+        <div class="proj-name-row"><div class="proj-name">Diamond Hands Daily</div></div>
         <div class="proj-cat">Crypto · 250 Coins Live · Satoshi Shrine</div>
         <div class="proj-sentence">250 live coin prices, the full Satoshi shrine, and a congressional legislation tracker — for the people who hold.</div>
       </div>
@@ -1000,7 +1008,7 @@ footer {
        data-url="yamanakafactors.com">
       <div class="proj-num">10</div>
       <div class="proj-info">
-        <div class="proj-name">Yamanaka Factors</div>
+        <div class="proj-name-row"><div class="proj-name">Yamanaka Factors</div></div>
         <div class="proj-cat">Longevity Science · Cellular Reprogramming · Mon/Thu</div>
         <div class="proj-sentence">The Nobel Prize-winning science of reversing aging at the cellular level — not slowing it. The most important biology happening on earth right now.</div>
       </div>
@@ -1014,7 +1022,7 @@ footer {
        data-url="theschrodingerequation.com">
       <div class="proj-num">11</div>
       <div class="proj-info">
-        <div class="proj-name">The Schrödinger Equation</div>
+        <div class="proj-name-row"><div class="proj-name">The Schrödinger Equation</div></div>
         <div class="proj-cat">Quantum Physics · Quantum Mechanics · Est. 1926 · Still Unsettled</div>
         <div class="proj-sentence">The equation that became the foundation of quantum mechanics — explained honestly, completely, and without dumbing it down. Est. 1926. Still Unsettled.</div>
       </div>
@@ -1028,7 +1036,7 @@ footer {
        data-url="twinprimeconjecture.com">
       <div class="proj-num">12</div>
       <div class="proj-info">
-        <div class="proj-name">Twin Prime Conjecture</div>
+        <div class="proj-name-row"><div class="proj-name">Twin Prime Conjecture</div></div>
         <div class="proj-cat">Mathematics · Number Theory · Unsolved · Education · 4x Daily</div>
         <div class="proj-sentence">A math problem open since 1849 with no answer in sight. Do prime pairs separated by two go on forever? Nobody knows. The internet's canonical reference.</div>
       </div>
@@ -1047,7 +1055,7 @@ footer {
        data-url="dsaexposed.com">
       <div class="proj-num">13</div>
       <div class="proj-info">
-        <div class="proj-name">DSA Exposed</div>
+        <div class="proj-name-row"><div class="proj-name">DSA Exposed</div></div>
         <div class="proj-cat">Intelligence Dossier · Political Watchdog · 92+ Officials · 4x Daily</div>
         <div class="proj-sentence">Their own platform calls for abolishing capitalism, the Senate, the Electoral College, and the presidency. 92+ officials. 250+ chapters. $12M+ tracked. All primary record.</div>
       </div>
@@ -1061,7 +1069,7 @@ footer {
        data-url="lulz-sec.com">
       <div class="proj-num">14</div>
       <div class="proj-info">
-        <div class="proj-name">Lulz-Sec</div>
+        <div class="proj-name-row"><div class="proj-name">Lulz-Sec</div></div>
         <div class="proj-cat">Underground · Digital Freedom · Zero Day Feed · 4x Daily</div>
         <div class="proj-sentence">50 days in 2011. Six people. Sony, CIA, FBI, UK SOCA, US Senate. The case they made about infrastructure security was never credibly refuted. Still Laughing. Still Watching.</div>
       </div>
@@ -1075,7 +1083,7 @@ footer {
        data-url="sciencesilenced.com">
       <div class="proj-num">15</div>
       <div class="proj-info">
-        <div class="proj-name">Science Silenced</div>
+        <div class="proj-name-row"><div class="proj-name">Science Silenced</div></div>
         <div class="proj-cat">Suppressed Research · Heterodox Science · 4x Daily</div>
         <div class="proj-sentence">The research the peer review gatekeepers buried. The studies that didn't fit the narrative. The scientists who paid a price for being right too early.</div>
       </div>
@@ -1094,7 +1102,7 @@ footer {
        data-url="unipartypolitics.com">
       <div class="proj-num">16</div>
       <div class="proj-info">
-        <div class="proj-name">Uniparty Politics</div>
+        <div class="proj-name-row"><div class="proj-name">Uniparty Politics</div></div>
         <div class="proj-cat">Political Watchdog · Both Parties · Same Donors · 2hr</div>
         <div class="proj-sentence">Same donors. Both parties. Same defense contractors. Same pharmaceutical money. The outrage is manufactured. The receipts are here.</div>
       </div>
@@ -1108,7 +1116,7 @@ footer {
        data-url="globalpolitics360.com">
       <div class="proj-num">17</div>
       <div class="proj-info">
-        <div class="proj-name">Global Politics 360</div>
+        <div class="proj-name-row"><div class="proj-name">Global Politics 360</div></div>
         <div class="proj-cat">Geopolitics · AI Policy · Digital Freedom · 3hr</div>
         <div class="proj-sentence">The independent voices with no network deal and no permission structure. Geopolitics. AI policy. Monetary systems. Digital freedom. Every three hours.</div>
       </div>
@@ -1127,7 +1135,7 @@ footer {
        data-url="freeelizabethholmes.com">
       <div class="proj-num">18</div>
       <div class="proj-info">
-        <div class="proj-name">Free Elizabeth Holmes</div>
+        <div class="proj-name-row"><div class="proj-name">Free Elizabeth Holmes</div></div>
         <div class="proj-cat">Advocacy · Petition Live · Justice Campaign</div>
         <div class="proj-sentence">Acquitted on every patient fraud count. Never sold a share. Never enriched herself. Serving 11.25 years while the technology she pioneered is commercialized by others facing zero scrutiny.</div>
       </div>
@@ -1141,7 +1149,7 @@ footer {
        data-url="pardonjohnkiriakou.com">
       <div class="proj-num">19</div>
       <div class="proj-info">
-        <div class="proj-name">Pardon John Kiriakou</div>
+        <div class="proj-name-row"><div class="proj-name">Pardon John Kiriakou</div></div>
         <div class="proj-cat">Advocacy · Petition Live · Presidential Pardon</div>
         <div class="proj-sentence">The only American ever prosecuted for the CIA torture program — for telling the public the truth about it. Every torturer walked free. He served 23 months.</div>
       </div>
@@ -1155,7 +1163,7 @@ footer {
        data-url="pardonmartinshkreli.com">
       <div class="proj-num">20</div>
       <div class="proj-info">
-        <div class="proj-name">Pardon Martin Shkreli</div>
+        <div class="proj-name-row"><div class="proj-name">Pardon Martin Shkreli</div></div>
         <div class="proj-cat">Advocacy · Petition Live · Presidential Pardon</div>
         <div class="proj-sentence">Served his sentence. Founded Druglike — AI-assisted drug discovery for rare diseases. Livestreams his research. More transparent than any pharma executive on Wall Street.</div>
       </div>
@@ -1174,7 +1182,7 @@ footer {
        data-url="namjoonsbooklist.com">
       <div class="proj-num">21</div>
       <div class="proj-info">
-        <div class="proj-name">Namjoon's Booklist</div>
+        <div class="proj-name-row"><div class="proj-name">Namjoon's Booklist</div></div>
         <div class="proj-cat">BTS · RM · Fan Archive · 102 Books · Sourced</div>
         <div class="proj-sentence">102 books RM of BTS has publicly recommended — every one traced to its original source. Philosophy, poetry, fiction, design theory, art criticism. Across cultures and centuries.</div>
       </div>
@@ -1188,7 +1196,7 @@ footer {
        data-url="gonzodiary.com">
       <div class="proj-num">22</div>
       <div class="proj-info">
-        <div class="proj-name">Gonzo Diary</div>
+        <div class="proj-name-row"><div class="proj-name">Gonzo Diary</div></div>
         <div class="proj-cat">HST Tribute · Gonzo Dispatches · Original Writing</div>
         <div class="proj-sentence">Full Hunter S. Thompson tribute and original gonzo dispatches filed from Cuyahoga Falls, Ohio. No objectivity. No editors. No distance. Buy the ticket. Take the ride.</div>
       </div>
@@ -1202,7 +1210,7 @@ footer {
        data-url="sirjonyive.com">
       <div class="proj-num">23</div>
       <div class="proj-info">
-        <div class="proj-name">Sir Jony Ive</div>
+        <div class="proj-name-row"><div class="proj-name">Sir Jony Ive</div></div>
         <div class="proj-cat">Tribute · Design Legacy · Daily News</div>
         <div class="proj-sentence">The iMac. The iPod. The iPhone. The iPad. The MacBook Air. The Apple Watch. He left Apple in 2019 and kept building. This site tracks everything that comes next.</div>
       </div>
@@ -1216,7 +1224,7 @@ footer {
        data-url="thankselonmusk.com">
       <div class="proj-num">24</div>
       <div class="proj-info">
-        <div class="proj-name">Thanks Elon Musk</div>
+        <div class="proj-name-row"><div class="proj-name">Thanks Elon Musk</div></div>
         <div class="proj-cat">Tribute · SpaceX · Tesla · xAI · Positive Only · 4x Daily</div>
         <div class="proj-sentence">SpaceX. Tesla. xAI. X. Starlink. Neuralink. Boring Company. Seven ventures reshaping civilization — covered in one hub, positive only, no drama, just the work.</div>
       </div>
@@ -1230,7 +1238,7 @@ footer {
        data-url="greg16676935420.com">
       <div class="proj-num">25</div>
       <div class="proj-info">
-        <div class="proj-name">greg16676935420.com</div>
+        <div class="proj-name-row"><div class="proj-name">greg16676935420.com</div></div>
         <div class="proj-cat">Fun · Fan Site · Web 1.0 · Under Construction Forever</div>
         <div class="proj-sentence">Fake CEO of Dogecoin. Official Slim Jim representative. Oreo scientist. Golfer. From Kentuckey. Web 1.0. Under construction forever. You are visitor number NEW.</div>
       </div>
@@ -1249,7 +1257,7 @@ footer {
        data-url="christmaspalooza.com">
       <div class="proj-num">26</div>
       <div class="proj-info">
-        <div class="proj-name">ChristmasPalooza</div>
+        <div class="proj-name-row"><div class="proj-name">ChristmasPalooza</div></div>
         <div class="proj-cat">Community · Christmas · Year-Round · 240+ Movies · Spirit Index</div>
         <div class="proj-sentence">365 days of Christmas. 240+ movies. 274+ books. Santa Status daily. Christmas Spirit Index live. Penny the rescue golden retriever believes every day is Christmas.</div>
       </div>
@@ -1263,7 +1271,7 @@ footer {
        data-url="youngstownstateuniversity.com">
       <div class="proj-num">27</div>
       <div class="proj-info">
-        <div class="proj-name">Youngstown State University</div>
+        <div class="proj-name-row"><div class="proj-name">Youngstown State University</div></div>
         <div class="proj-cat">Community · Pro-YSU · Positive News · Daily</div>
         <div class="proj-sentence">Fan-built AI news hub for YSU — academics, athletics, research, alumni, faculty. The Mahoning Valley deserves better coverage than it gets. Positive only. Daily. Go Penguins.</div>
       </div>
@@ -1277,7 +1285,7 @@ footer {
        data-url="ilovecbnc.com">
       <div class="proj-num">28</div>
       <div class="proj-info">
-        <div class="proj-name">I Love CBNC</div>
+        <div class="proj-name-row"><div class="proj-name">I Love CBNC</div></div>
         <div class="proj-cat">Community · Carolina Beach, NC · Local News</div>
         <div class="proj-sentence">The community guide Carolina Beach, NC actually deserves — not tourism copy, not a press release feed. Real picks. Real local news. No spin.</div>
       </div>
@@ -1296,7 +1304,7 @@ footer {
        data-url="golazoglobal.com">
       <div class="proj-num">29</div>
       <div class="proj-info">
-        <div class="proj-name">Golazo Global</div>
+        <div class="proj-name-row"><div class="proj-name">Golazo Global</div></div>
         <div class="proj-cat">Soccer · 12 Leagues · World Cup 2026</div>
         <div class="proj-sentence">12 leagues. Premier League. La Liga. Serie A. Bundesliga. Champions League. Copa Libertadores. MLS. World Cup 2026 hub live now. Every goal. Every table. 4x daily.</div>
       </div>
@@ -1310,7 +1318,7 @@ footer {
        data-url="majesticwicket.com">
       <div class="proj-num">30</div>
       <div class="proj-info">
-        <div class="proj-name">Majestic Wicket</div>
+        <div class="proj-name-row"><div class="proj-name">Majestic Wicket</div></div>
         <div class="proj-cat">Cricket · All Formats · All Nations · 4x Daily</div>
         <div class="proj-sentence">2.5 billion people follow cricket. The second most popular sport on earth. Tests. ODIs. T20s. Every format. Every nation. The rest of America is behind on this.</div>
       </div>
@@ -1324,7 +1332,7 @@ footer {
        data-url="kayfabeheat.com">
       <div class="proj-num">31</div>
       <div class="proj-info">
-        <div class="proj-name">Kayfabe Heat</div>
+        <div class="proj-name-row"><div class="proj-name">Kayfabe Heat</div></div>
         <div class="proj-cat">Pro Wrestling · Ohio Indie Promotions · 4x Daily</div>
         <div class="proj-sentence">WWE. AEW. NJPW. TNA. ROH. NWA. GCW. Stardom. Ohio indie directory. Heat scores 1–99. AI-curated. Work. Shoot. Heat. 4x daily.</div>
       </div>

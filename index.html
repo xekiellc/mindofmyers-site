@@ -6,13 +6,13 @@
 <title>Mind of Myers</title>
 
 <meta property="og:title" content="Mind of Myers">
-<meta property="og:description" content="Entrepreneur. Builder of things that don't exist yet.">
+<meta property="og:description" content="One mind. Forty-four live projects. Quantum physics to K-Pop. Relentless.">
 <meta property="og:image" content="https://mindofmyers.com/og-image.png">
 <meta property="og:url" content="https://mindofmyers.com">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mind of Myers">
-<meta name="twitter:description" content="Entrepreneur. Builder of things that don't exist yet.">
+<meta name="twitter:description" content="One mind. Forty-four live projects. Quantum physics to K-Pop. Relentless.">
 <meta name="twitter:image" content="https://mindofmyers.com/og-image.png">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHFYM489TT"></script>
@@ -35,6 +35,7 @@
   --white: #f0f4f8;
   --bg: #030508;
   --bg2: #080c12;
+  --bg3: #0c1018;
   --surface: rgba(168,212,245,0.04);
   --border: rgba(168,212,245,0.1);
   --border-bright: rgba(168,212,245,0.25);
@@ -87,15 +88,16 @@ body {
   pointer-events: none;
 }
 
+/* ── NAV ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 200;
   padding: 22px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(to bottom, rgba(3,5,8,0.9), transparent);
+  background: linear-gradient(to bottom, rgba(3,5,8,0.95), transparent);
 }
 .nav-logo {
   font-family: var(--font-display);
@@ -121,6 +123,45 @@ nav {
 }
 .nav-link:hover { color: var(--ice-bright); }
 
+/* ── CATEGORY NAV ── */
+.cat-nav {
+  position: sticky;
+  top: 0;
+  z-index: 150;
+  background: rgba(3,5,8,0.97);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  backdrop-filter: blur(10px);
+}
+.cat-nav::-webkit-scrollbar { display: none; }
+.cat-nav-inner {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  min-width: max-content;
+}
+.cat-nav-link {
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 14px 16px;
+  border-bottom: 2px solid transparent;
+  transition: color .2s, border-color .2s;
+  cursor: none;
+  display: block;
+}
+.cat-nav-link:hover,
+.cat-nav-link.active {
+  color: var(--ice-bright);
+  border-bottom-color: var(--ice);
+}
+
+/* ── HERO ── */
 .hero {
   position: relative;
   z-index: 1;
@@ -204,6 +245,13 @@ nav {
   color: var(--text-dim);
   margin-top: 2px;
 }
+.hero-stat-sub {
+  font-size: 8px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ice-dim);
+  margin-top: 4px;
+}
 .hero-scroll {
   position: absolute;
   bottom: 32px;
@@ -226,6 +274,7 @@ nav {
   color: var(--text-dim);
 }
 
+/* ── TICKER ── */
 .ticker {
   position: relative;
   z-index: 1;
@@ -237,7 +286,7 @@ nav {
 }
 .ticker-track {
   display: inline-flex;
-  animation: ticker 100s linear infinite;
+  animation: ticker 60s linear infinite;
   white-space: nowrap;
 }
 @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
@@ -251,31 +300,7 @@ nav {
 }
 .ticker-sep { color: rgba(168,212,245,0.12); padding: 0 4px; }
 
-.section {
-  position: relative;
-  z-index: 1;
-  padding: 80px 40px;
-  border-bottom: 1px solid var(--border);
-}
-.section-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 40px;
-}
-.section-label {
-  font-size: 9px;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  color: var(--ice-dim);
-}
-.section-count {
-  font-size: 9px;
-  letter-spacing: .14em;
-  color: var(--text-dim);
-  text-transform: uppercase;
-}
-
+/* ── MANIFESTO ── */
 .manifesto {
   position: relative;
   z-index: 1;
@@ -303,17 +328,71 @@ nav {
 }
 .manifesto-body em { font-style: italic; color: var(--ice); }
 
+/* ── SECTION ── */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 80px 40px;
+  border-bottom: 1px solid var(--border);
+}
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.section-label {
+  font-size: 9px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--ice-dim);
+}
+.section-count {
+  font-size: 9px;
+  letter-spacing: .14em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+/* ── SEARCH ── */
+.search-wrap {
+  margin-bottom: 32px;
+  position: relative;
+}
+.search-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 0;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text);
+  outline: none;
+  transition: border-color .3s;
+}
+.search-input::placeholder {
+  color: var(--text-dim);
+}
+.search-input:focus {
+  border-bottom-color: var(--ice-dim);
+}
+
+/* ── PROJECT LIST ── */
 .proj-list { display: flex; flex-direction: column; }
 .proj-row {
   display: grid;
   grid-template-columns: 48px 1fr 180px 32px;
-  align-items: center;
-  padding: 18px 0;
+  align-items: start;
+  padding: 20px 0;
   border-bottom: 1px solid var(--border);
   cursor: none;
   transition: background .2s;
   text-decoration: none;
   color: inherit;
+  position: relative;
 }
 .proj-row:first-child { border-top: 1px solid var(--border); }
 .proj-row:hover { background: var(--surface); }
@@ -324,7 +403,9 @@ nav {
   font-size: 14px;
   color: rgba(168,212,245,0.12);
   letter-spacing: .06em;
+  padding-top: 2px;
 }
+.proj-info { display: flex; flex-direction: column; gap: 4px; }
 .proj-name {
   font-size: 18px;
   font-weight: 500;
@@ -338,12 +419,31 @@ nav {
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--text-dim);
-  margin-top: 3px;
+}
+.proj-sentence {
+  font-size: 11px;
+  color: rgba(168,212,245,0.45);
+  line-height: 1.6;
+  margin-top: 2px;
+  font-weight: 300;
+  max-width: 520px;
+}
+.proj-beta {
+  font-size: 8px;
+  letter-spacing: .16em;
+  color: var(--ice-dim);
+  border: 1px solid var(--ice-dim);
+  padding: 2px 6px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-top: 4px;
+  text-transform: uppercase;
 }
 .proj-url {
   font-size: 9px;
   letter-spacing: .08em;
   color: var(--text-dim);
+  padding-top: 2px;
 }
 .proj-arrow {
   font-size: 16px;
@@ -351,18 +451,133 @@ nav {
   opacity: 0;
   transition: opacity .2s, color .2s;
   text-align: right;
+  padding-top: 2px;
 }
 
+/* ── SECTION DIVIDER ── */
 .section-divider {
   font-size: 8px;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--ice-dim);
-  padding: 14px 0 6px;
+  padding: 16px 0 8px;
   border-bottom: 1px solid var(--border);
   margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-divider-count {
+  font-size: 8px;
+  letter-spacing: .14em;
+  color: rgba(168,212,245,0.2);
 }
 
+/* ── HOVER PREVIEW ── */
+.hover-preview {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32%;
+  max-width: 420px;
+  background: var(--bg2);
+  border-left: 1px solid var(--border);
+  padding: 40px 36px;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+.hover-preview.visible { opacity: 1; }
+.hp-num {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: rgba(168,212,245,0.15);
+  margin-bottom: 12px;
+}
+.hp-name {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 32px);
+  color: var(--white);
+  letter-spacing: .04em;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.hp-sentence {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.hp-cat {
+  font-size: 8px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(168,212,245,0.25);
+  margin-bottom: 24px;
+}
+.hp-url {
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ice-dim);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
+  transition: color .2s, border-color .2s;
+}
+.hp-url:hover { color: var(--ice-bright); border-bottom-color: var(--ice); }
+
+/* ── KPOP GRID ── */
+.kpop-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-top: 8px;
+}
+.kpop-cell {
+  background: var(--bg);
+  padding: 18px 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: background .2s;
+  cursor: none;
+  display: block;
+}
+.kpop-cell:hover { background: var(--bg2); }
+.kpop-cell:hover .kpop-name { color: var(--ice-bright); }
+.kpop-num {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: rgba(168,212,245,0.12);
+  letter-spacing: .06em;
+  margin-bottom: 4px;
+}
+.kpop-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: -.01em;
+  transition: color .2s;
+  margin-bottom: 4px;
+}
+.kpop-cat {
+  font-size: 8px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.kpop-url {
+  font-size: 8px;
+  letter-spacing: .06em;
+  color: rgba(168,212,245,0.2);
+  margin-top: 4px;
+}
+
+/* ── ADVOCACY CARDS ── */
 .feat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -411,73 +626,7 @@ nav {
 }
 .feat-block:hover .feat-link { color: var(--ice-bright); }
 
-.fun-block {
-  position: relative;
-  z-index: 1;
-  border-bottom: 1px solid var(--border);
-}
-.fun-inner {
-  background: var(--bg2);
-  padding: 40px;
-  transition: background .2s;
-  cursor: none;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-.fun-inner:hover { background: #0c1018; }
-.fun-eyebrow {
-  font-size: 9px;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  color: var(--ice-dim);
-  margin-bottom: 16px;
-}
-.fun-title {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 52px);
-  color: var(--white);
-  letter-spacing: .04em;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.fun-subtitle {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(16px, 2vw, 22px);
-  color: var(--ice);
-  margin-bottom: 16px;
-}
-.fun-body {
-  font-size: 12px;
-  color: var(--text-dim);
-  line-height: 1.7;
-  max-width: 600px;
-  margin-bottom: 20px;
-}
-.fun-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 20px;
-}
-.fun-tag {
-  font-size: 9px;
-  letter-spacing: .1em;
-  color: var(--text-dim);
-  border: 1px solid var(--border);
-  padding: 4px 10px;
-  border-radius: 2px;
-}
-.fun-link {
-  font-size: 9px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--ice-dim);
-  transition: color .2s;
-}
-.fun-inner:hover .fun-link { color: var(--ice-bright); }
-
+/* ── ABOUT ── */
 .about-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -503,9 +652,9 @@ nav {
   margin-bottom: 12px;
 }
 .about-body {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-dim);
-  line-height: 1.7;
+  line-height: 1.9;
 }
 .about-tags {
   display: flex;
@@ -522,6 +671,7 @@ nav {
   border-radius: 2px;
 }
 
+/* ── FOOTER ── */
 footer {
   position: relative;
   z-index: 1;
@@ -529,6 +679,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-top: 1px solid var(--border);
 }
 .footer-logo {
   font-family: var(--font-display);
@@ -546,10 +697,12 @@ footer {
   letter-spacing: .12em;
   color: rgba(168,212,245,0.2);
   text-transform: uppercase;
+  text-align: right;
 }
 .footer-right a { color: var(--ice-dim); text-decoration: none; }
 .footer-right a:hover { color: var(--ice); }
 
+/* ── REVEAL ── */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -557,18 +710,25 @@ footer {
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* ── ANIMATIONS ── */
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
+/* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
 
+/* ── HIDDEN ── */
+.proj-row.hidden { display: none; }
+
+/* ── MOBILE ── */
 @media (max-width: 768px) {
   nav { padding: 16px 20px; }
+  .cat-nav { padding: 0 20px; }
   .hero { padding: 100px 20px 60px; }
   .hero-stats { right: 20px; bottom: 60px; }
   .manifesto { grid-template-columns: 1fr; padding: 48px 20px; }
@@ -577,7 +737,8 @@ footer {
   .proj-url { display: none; }
   .feat-grid { grid-template-columns: 1fr; }
   .about-row { grid-template-columns: 1fr; }
-  .fun-inner { padding: 28px 20px; }
+  .hover-preview { display: none; }
+  .kpop-grid { grid-template-columns: repeat(2, 1fr); }
   footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
 }
 </style>
@@ -588,11 +749,20 @@ footer {
 <div class="cursor-ring" id="curR"></div>
 <canvas id="bg-canvas"></canvas>
 
+<!-- HOVER PREVIEW PANEL -->
+<div class="hover-preview" id="hoverPreview">
+  <div class="hp-num" id="hp-num"></div>
+  <div class="hp-name" id="hp-name"></div>
+  <div class="hp-sentence" id="hp-sentence"></div>
+  <div class="hp-cat" id="hp-cat"></div>
+  <a class="hp-url" id="hp-url" target="_blank" rel="noopener"></a>
+</div>
+
 <nav>
   <div class="nav-logo">MIND <em>of Myers</em></div>
   <div class="nav-links">
-    <a href="#ventures" class="nav-link">Ventures</a>
-    <a href="#kpop" class="nav-link">K-Pop</a>
+    <a href="#index" class="nav-link">Index</a>
+    <a href="#advocacy" class="nav-link">Advocacy</a>
     <a href="#about" class="nav-link">About</a>
   </div>
 </nav>
@@ -606,11 +776,18 @@ footer {
   </h1>
   <p class="hero-sub">
     <strong>Founder. Builder.</strong><br>
-    One mind. Forty-five live projects. Quantum physics to K-Pop. Relentless.
+    One mind. Forty-four live projects. Quantum physics to K-Pop. Relentless.
   </p>
   <div class="hero-stats">
-    <div><div class="hero-stat-n"><span>45</span></div><div class="hero-stat-l">Live Projects</div></div>
-    <div><div class="hero-stat-n"><span>1</span></div><div class="hero-stat-l">Mind</div></div>
+    <div>
+      <div class="hero-stat-n"><span>44</span></div>
+      <div class="hero-stat-l">Projects</div>
+      <div class="hero-stat-sub">43 Live · 1 Building</div>
+    </div>
+    <div>
+      <div class="hero-stat-n"><span>1</span></div>
+      <div class="hero-stat-l">Mind</div>
+    </div>
   </div>
   <div class="hero-scroll">
     <div class="hero-scroll-line"></div>
@@ -618,64 +795,25 @@ footer {
   </div>
 </section>
 
+<!-- TICKER — 8 items, slow, quiet -->
 <div class="ticker">
   <div class="ticker-track">
-    <span class="ticker-item">Kyzmyt</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">XEKIE</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Silque Road</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">VoxVega</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Voxxee</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Vursyl</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Univursyl</span><span class="ticker-sep">·</span>
     <span class="ticker-item">The Schrödinger Equation</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">ChristmasPalooza</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Thanks Elon Musk</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Twin Prime Conjecture</span><span class="ticker-sep">·</span>
     <span class="ticker-item">DSA Exposed</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">ExtraterrestrEAL</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Diamond Hands Daily</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Uniparty Politics</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Gonzo Diary</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Namjoon's Booklist</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Golazo Global</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Science Silenced</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Yamanaka Factors</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Kayfabe Heat</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Majestic Wicket</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Global Politics 360</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">YSU</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">greg16676935420</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Army Pulse</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Bangtan Beat</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">HYBE World</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Kyzmyt</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">XEKIE</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Silque Road</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">VoxVega</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Voxxee</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Vursyl</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Namjoon's Booklist</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Univursyl</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Kayfabe Heat</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Yamanaka Factors</span><span class="ticker-sep">·</span>
     <span class="ticker-item">The Schrödinger Equation</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">ChristmasPalooza</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Thanks Elon Musk</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Twin Prime Conjecture</span><span class="ticker-sep">·</span>
     <span class="ticker-item">DSA Exposed</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">ExtraterrestrEAL</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Diamond Hands Daily</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Uniparty Politics</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Gonzo Diary</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Namjoon's Booklist</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Golazo Global</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Science Silenced</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Yamanaka Factors</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Namjoon's Booklist</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Univursyl</span><span class="ticker-sep">·</span>
     <span class="ticker-item">Kayfabe Heat</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Majestic Wicket</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Global Politics 360</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">YSU</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">greg16676935420</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Army Pulse</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">Bangtan Beat</span><span class="ticker-sep">·</span>
-    <span class="ticker-item">HYBE World</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Yamanaka Factors</span><span class="ticker-sep">·</span>
   </div>
 </div>
 
@@ -687,313 +825,635 @@ footer {
   </div>
 </div>
 
-<section class="section reveal" id="ventures">
-  <div class="section-header">
-    <div class="section-label">Ventures &amp; Projects</div>
-    <div class="section-count">45 Live · Counting</div>
+<!-- CATEGORY NAV -->
+<nav class="cat-nav" id="catNav">
+  <div class="cat-nav-inner">
+    <a href="#sec-platforms" class="cat-nav-link">Platforms</a>
+    <a href="#sec-tech" class="cat-nav-link">Tech &amp; The Future</a>
+    <a href="#sec-science" class="cat-nav-link">Science</a>
+    <a href="#sec-watchdog" class="cat-nav-link">Watchdog</a>
+    <a href="#sec-political" class="cat-nav-link">Political Class</a>
+    <a href="#sec-advocacy" class="cat-nav-link">Advocacy</a>
+    <a href="#sec-tribute" class="cat-nav-link">Tribute &amp; Culture</a>
+    <a href="#sec-community" class="cat-nav-link">Community</a>
+    <a href="#sec-sports" class="cat-nav-link">Global Sports</a>
+    <a href="#sec-kpop" class="cat-nav-link">K-Pop</a>
   </div>
-  <div class="proj-list">
+</nav>
 
-    <div class="section-divider">Platforms</div>
-    <a class="proj-row" href="https://kyzmyt.com" target="_blank" rel="noopener">
+<section class="section reveal" id="index">
+  <div class="section-header">
+    <div class="section-label">Project Index</div>
+    <div class="section-count">44 Projects · And Counting</div>
+  </div>
+
+  <!-- SEARCH -->
+  <div class="search-wrap">
+    <input
+      type="text"
+      class="search-input"
+      id="searchInput"
+      placeholder="Search the mind —"
+      autocomplete="off"
+    >
+  </div>
+
+  <div class="proj-list" id="projList">
+
+    <!-- PLATFORMS -->
+    <div class="section-divider" id="sec-platforms">
+      <span>Platforms</span>
+      <span class="section-divider-count">05</span>
+    </div>
+
+    <a class="proj-row" href="https://xekie.com" target="_blank" rel="noopener"
+       data-num="01" data-name="XEKIE" data-cat="Marketplace · Demand-Side · World's First"
+       data-sentence="Thirty years of e-commerce ran one direction. XEKIE inverted it — buyers post what they want, sellers compete to fulfill it. Trade Different."
+       data-url="xekie.com">
       <div class="proj-num">01</div>
-      <div class="proj-info"><div class="proj-name">Kyzmyt</div><div class="proj-cat">Dating · Triple Verified · World's First</div></div>
-      <div class="proj-url">kyzmyt.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://xekie.com" target="_blank" rel="noopener">
-      <div class="proj-num">02</div>
-      <div class="proj-info"><div class="proj-name">XEKIE</div><div class="proj-cat">Marketplace · Demand-Side · World's First</div></div>
+      <div class="proj-info">
+        <div class="proj-name">XEKIE</div>
+        <div class="proj-cat">Marketplace · Demand-Side · World's First</div>
+        <div class="proj-sentence">Thirty years of e-commerce ran one direction. XEKIE inverted it — buyers post what they want, sellers compete to fulfill it. Trade Different.</div>
+        <span class="proj-beta">★ Beta</span>
+      </div>
       <div class="proj-url">xekie.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://silqueroad.com" target="_blank" rel="noopener">
+
+    <a class="proj-row" href="https://kyzmyt.com" target="_blank" rel="noopener"
+       data-num="02" data-name="Kyzmyt" data-cat="Dating · Triple Verified · World's First"
+       data-sentence="Every dating app ever built skipped identity verification. Kyzmyt does all three — background check, live face scan, government ID — before the first match."
+       data-url="kyzmyt.com">
+      <div class="proj-num">02</div>
+      <div class="proj-info">
+        <div class="proj-name">Kyzmyt</div>
+        <div class="proj-cat">Dating · Triple Verified · World's First</div>
+        <div class="proj-sentence">Every dating app ever built skipped identity verification. Kyzmyt does all three — background check, live face scan, government ID — before the first match.</div>
+        <span class="proj-beta">★ Beta</span>
+      </div>
+      <div class="proj-url">kyzmyt.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <a class="proj-row" href="https://voxxee.com" target="_blank" rel="noopener"
+       data-num="03" data-name="Voxxee" data-cat="Social Platform · Free Speech · Verified Adults · Facebook Competitor"
+       data-sentence="Every moderation decision logged in a live public record. Facebook cannot build this without documenting thirty years of suppression."
+       data-url="voxxee.com">
       <div class="proj-num">03</div>
-      <div class="proj-info"><div class="proj-name">Silque Road</div><div class="proj-cat">Marketplace · Legal · Anonymous · Crypto</div></div>
-      <div class="proj-url">silqueroad.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://voxvega.com" target="_blank" rel="noopener">
-      <div class="proj-num">04</div>
-      <div class="proj-info"><div class="proj-name">VoxVega</div><div class="proj-cat">Creator Platform · Cameo Competitor</div></div>
-      <div class="proj-url">voxvega.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://voxxee.com" target="_blank" rel="noopener">
-      <div class="proj-num">05</div>
-      <div class="proj-info"><div class="proj-name">Voxxee</div><div class="proj-cat">Social Platform · Free Speech · Verified Adults · Facebook Competitor</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Voxxee</div>
+        <div class="proj-cat">Social Platform · Free Speech · Verified Adults · Facebook Competitor</div>
+        <div class="proj-sentence">Every moderation decision logged in a live public record. Facebook cannot build this without documenting thirty years of suppression.</div>
+        <span class="proj-beta">★ Beta</span>
+      </div>
       <div class="proj-url">voxxee.com</div>
       <div class="proj-arrow">→</div>
     </a>
 
-    <div class="section-divider">Tech &amp; The Future</div>
-    <a class="proj-row" href="https://vursyl.com" target="_blank" rel="noopener">
+    <a class="proj-row" href="https://voxvega.com" target="_blank" rel="noopener"
+       data-num="04" data-name="VoxVega" data-cat="Creator Platform · Cameo Competitor"
+       data-sentence="Six creator revenue streams in one profile. Cameo takes 25%. VoxVega takes nothing."
+       data-url="voxvega.com">
+      <div class="proj-num">04</div>
+      <div class="proj-info">
+        <div class="proj-name">VoxVega</div>
+        <div class="proj-cat">Creator Platform · Cameo Competitor</div>
+        <div class="proj-sentence">Six creator revenue streams in one profile. Cameo takes 25%. VoxVega takes nothing.</div>
+        <span class="proj-beta">★ Beta</span>
+      </div>
+      <div class="proj-url">voxvega.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <a class="proj-row" href="https://silqueroad.com" target="_blank" rel="noopener"
+       data-num="05" data-name="Silque Road" data-cat="Marketplace · Legal · Anonymous · Crypto"
+       data-sentence="A legal marketplace with anonymous checkout and crypto payments, carrying products major platforms stopped listing."
+       data-url="silqueroad.com">
+      <div class="proj-num">05</div>
+      <div class="proj-info">
+        <div class="proj-name">Silque Road</div>
+        <div class="proj-cat">Marketplace · Legal · Anonymous · Crypto</div>
+        <div class="proj-sentence">A legal marketplace with anonymous checkout and crypto payments, carrying products major platforms stopped listing.</div>
+        <span class="proj-beta">★ Beta</span>
+      </div>
+      <div class="proj-url">silqueroad.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <!-- TECH & THE FUTURE -->
+    <div class="section-divider" id="sec-tech">
+      <span>Tech &amp; The Future</span>
+      <span class="section-divider-count">04</span>
+    </div>
+
+    <a class="proj-row" href="https://vursyl.com" target="_blank" rel="noopener"
+       data-num="06" data-name="Vursyl" data-cat="AI · Quantum · Biotech · Space · Zero Doom · 4x Daily"
+       data-sentence="Technology journalism chose fear as its business model. Vursyl chose the opposite — positive-only coverage of AI, quantum computing, biotech, robotics, and space."
+       data-url="vursyl.com">
       <div class="proj-num">06</div>
-      <div class="proj-info"><div class="proj-name">Vursyl</div><div class="proj-cat">AI · Quantum · Biotech · Space · Zero Doom · 4x Daily</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Vursyl</div>
+        <div class="proj-cat">AI · Quantum · Biotech · Space · Zero Doom · 4x Daily</div>
+        <div class="proj-sentence">Technology journalism chose fear as its business model. Vursyl chose the opposite — positive-only coverage of AI, quantum computing, biotech, robotics, and space.</div>
+      </div>
       <div class="proj-url">vursyl.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://univursyl.com" target="_blank" rel="noopener">
+
+    <a class="proj-row" href="https://univursyl.com" target="_blank" rel="noopener"
+       data-num="07" data-name="Univursyl" data-cat="Space Science · Astronomy · Cosmology · NASA · SpaceX · 6x Daily"
+       data-sentence="The universe is the greatest story ever told. Univursyl covers it at the standard it deserves — astronomy, cosmology, astrophysics, James Webb, Starship. Six times daily."
+       data-url="univursyl.com">
       <div class="proj-num">07</div>
-      <div class="proj-info"><div class="proj-name">Univursyl</div><div class="proj-cat">Space Science · Astronomy · Cosmology · NASA · SpaceX · 6x Daily</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Univursyl</div>
+        <div class="proj-cat">Space Science · Astronomy · Cosmology · NASA · SpaceX · 6x Daily</div>
+        <div class="proj-sentence">The universe is the greatest story ever told. Univursyl covers it at the standard it deserves — astronomy, cosmology, astrophysics, James Webb, Starship. Six times daily.</div>
+      </div>
       <div class="proj-url">univursyl.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://extraterrestreal.com" target="_blank" rel="noopener">
+
+    <a class="proj-row" href="https://extraterrestreal.com" target="_blank" rel="noopener"
+       data-num="08" data-name="ExtraterrestrEAL" data-cat="UAP Disclosure · Whistleblowers · 6x Daily"
+       data-sentence="Congressional whistleblowers. Pentagon programs. Military pilots on camera. It's in the congressional record. Six times daily. No tabloid. ✦ VERIFIED REAL ✦"
+       data-url="extraterrestreal.com">
       <div class="proj-num">08</div>
-      <div class="proj-info"><div class="proj-name">ExtraterrestrEAL</div><div class="proj-cat">UAP Disclosure · Whistleblowers · 6x Daily</div></div>
+      <div class="proj-info">
+        <div class="proj-name">ExtraterrestrEAL</div>
+        <div class="proj-cat">UAP Disclosure · Whistleblowers · 6x Daily</div>
+        <div class="proj-sentence">Congressional whistleblowers. Pentagon programs. Military pilots on camera. It's in the congressional record. Six times daily. No tabloid. ✦ VERIFIED REAL ✦</div>
+      </div>
       <div class="proj-url">extraterrestreal.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://diamondhandsdaily.com" target="_blank" rel="noopener">
+
+    <a class="proj-row" href="https://diamondhandsdaily.com" target="_blank" rel="noopener"
+       data-num="09" data-name="Diamond Hands Daily" data-cat="Crypto · 250 Coins Live · Satoshi Shrine"
+       data-sentence="250 live coin prices, the full Satoshi shrine, and a congressional legislation tracker — for the people who hold."
+       data-url="diamondhandsdaily.com">
       <div class="proj-num">09</div>
-      <div class="proj-info"><div class="proj-name">Diamond Hands Daily</div><div class="proj-cat">Crypto · 250 Coins Live · Satoshi Shrine</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Diamond Hands Daily</div>
+        <div class="proj-cat">Crypto · 250 Coins Live · Satoshi Shrine</div>
+        <div class="proj-sentence">250 live coin prices, the full Satoshi shrine, and a congressional legislation tracker — for the people who hold.</div>
+      </div>
       <div class="proj-url">diamondhandsdaily.com</div>
       <div class="proj-arrow">→</div>
     </a>
 
-    <div class="section-divider">Science</div>
-    <a class="proj-row" href="https://theschrodingerequation.com" target="_blank" rel="noopener">
+    <!-- SCIENCE -->
+    <div class="section-divider" id="sec-science">
+      <span>Science</span>
+      <span class="section-divider-count">03</span>
+    </div>
+
+    <a class="proj-row" href="https://yamanakafactors.com" target="_blank" rel="noopener"
+       data-num="10" data-name="Yamanaka Factors" data-cat="Longevity Science · Cellular Reprogramming · Mon/Thu"
+       data-sentence="The Nobel Prize-winning science of reversing aging at the cellular level — not slowing it. The most important biology happening on earth right now."
+       data-url="yamanakafactors.com">
       <div class="proj-num">10</div>
-      <div class="proj-info"><div class="proj-name">The Schrödinger Equation</div><div class="proj-cat">Quantum Physics · Quantum Mechanics · Est. 1926 · Still Unsettled</div></div>
-      <div class="proj-url">theschrodingerequation.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://twinprimeconjecture.com" target="_blank" rel="noopener">
-      <div class="proj-num">11</div>
-      <div class="proj-info"><div class="proj-name">Twin Prime Conjecture</div><div class="proj-cat">Mathematics · Number Theory · Unsolved · Education · 4x Daily</div></div>
-      <div class="proj-url">twinprimeconjecture.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://yamanakafactors.com" target="_blank" rel="noopener">
-      <div class="proj-num">12</div>
-      <div class="proj-info"><div class="proj-name">Yamanaka Factors</div><div class="proj-cat">Longevity Science · Cellular Reprogramming · Mon/Thu</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Yamanaka Factors</div>
+        <div class="proj-cat">Longevity Science · Cellular Reprogramming · Mon/Thu</div>
+        <div class="proj-sentence">The Nobel Prize-winning science of reversing aging at the cellular level — not slowing it. The most important biology happening on earth right now.</div>
+      </div>
       <div class="proj-url">yamanakafactors.com</div>
       <div class="proj-arrow">→</div>
     </a>
 
-    <div class="section-divider">Watchdog &amp; Intelligence</div>
-    <a class="proj-row" href="https://dsaexposed.com" target="_blank" rel="noopener">
+    <a class="proj-row" href="https://theschrodingerequation.com" target="_blank" rel="noopener"
+       data-num="11" data-name="The Schrödinger Equation" data-cat="Quantum Physics · Quantum Mechanics · Est. 1926 · Still Unsettled"
+       data-sentence="The equation that became the foundation of quantum mechanics — explained honestly, completely, and without dumbing it down. Est. 1926. Still Unsettled."
+       data-url="theschrodingerequation.com">
+      <div class="proj-num">11</div>
+      <div class="proj-info">
+        <div class="proj-name">The Schrödinger Equation</div>
+        <div class="proj-cat">Quantum Physics · Quantum Mechanics · Est. 1926 · Still Unsettled</div>
+        <div class="proj-sentence">The equation that became the foundation of quantum mechanics — explained honestly, completely, and without dumbing it down. Est. 1926. Still Unsettled.</div>
+      </div>
+      <div class="proj-url">theschrodingerequation.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <a class="proj-row" href="https://twinprimeconjecture.com" target="_blank" rel="noopener"
+       data-num="12" data-name="Twin Prime Conjecture" data-cat="Mathematics · Number Theory · Unsolved · Education · 4x Daily"
+       data-sentence="A math problem open since 1849 with no answer in sight. Do prime pairs separated by two go on forever? Nobody knows. The internet's canonical reference."
+       data-url="twinprimeconjecture.com">
+      <div class="proj-num">12</div>
+      <div class="proj-info">
+        <div class="proj-name">Twin Prime Conjecture</div>
+        <div class="proj-cat">Mathematics · Number Theory · Unsolved · Education · 4x Daily</div>
+        <div class="proj-sentence">A math problem open since 1849 with no answer in sight. Do prime pairs separated by two go on forever? Nobody knows. The internet's canonical reference.</div>
+      </div>
+      <div class="proj-url">twinprimeconjecture.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <!-- WATCHDOG & INTELLIGENCE -->
+    <div class="section-divider" id="sec-watchdog">
+      <span>Watchdog &amp; Intelligence</span>
+      <span class="section-divider-count">03</span>
+    </div>
+
+    <a class="proj-row" href="https://dsaexposed.com" target="_blank" rel="noopener"
+       data-num="13" data-name="DSA Exposed" data-cat="Intelligence Dossier · Political Watchdog · 92+ Officials · 4x Daily"
+       data-sentence="Their own platform calls for abolishing capitalism, the Senate, the Electoral College, and the presidency. 92+ officials. 250+ chapters. $12M+ tracked. All primary record."
+       data-url="dsaexposed.com">
       <div class="proj-num">13</div>
-      <div class="proj-info"><div class="proj-name">DSA Exposed</div><div class="proj-cat">Intelligence Dossier · Political Watchdog · 92+ Officials · 4x Daily</div></div>
+      <div class="proj-info">
+        <div class="proj-name">DSA Exposed</div>
+        <div class="proj-cat">Intelligence Dossier · Political Watchdog · 92+ Officials · 4x Daily</div>
+        <div class="proj-sentence">Their own platform calls for abolishing capitalism, the Senate, the Electoral College, and the presidency. 92+ officials. 250+ chapters. $12M+ tracked. All primary record.</div>
+      </div>
       <div class="proj-url">dsaexposed.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://lulz-sec.com" target="_blank" rel="noopener">
+
+    <a class="proj-row" href="https://lulz-sec.com" target="_blank" rel="noopener"
+       data-num="14" data-name="Lulz-Sec" data-cat="Underground · Digital Freedom · Zero Day Feed · 4x Daily"
+       data-sentence="50 days in 2011. Six people. Sony, CIA, FBI, UK SOCA, US Senate. The case they made about infrastructure security was never credibly refuted. Still Laughing. Still Watching."
+       data-url="lulz-sec.com">
       <div class="proj-num">14</div>
-      <div class="proj-info"><div class="proj-name">Lulz-Sec</div><div class="proj-cat">Underground · Digital Freedom · Zero Day Feed · 4x Daily</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Lulz-Sec</div>
+        <div class="proj-cat">Underground · Digital Freedom · Zero Day Feed · 4x Daily</div>
+        <div class="proj-sentence">50 days in 2011. Six people. Sony, CIA, FBI, UK SOCA, US Senate. The case they made about infrastructure security was never credibly refuted. Still Laughing. Still Watching.</div>
+      </div>
       <div class="proj-url">lulz-sec.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://sciencesilenced.com" target="_blank" rel="noopener">
+
+    <a class="proj-row" href="https://sciencesilenced.com" target="_blank" rel="noopener"
+       data-num="15" data-name="Science Silenced" data-cat="Suppressed Research · Heterodox Science · 4x Daily"
+       data-sentence="The research the peer review gatekeepers buried. The studies that didn't fit the narrative. The scientists who paid a price for being right too early."
+       data-url="sciencesilenced.com">
       <div class="proj-num">15</div>
-      <div class="proj-info"><div class="proj-name">Science Silenced</div><div class="proj-cat">Suppressed Research · Heterodox Science · 4x Daily</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Science Silenced</div>
+        <div class="proj-cat">Suppressed Research · Heterodox Science · 4x Daily</div>
+        <div class="proj-sentence">The research the peer review gatekeepers buried. The studies that didn't fit the narrative. The scientists who paid a price for being right too early.</div>
+      </div>
       <div class="proj-url">sciencesilenced.com</div>
       <div class="proj-arrow">→</div>
     </a>
 
-    <div class="section-divider">The Political Class</div>
-    <a class="proj-row" href="https://unipartypolitics.com" target="_blank" rel="noopener">
+    <!-- THE POLITICAL CLASS -->
+    <div class="section-divider" id="sec-political">
+      <span>The Political Class</span>
+      <span class="section-divider-count">02</span>
+    </div>
+
+    <a class="proj-row" href="https://unipartypolitics.com" target="_blank" rel="noopener"
+       data-num="16" data-name="Uniparty Politics" data-cat="Political Watchdog · Both Parties · Same Donors · 2hr"
+       data-sentence="Same donors. Both parties. Same defense contractors. Same pharmaceutical money. The outrage is manufactured. The receipts are here."
+       data-url="unipartypolitics.com">
       <div class="proj-num">16</div>
-      <div class="proj-info"><div class="proj-name">Uniparty Politics</div><div class="proj-cat">Political Watchdog · Both Parties · Same Donors · 2hr</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Uniparty Politics</div>
+        <div class="proj-cat">Political Watchdog · Both Parties · Same Donors · 2hr</div>
+        <div class="proj-sentence">Same donors. Both parties. Same defense contractors. Same pharmaceutical money. The outrage is manufactured. The receipts are here.</div>
+      </div>
       <div class="proj-url">unipartypolitics.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://globalpolitics360.com" target="_blank" rel="noopener">
+
+    <a class="proj-row" href="https://globalpolitics360.com" target="_blank" rel="noopener"
+       data-num="17" data-name="Global Politics 360" data-cat="Geopolitics · AI Policy · Digital Freedom · 3hr"
+       data-sentence="The independent voices with no network deal and no permission structure. Geopolitics. AI policy. Monetary systems. Digital freedom. Every three hours."
+       data-url="globalpolitics360.com">
       <div class="proj-num">17</div>
-      <div class="proj-info"><div class="proj-name">Global Politics 360</div><div class="proj-cat">Geopolitics · AI Policy · Digital Freedom · 3hr</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Global Politics 360</div>
+        <div class="proj-cat">Geopolitics · AI Policy · Digital Freedom · 3hr</div>
+        <div class="proj-sentence">The independent voices with no network deal and no permission structure. Geopolitics. AI policy. Monetary systems. Digital freedom. Every three hours.</div>
+      </div>
       <div class="proj-url">globalpolitics360.com</div>
       <div class="proj-arrow">→</div>
     </a>
 
-    <div class="section-divider">Advocacy</div>
-    <a class="proj-row" href="https://freeelizabethholmes.com" target="_blank" rel="noopener">
+    <!-- ADVOCACY -->
+    <div class="section-divider" id="sec-advocacy">
+      <span>Advocacy</span>
+      <span class="section-divider-count">03</span>
+    </div>
+
+    <a class="proj-row" href="https://freeelizabethholmes.com" target="_blank" rel="noopener"
+       data-num="18" data-name="Free Elizabeth Holmes" data-cat="Advocacy · Petition Live · Justice Campaign"
+       data-sentence="Acquitted on every patient fraud count. Never sold a share. Never enriched herself. Serving 11.25 years while the technology she pioneered is commercialized by others facing zero scrutiny."
+       data-url="freeelizabethholmes.com">
       <div class="proj-num">18</div>
-      <div class="proj-info"><div class="proj-name">Free Elizabeth Holmes</div><div class="proj-cat">Advocacy · Petition Live · Justice Campaign</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Free Elizabeth Holmes</div>
+        <div class="proj-cat">Advocacy · Petition Live · Justice Campaign</div>
+        <div class="proj-sentence">Acquitted on every patient fraud count. Never sold a share. Never enriched herself. Serving 11.25 years while the technology she pioneered is commercialized by others facing zero scrutiny.</div>
+      </div>
       <div class="proj-url">freeelizabethholmes.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://pardonjohnkiriakou.com" target="_blank" rel="noopener">
+
+    <a class="proj-row" href="https://pardonjohnkiriakou.com" target="_blank" rel="noopener"
+       data-num="19" data-name="Pardon John Kiriakou" data-cat="Advocacy · Petition Live · Presidential Pardon"
+       data-sentence="The only American ever prosecuted for the CIA torture program — for telling the public the truth about it. Every torturer walked free. He served 23 months."
+       data-url="pardonjohnkiriakou.com">
       <div class="proj-num">19</div>
-      <div class="proj-info"><div class="proj-name">Pardon John Kiriakou</div><div class="proj-cat">Advocacy · Petition Live · Presidential Pardon</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Pardon John Kiriakou</div>
+        <div class="proj-cat">Advocacy · Petition Live · Presidential Pardon</div>
+        <div class="proj-sentence">The only American ever prosecuted for the CIA torture program — for telling the public the truth about it. Every torturer walked free. He served 23 months.</div>
+      </div>
       <div class="proj-url">pardonjohnkiriakou.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://pardonmartinshkreli.com" target="_blank" rel="noopener">
+
+    <a class="proj-row" href="https://pardonmartinshkreli.com" target="_blank" rel="noopener"
+       data-num="20" data-name="Pardon Martin Shkreli" data-cat="Advocacy · Petition Live · Presidential Pardon"
+       data-sentence="Served his sentence. Founded Druglike — AI-assisted drug discovery for rare diseases. Livestreams his research. More transparent than any pharma executive on Wall Street."
+       data-url="pardonmartinshkreli.com">
       <div class="proj-num">20</div>
-      <div class="proj-info"><div class="proj-name">Pardon Martin Shkreli</div><div class="proj-cat">Advocacy · Petition Live · Presidential Pardon</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Pardon Martin Shkreli</div>
+        <div class="proj-cat">Advocacy · Petition Live · Presidential Pardon</div>
+        <div class="proj-sentence">Served his sentence. Founded Druglike — AI-assisted drug discovery for rare diseases. Livestreams his research. More transparent than any pharma executive on Wall Street.</div>
+      </div>
       <div class="proj-url">pardonmartinshkreli.com</div>
       <div class="proj-arrow">→</div>
     </a>
 
-    <div class="section-divider">Community Hubs</div>
-    <a class="proj-row" href="https://youngstownstateuniversity.com" target="_blank" rel="noopener">
-      <div class="proj-num">21</div>
-      <div class="proj-info"><div class="proj-name">Youngstown State University</div><div class="proj-cat">Community · Pro-YSU · Positive News · Daily</div></div>
-      <div class="proj-url">youngstownstateuniversity.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://ilovecbnc.com" target="_blank" rel="noopener">
-      <div class="proj-num">22</div>
-      <div class="proj-info"><div class="proj-name">I Love CBNC</div><div class="proj-cat">Community · Carolina Beach, NC · Local News</div></div>
-      <div class="proj-url">ilovecbnc.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://christmaspalooza.com" target="_blank" rel="noopener">
-      <div class="proj-num">23</div>
-      <div class="proj-info"><div class="proj-name">ChristmasPalooza</div><div class="proj-cat">Community · Christmas · Year-Round · 240+ Movies · Spirit Index</div></div>
-      <div class="proj-url">christmaspalooza.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
+    <!-- TRIBUTE & CULTURE -->
+    <div class="section-divider" id="sec-tribute">
+      <span>Tribute &amp; Culture</span>
+      <span class="section-divider-count">05</span>
+    </div>
 
-    <div class="section-divider">Tribute &amp; Culture</div>
-    <a class="proj-row" href="https://gonzodiary.com" target="_blank" rel="noopener">
-      <div class="proj-num">24</div>
-      <div class="proj-info"><div class="proj-name">Gonzo Diary</div><div class="proj-cat">HST Tribute · Gonzo Dispatches · Original Writing</div></div>
-      <div class="proj-url">gonzodiary.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://namjoonsbooklist.com" target="_blank" rel="noopener">
-      <div class="proj-num">25</div>
-      <div class="proj-info"><div class="proj-name">Namjoon's Booklist</div><div class="proj-cat">BTS · RM · Fan Archive · 89 Books · Sourced</div></div>
+    <a class="proj-row" href="https://namjoonsbooklist.com" target="_blank" rel="noopener"
+       data-num="21" data-name="Namjoon's Booklist" data-cat="BTS · RM · Fan Archive · 102 Books · Sourced"
+       data-sentence="102 books RM of BTS has publicly recommended — every one traced to its original source. Philosophy, poetry, fiction, design theory, art criticism. Across cultures and centuries."
+       data-url="namjoonsbooklist.com">
+      <div class="proj-num">21</div>
+      <div class="proj-info">
+        <div class="proj-name">Namjoon's Booklist</div>
+        <div class="proj-cat">BTS · RM · Fan Archive · 102 Books · Sourced</div>
+        <div class="proj-sentence">102 books RM of BTS has publicly recommended — every one traced to its original source. Philosophy, poetry, fiction, design theory, art criticism. Across cultures and centuries.</div>
+      </div>
       <div class="proj-url">namjoonsbooklist.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://sirjonyive.com" target="_blank" rel="noopener">
-      <div class="proj-num">26</div>
-      <div class="proj-info"><div class="proj-name">Sir Jony Ive</div><div class="proj-cat">Tribute · Design Legacy · Daily News</div></div>
+
+    <a class="proj-row" href="https://gonzodiary.com" target="_blank" rel="noopener"
+       data-num="22" data-name="Gonzo Diary" data-cat="HST Tribute · Gonzo Dispatches · Original Writing"
+       data-sentence="Full Hunter S. Thompson tribute and original gonzo dispatches filed from Cuyahoga Falls, Ohio. No objectivity. No editors. No distance. Buy the ticket. Take the ride."
+       data-url="gonzodiary.com">
+      <div class="proj-num">22</div>
+      <div class="proj-info">
+        <div class="proj-name">Gonzo Diary</div>
+        <div class="proj-cat">HST Tribute · Gonzo Dispatches · Original Writing</div>
+        <div class="proj-sentence">Full Hunter S. Thompson tribute and original gonzo dispatches filed from Cuyahoga Falls, Ohio. No objectivity. No editors. No distance. Buy the ticket. Take the ride.</div>
+      </div>
+      <div class="proj-url">gonzodiary.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <a class="proj-row" href="https://sirjonyive.com" target="_blank" rel="noopener"
+       data-num="23" data-name="Sir Jony Ive" data-cat="Tribute · Design Legacy · Daily News"
+       data-sentence="The iMac. The iPod. The iPhone. The iPad. The MacBook Air. The Apple Watch. He left Apple in 2019 and kept building. This site tracks everything that comes next."
+       data-url="sirjonyive.com">
+      <div class="proj-num">23</div>
+      <div class="proj-info">
+        <div class="proj-name">Sir Jony Ive</div>
+        <div class="proj-cat">Tribute · Design Legacy · Daily News</div>
+        <div class="proj-sentence">The iMac. The iPod. The iPhone. The iPad. The MacBook Air. The Apple Watch. He left Apple in 2019 and kept building. This site tracks everything that comes next.</div>
+      </div>
       <div class="proj-url">sirjonyive.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://thankselonmusk.com" target="_blank" rel="noopener">
-      <div class="proj-num">27</div>
-      <div class="proj-info"><div class="proj-name">Thanks Elon Musk</div><div class="proj-cat">Tribute · SpaceX · Tesla · xAI · Positive Only · 4x Daily</div></div>
+
+    <a class="proj-row" href="https://thankselonmusk.com" target="_blank" rel="noopener"
+       data-num="24" data-name="Thanks Elon Musk" data-cat="Tribute · SpaceX · Tesla · xAI · Positive Only · 4x Daily"
+       data-sentence="SpaceX. Tesla. xAI. X. Starlink. Neuralink. Boring Company. Seven ventures reshaping civilization — covered in one hub, positive only, no drama, just the work."
+       data-url="thankselonmusk.com">
+      <div class="proj-num">24</div>
+      <div class="proj-info">
+        <div class="proj-name">Thanks Elon Musk</div>
+        <div class="proj-cat">Tribute · SpaceX · Tesla · xAI · Positive Only · 4x Daily</div>
+        <div class="proj-sentence">SpaceX. Tesla. xAI. X. Starlink. Neuralink. Boring Company. Seven ventures reshaping civilization — covered in one hub, positive only, no drama, just the work.</div>
+      </div>
       <div class="proj-url">thankselonmusk.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://greg16676935420.com" target="_blank" rel="noopener">
-      <div class="proj-num">28</div>
-      <div class="proj-info"><div class="proj-name">greg16676935420.com</div><div class="proj-cat">Fun · Fan Site · Web 1.0 · Under Construction Forever</div></div>
+
+    <a class="proj-row" href="https://greg16676935420.com" target="_blank" rel="noopener"
+       data-num="25" data-name="greg16676935420.com" data-cat="Fun · Fan Site · Web 1.0 · Under Construction Forever"
+       data-sentence="Fake CEO of Dogecoin. Official Slim Jim representative. Oreo scientist. Golfer. From Kentuckey. Web 1.0. Under construction forever. You are visitor number NEW."
+       data-url="greg16676935420.com">
+      <div class="proj-num">25</div>
+      <div class="proj-info">
+        <div class="proj-name">greg16676935420.com</div>
+        <div class="proj-cat">Fun · Fan Site · Web 1.0 · Under Construction Forever</div>
+        <div class="proj-sentence">Fake CEO of Dogecoin. Official Slim Jim representative. Oreo scientist. Golfer. From Kentuckey. Web 1.0. Under construction forever. You are visitor number NEW.</div>
+      </div>
       <div class="proj-url">greg16676935420.com</div>
       <div class="proj-arrow">→</div>
     </a>
 
-    <div class="section-divider">Global Sports</div>
-    <a class="proj-row" href="https://golazoglobal.com" target="_blank" rel="noopener">
+    <!-- COMMUNITY HUBS -->
+    <div class="section-divider" id="sec-community">
+      <span>Community Hubs</span>
+      <span class="section-divider-count">03</span>
+    </div>
+
+    <a class="proj-row" href="https://christmaspalooza.com" target="_blank" rel="noopener"
+       data-num="26" data-name="ChristmasPalooza" data-cat="Community · Christmas · Year-Round · 240+ Movies · Spirit Index"
+       data-sentence="365 days of Christmas. 240+ movies. 274+ books. Santa Status daily. Christmas Spirit Index live. Penny the rescue golden retriever believes every day is Christmas."
+       data-url="christmaspalooza.com">
+      <div class="proj-num">26</div>
+      <div class="proj-info">
+        <div class="proj-name">ChristmasPalooza</div>
+        <div class="proj-cat">Community · Christmas · Year-Round · 240+ Movies · Spirit Index</div>
+        <div class="proj-sentence">365 days of Christmas. 240+ movies. 274+ books. Santa Status daily. Christmas Spirit Index live. Penny the rescue golden retriever believes every day is Christmas.</div>
+      </div>
+      <div class="proj-url">christmaspalooza.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <a class="proj-row" href="https://youngstownstateuniversity.com" target="_blank" rel="noopener"
+       data-num="27" data-name="Youngstown State University" data-cat="Community · Pro-YSU · Positive News · Daily"
+       data-sentence="Fan-built AI news hub for YSU — academics, athletics, research, alumni, faculty. The Mahoning Valley deserves better coverage than it gets. Positive only. Daily. Go Penguins."
+       data-url="youngstownstateuniversity.com">
+      <div class="proj-num">27</div>
+      <div class="proj-info">
+        <div class="proj-name">Youngstown State University</div>
+        <div class="proj-cat">Community · Pro-YSU · Positive News · Daily</div>
+        <div class="proj-sentence">Fan-built AI news hub for YSU — academics, athletics, research, alumni, faculty. The Mahoning Valley deserves better coverage than it gets. Positive only. Daily. Go Penguins.</div>
+      </div>
+      <div class="proj-url">youngstownstateuniversity.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <a class="proj-row" href="https://ilovecbnc.com" target="_blank" rel="noopener"
+       data-num="28" data-name="I Love CBNC" data-cat="Community · Carolina Beach, NC · Local News"
+       data-sentence="The community guide Carolina Beach, NC actually deserves — not tourism copy, not a press release feed. Real picks. Real local news. No spin."
+       data-url="ilovecbnc.com">
+      <div class="proj-num">28</div>
+      <div class="proj-info">
+        <div class="proj-name">I Love CBNC</div>
+        <div class="proj-cat">Community · Carolina Beach, NC · Local News</div>
+        <div class="proj-sentence">The community guide Carolina Beach, NC actually deserves — not tourism copy, not a press release feed. Real picks. Real local news. No spin.</div>
+      </div>
+      <div class="proj-url">ilovecbnc.com</div>
+      <div class="proj-arrow">→</div>
+    </a>
+
+    <!-- GLOBAL SPORTS -->
+    <div class="section-divider" id="sec-sports">
+      <span>Global Sports</span>
+      <span class="section-divider-count">03</span>
+    </div>
+
+    <a class="proj-row" href="https://golazoglobal.com" target="_blank" rel="noopener"
+       data-num="29" data-name="Golazo Global" data-cat="Soccer · 12 Leagues · World Cup 2026"
+       data-sentence="12 leagues. Premier League. La Liga. Serie A. Bundesliga. Champions League. Copa Libertadores. MLS. World Cup 2026 hub live now. Every goal. Every table. 4x daily."
+       data-url="golazoglobal.com">
       <div class="proj-num">29</div>
-      <div class="proj-info"><div class="proj-name">Golazo Global</div><div class="proj-cat">Soccer · 12 Leagues · World Cup 2026</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Golazo Global</div>
+        <div class="proj-cat">Soccer · 12 Leagues · World Cup 2026</div>
+        <div class="proj-sentence">12 leagues. Premier League. La Liga. Serie A. Bundesliga. Champions League. Copa Libertadores. MLS. World Cup 2026 hub live now. Every goal. Every table. 4x daily.</div>
+      </div>
       <div class="proj-url">golazoglobal.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://majesticwicket.com" target="_blank" rel="noopener">
+
+    <a class="proj-row" href="https://majesticwicket.com" target="_blank" rel="noopener"
+       data-num="30" data-name="Majestic Wicket" data-cat="Cricket · All Formats · All Nations · 4x Daily"
+       data-sentence="2.5 billion people follow cricket. The second most popular sport on earth. Tests. ODIs. T20s. Every format. Every nation. The rest of America is behind on this."
+       data-url="majesticwicket.com">
       <div class="proj-num">30</div>
-      <div class="proj-info"><div class="proj-name">Majestic Wicket</div><div class="proj-cat">Cricket · All Formats · All Nations · 4x Daily</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Majestic Wicket</div>
+        <div class="proj-cat">Cricket · All Formats · All Nations · 4x Daily</div>
+        <div class="proj-sentence">2.5 billion people follow cricket. The second most popular sport on earth. Tests. ODIs. T20s. Every format. Every nation. The rest of America is behind on this.</div>
+      </div>
       <div class="proj-url">majesticwicket.com</div>
       <div class="proj-arrow">→</div>
     </a>
-    <a class="proj-row" href="https://kayfabeheat.com" target="_blank" rel="noopener">
+
+    <a class="proj-row" href="https://kayfabeheat.com" target="_blank" rel="noopener"
+       data-num="31" data-name="Kayfabe Heat" data-cat="Pro Wrestling · Ohio Indie Promotions · 4x Daily"
+       data-sentence="WWE. AEW. NJPW. TNA. ROH. NWA. GCW. Stardom. Ohio indie directory. Heat scores 1–99. AI-curated. Work. Shoot. Heat. 4x daily."
+       data-url="kayfabeheat.com">
       <div class="proj-num">31</div>
-      <div class="proj-info"><div class="proj-name">Kayfabe Heat</div><div class="proj-cat">Pro Wrestling · Ohio Indie Promotions · 4x Daily</div></div>
+      <div class="proj-info">
+        <div class="proj-name">Kayfabe Heat</div>
+        <div class="proj-cat">Pro Wrestling · Ohio Indie Promotions · 4x Daily</div>
+        <div class="proj-sentence">WWE. AEW. NJPW. TNA. ROH. NWA. GCW. Stardom. Ohio indie directory. Heat scores 1–99. AI-curated. Work. Shoot. Heat. 4x daily.</div>
+      </div>
       <div class="proj-url">kayfabeheat.com</div>
       <div class="proj-arrow">→</div>
     </a>
 
-    <div class="section-divider">K-Pop Network — BTS</div>
-    <a class="proj-row" href="https://armypulse.com" target="_blank" rel="noopener">
-      <div class="proj-num">32</div>
-      <div class="proj-info"><div class="proj-name">Army Pulse</div><div class="proj-cat">BTS · ARMY · Magazine Layout · Twice Daily</div></div>
-      <div class="proj-url">armypulse.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://bangtanbeat.com" target="_blank" rel="noopener">
-      <div class="proj-num">33</div>
-      <div class="proj-info"><div class="proj-name">Bangtan Beat</div><div class="proj-cat">BTS · Music Blog Layout · Twice Daily</div></div>
-      <div class="proj-url">bangtanbeat.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
+    <!-- K-POP NETWORK -->
+    <div class="section-divider" id="sec-kpop">
+      <span>K-Pop Network</span>
+      <span class="section-divider-count">13</span>
+    </div>
 
-    <div class="section-divider">K-Pop Network — HYBE</div>
-    <a class="proj-row" href="https://hybeworld.com" target="_blank" rel="noopener">
-      <div class="proj-num">34</div>
-      <div class="proj-info"><div class="proj-name">HYBE World</div><div class="proj-cat">HYBE · Terminal Layout · Twice Daily</div></div>
-      <div class="proj-url">hybeworld.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://btstxt.com" target="_blank" rel="noopener">
-      <div class="proj-num">35</div>
-      <div class="proj-info"><div class="proj-name">BTS TXT</div><div class="proj-cat">HYBE · Splitscreen Layout · Twice Daily</div></div>
-      <div class="proj-url">btstxt.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://txtbts.com" target="_blank" rel="noopener">
-      <div class="proj-num">36</div>
-      <div class="proj-info"><div class="proj-name">TXT BTS</div><div class="proj-cat">HYBE · Timeline Layout · Twice Daily</div></div>
-      <div class="proj-url">txtbts.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://hybefandom.com" target="_blank" rel="noopener">
-      <div class="proj-num">37</div>
-      <div class="proj-info"><div class="proj-name">HYBE Fandom</div><div class="proj-cat">HYBE · Luxury Layout · Twice Daily</div></div>
-      <div class="proj-url">hybefandom.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://bighitnation.com" target="_blank" rel="noopener">
-      <div class="proj-num">38</div>
-      <div class="proj-info"><div class="proj-name">Big Hit Nation</div><div class="proj-cat">HYBE · Nation Layout · Twice Daily</div></div>
-      <div class="proj-url">bighitnation.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
-    <a class="proj-row" href="https://bighitworld.com" target="_blank" rel="noopener">
-      <div class="proj-num">39</div>
-      <div class="proj-info"><div class="proj-name">Big Hit World</div><div class="proj-cat">HYBE · World Layout · Twice Daily</div></div>
-      <div class="proj-url">bighitworld.com</div>
-      <div class="proj-arrow">→</div>
-    </a>
+  </div><!-- end proj-list -->
 
-    <div class="section-divider">K-Pop Network — General</div>
-    <a class="proj-row" href="https://iheartkpop.com" target="_blank" rel="noopener">
-      <div class="proj-num">40</div>
-      <div class="proj-info"><div class="proj-name">I Heart K-Pop</div><div class="proj-cat">K-Pop · Hype Layout · Twice Daily</div></div>
-      <div class="proj-url">iheartkpop.com</div>
-      <div class="proj-arrow">→</div>
+  <!-- K-POP GRID -->
+  <div class="kpop-grid">
+    <a class="kpop-cell" href="https://armypulse.com" target="_blank" rel="noopener">
+      <div class="kpop-num">32</div>
+      <div class="kpop-name">Army Pulse</div>
+      <div class="kpop-cat">BTS · ARMY · Magazine Layout</div>
+      <div class="kpop-url">armypulse.com</div>
     </a>
-    <a class="proj-row" href="https://kpoppulse.com" target="_blank" rel="noopener">
-      <div class="proj-num">41</div>
-      <div class="proj-info"><div class="proj-name">K-Pop Pulse</div><div class="proj-cat">K-Pop · Breaking News Layout · Twice Daily</div></div>
-      <div class="proj-url">kpoppulse.com</div>
-      <div class="proj-arrow">→</div>
+    <a class="kpop-cell" href="https://bangtanbeat.com" target="_blank" rel="noopener">
+      <div class="kpop-num">33</div>
+      <div class="kpop-name">Bangtan Beat</div>
+      <div class="kpop-cat">BTS · Music Blog Layout</div>
+      <div class="kpop-url">bangtanbeat.com</div>
     </a>
-    <a class="proj-row" href="https://idolrush.com" target="_blank" rel="noopener">
-      <div class="proj-num">42</div>
-      <div class="proj-info"><div class="proj-name">Idol Rush</div><div class="proj-cat">K-Pop · Social Grid Layout · Twice Daily</div></div>
-      <div class="proj-url">idolrush.com</div>
-      <div class="proj-arrow">→</div>
+    <a class="kpop-cell" href="https://hybeworld.com" target="_blank" rel="noopener">
+      <div class="kpop-num">34</div>
+      <div class="kpop-name">HYBE World</div>
+      <div class="kpop-cat">HYBE · Terminal Layout</div>
+      <div class="kpop-url">hybeworld.com</div>
     </a>
-    <a class="proj-row" href="https://biashaven.com" target="_blank" rel="noopener">
-      <div class="proj-num">43</div>
-      <div class="proj-info"><div class="proj-name">Bias Haven</div><div class="proj-cat">K-Pop · Blog Layout · Twice Daily</div></div>
-      <div class="proj-url">biashaven.com</div>
-      <div class="proj-arrow">→</div>
+    <a class="kpop-cell" href="https://btstxt.com" target="_blank" rel="noopener">
+      <div class="kpop-num">35</div>
+      <div class="kpop-name">BTS TXT</div>
+      <div class="kpop-cat">HYBE · Splitscreen Layout</div>
+      <div class="kpop-url">btstxt.com</div>
     </a>
-
-    <div class="section-divider">K-Pop Network — Podcast</div>
-    <a class="proj-row" href="https://5x7pod.com" target="_blank" rel="noopener">
-      <div class="proj-num">44</div>
-      <div class="proj-info"><div class="proj-name">5×7 Podcast</div><div class="proj-cat">K-Pop · AI Podcast · Mia &amp; Kai · In Development</div></div>
-      <div class="proj-url">5x7pod.com</div>
-      <div class="proj-arrow">→</div>
+    <a class="kpop-cell" href="https://txtbts.com" target="_blank" rel="noopener">
+      <div class="kpop-num">36</div>
+      <div class="kpop-name">TXT BTS</div>
+      <div class="kpop-cat">HYBE · Timeline Layout</div>
+      <div class="kpop-url">txtbts.com</div>
     </a>
-    <a class="proj-row" href="https://5x7podcast.com" target="_blank" rel="noopener">
-      <div class="proj-num">45</div>
-      <div class="proj-info"><div class="proj-name">5×7 Podcast</div><div class="proj-cat">K-Pop · AI Podcast · Mia &amp; Kai · In Development</div></div>
-      <div class="proj-url">5x7podcast.com</div>
-      <div class="proj-arrow">→</div>
+    <a class="kpop-cell" href="https://hybefandom.com" target="_blank" rel="noopener">
+      <div class="kpop-num">37</div>
+      <div class="kpop-name">HYBE Fandom</div>
+      <div class="kpop-cat">HYBE · Luxury Layout</div>
+      <div class="kpop-url">hybefandom.com</div>
     </a>
-
+    <a class="kpop-cell" href="https://bighitnation.com" target="_blank" rel="noopener">
+      <div class="kpop-num">38</div>
+      <div class="kpop-name">Big Hit Nation</div>
+      <div class="kpop-cat">HYBE · Nation Layout</div>
+      <div class="kpop-url">bighitnation.com</div>
+    </a>
+    <a class="kpop-cell" href="https://bighitworld.com" target="_blank" rel="noopener">
+      <div class="kpop-num">39</div>
+      <div class="kpop-name">Big Hit World</div>
+      <div class="kpop-cat">HYBE · World Layout</div>
+      <div class="kpop-url">bighitworld.com</div>
+    </a>
+    <a class="kpop-cell" href="https://iheartkpop.com" target="_blank" rel="noopener">
+      <div class="kpop-num">40</div>
+      <div class="kpop-name">I Heart K-Pop</div>
+      <div class="kpop-cat">K-Pop · Hype Layout</div>
+      <div class="kpop-url">iheartkpop.com</div>
+    </a>
+    <a class="kpop-cell" href="https://kpoppulse.com" target="_blank" rel="noopener">
+      <div class="kpop-num">41</div>
+      <div class="kpop-name">K-Pop Pulse</div>
+      <div class="kpop-cat">K-Pop · Breaking News Layout</div>
+      <div class="kpop-url">kpoppulse.com</div>
+    </a>
+    <a class="kpop-cell" href="https://idolrush.com" target="_blank" rel="noopener">
+      <div class="kpop-num">42</div>
+      <div class="kpop-name">Idol Rush</div>
+      <div class="kpop-cat">K-Pop · Social Grid Layout</div>
+      <div class="kpop-url">idolrush.com</div>
+    </a>
+    <a class="kpop-cell" href="https://biashaven.com" target="_blank" rel="noopener">
+      <div class="kpop-num">43</div>
+      <div class="kpop-name">Bias Haven</div>
+      <div class="kpop-cat">K-Pop · Blog Layout</div>
+      <div class="kpop-url">biashaven.com</div>
+    </a>
+    <a class="kpop-cell" href="https://5x7pod.com" target="_blank" rel="noopener">
+      <div class="kpop-num">44</div>
+      <div class="kpop-name">5×7 Podcast</div>
+      <div class="kpop-cat">AI Podcast · Mia &amp; Kai · In Development</div>
+      <div class="kpop-url">5x7pod.com · 5x7podcast.com</div>
+    </a>
   </div>
+
+  <!-- K-POP NOTE -->
+  <div style="padding: 24px 0; border-top: 1px solid var(--border); margin-top: 1px;">
+    <p style="font-size:11px; color:var(--text-dim); line-height:1.8;">
+      BTS, HYBE, and the full Korean music universe. 13 dedicated sites — each a completely unique layout and editorial identity. AI-curated twice daily. AI podcast with hosts Mia &amp; Kai in development. Built with my wife — the actual expert on all of it.
+    </p>
+  </div>
+
 </section>
 
-<section class="section reveal">
+<!-- ADVOCACY FEATURE -->
+<section class="section reveal" id="advocacy">
   <div class="section-header">
     <div class="section-label">Advocacy</div>
     <div class="section-count">Three Fights Worth Having</div>
@@ -1020,35 +1480,21 @@ footer {
   </div>
 </section>
 
-<div class="fun-block reveal">
-  <a class="fun-inner" href="https://greg16676935420.com" target="_blank" rel="noopener">
-    <div class="fun-eyebrow">Fun · The Official Unofficial Fan Site</div>
-    <div class="fun-title">GREG16676935420</div>
-    <div class="fun-subtitle">hi im greg. this website is under construction forever.</div>
-    <div class="fun-body">The official unofficial fan site for @greg16676935420 — the internet's most mysterious X account. Fake CEO of Dogecoin. Official Slim Jim guy. Oreo scientist. Golfer. From Kentuckey. Nobody knows who he is. That is on purpose. Built in authentic Web 1.0 glory with a visitor counter, a "greatest hits" section, the full lore, and a construction banner that has been there since day one.</div>
-    <div class="fun-tags">
-      <span class="fun-tag">Fake CEO of Dogecoin</span>
-      <span class="fun-tag">Official Slim Jim Guy</span>
-      <span class="fun-tag">Oreo Scientist</span>
-      <span class="fun-tag">Golfer</span>
-      <span class="fun-tag">From Kentuckey</span>
-      <span class="fun-tag">Web 1.0</span>
-      <span class="fun-tag">Under Construction Forever</span>
-    </div>
-    <span class="fun-link">greg16676935420.com →</span>
-  </a>
-</div>
-
-<div class="about-row reveal" id="kpop">
+<!-- ABOUT -->
+<div class="about-row reveal" id="about">
   <div class="about-block">
     <div class="about-label">K-Pop Digital Network</div>
-    <div class="about-title">16 Sites. One Universe.</div>
-    <div class="about-body">BTS, HYBE, and the full Korean music world. 14 aggregators + AI podcast in development. Every site a unique layout and aesthetic. AI-curated, twice daily. Built with my wife, who is the actual expert.</div>
+    <div class="about-title">13 Sites. One Universe.</div>
+    <div class="about-body">BTS, HYBE, and the full Korean music world. 13 dedicated sites + AI podcast in development. Every site a unique layout and aesthetic. AI-curated, twice daily. Built with my wife, who is the actual expert.</div>
   </div>
-  <div class="about-block" id="about">
-    <div class="about-label">About Zach Myers</div>
-    <div class="about-title">Founder. Builder. PhD Candidate.</div>
-    <div class="about-body">Northeast Ohio. Married father of four boys. Three rescue dogs. BBA Finance + MPA, Kent State. PhD candidate in Health Sciences at Youngstown State University. Building things that don't exist yet since long before it was cool.</div>
+  <div class="about-block">
+    <div class="about-label">About</div>
+    <div class="about-title">Mind of Myers</div>
+    <div class="about-body">
+      See a problem. Build the solution. Repeat.<br><br>
+      The subject never mattered. The gap always did.<br><br>
+      44 live sites — each built because something should have existed and didn't.
+    </div>
     <div class="about-tags">
       <span class="about-tag">Founder</span>
       <span class="about-tag">Builder</span>
@@ -1075,20 +1521,23 @@ footer {
   <div class="footer-logo">MIND <em>of Myers</em></div>
   <div class="footer-right">
     © 2026 &nbsp;·&nbsp; Northeast Ohio &nbsp;·&nbsp;
-    <a href="mailto:info@mindofmyers.com">info@mindofmyers.com</a>
+    <a href="mailto:info@mindofmyers.com">info@mindofmyers.com</a><br>
+    <span style="opacity:.5;">Last updated August 2026</span>
   </div>
 </footer>
 
 <script>
+// ── CURSOR ──
 const cur=document.getElementById('cur'),curR=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function animRing(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(animRing);})();
-document.querySelectorAll('a,.proj-row,.feat-block,.fun-inner').forEach(el=>{
+document.querySelectorAll('a,.proj-row,.feat-block,.kpop-cell').forEach(el=>{
   el.addEventListener('mouseenter',()=>{cur.style.width='12px';cur.style.height='12px';curR.style.width='56px';curR.style.height='56px';curR.style.borderColor='rgba(168,212,245,0.7)';});
   el.addEventListener('mouseleave',()=>{cur.style.width='6px';cur.style.height='6px';curR.style.width='36px';curR.style.height='36px';curR.style.borderColor='rgba(168,212,245,0.4)';});
 });
 
+// ── PARTICLE BACKGROUND ──
 const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');
 let W,H,particles=[],mouse={x:-999,y:-999};
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
@@ -1106,8 +1555,74 @@ function drawMouseGlow(){if(mouse.x<0)return;const g=ctx.createRadialGradient(mo
 function loop(){ctx.fillStyle='rgba(3,5,8,0.25)';ctx.fillRect(0,0,W,H);drawGrid();drawMouseGlow();drawLines();particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
 loop();
 document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+
+// ── REVEAL ON SCROLL ──
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+
+// ── SEARCH ──
+const searchInput=document.getElementById('searchInput');
+const projRows=document.querySelectorAll('.proj-row');
+searchInput.addEventListener('input',function(){
+  const q=this.value.toLowerCase().trim();
+  projRows.forEach(row=>{
+    if(!q){row.classList.remove('hidden');return;}
+    const name=row.dataset.name||'';
+    const cat=row.dataset.cat||'';
+    const sentence=row.dataset.sentence||'';
+    const url=row.dataset.url||'';
+    const match=(name+cat+sentence+url).toLowerCase().includes(q);
+    row.classList.toggle('hidden',!match);
+  });
+  // Show/hide dividers based on visible rows
+  document.querySelectorAll('.section-divider').forEach(div=>{
+    let next=div.nextElementSibling;
+    let hasVisible=false;
+    while(next&&!next.classList.contains('section-divider')){
+      if(next.classList.contains('proj-row')&&!next.classList.contains('hidden')){hasVisible=true;break;}
+      next=next.nextElementSibling;
+    }
+    div.style.display=(!q||hasVisible)?'':'none';
+  });
+});
+
+// ── HOVER PREVIEW ──
+const preview=document.getElementById('hoverPreview');
+const hpNum=document.getElementById('hp-num');
+const hpName=document.getElementById('hp-name');
+const hpSentence=document.getElementById('hp-sentence');
+const hpCat=document.getElementById('hp-cat');
+const hpUrl=document.getElementById('hp-url');
+
+projRows.forEach(row=>{
+  row.addEventListener('mouseenter',function(){
+    hpNum.textContent='#'+this.dataset.num;
+    hpName.textContent=this.dataset.name;
+    hpSentence.textContent=this.dataset.sentence;
+    hpCat.textContent=this.dataset.cat;
+    hpUrl.textContent=this.dataset.url+' →';
+    hpUrl.href='https://'+this.dataset.url;
+    preview.classList.add('visible');
+  });
+  row.addEventListener('mouseleave',function(){
+    preview.classList.remove('visible');
+  });
+});
+
+// ── ACTIVE CAT NAV ──
+const catLinks=document.querySelectorAll('.cat-nav-link');
+const sections=document.querySelectorAll('.section-divider[id]');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(sec=>{
+    const top=sec.getBoundingClientRect().top;
+    if(top<120)current=sec.id;
+  });
+  catLinks.forEach(link=>{
+    const href=link.getAttribute('href').replace('#','');
+    link.classList.toggle('active',href===current);
+  });
+},{ passive:true });
 </script>
 </body>
 </html>

@@ -576,54 +576,6 @@ nav {
   margin-top: 4px;
 }
 
-.feat-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-}
-.feat-block {
-  background: var(--bg);
-  padding: 32px;
-  transition: background .2s;
-  cursor: none;
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-.feat-block:hover { background: var(--bg2); }
-.feat-eyebrow {
-  font-size: 8px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--ice-dim);
-  margin-bottom: 14px;
-}
-.feat-title {
-  font-family: var(--font-serif);
-  font-size: 26px;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 10px;
-}
-.feat-body {
-  font-size: 12px;
-  color: rgba(168,212,245,0.6);
-  line-height: 1.7;
-}
-.feat-link {
-  font-size: 9px;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--ice-dim);
-  margin-top: 16px;
-  display: block;
-  transition: color .2s;
-}
-.feat-block:hover .feat-link { color: var(--ice-bright); }
-
 .about-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -728,7 +680,6 @@ footer {
   .section { padding: 48px 20px; }
   .proj-row { grid-template-columns: 36px 1fr 24px; }
   .proj-url { display: none; }
-  .feat-grid { grid-template-columns: 1fr; }
   .about-row { grid-template-columns: 1fr; }
   .kpop-grid { grid-template-columns: repeat(2, 1fr); }
   footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
@@ -757,7 +708,6 @@ footer {
   <div class="nav-logo">MIND <em>of Myers</em></div>
   <div class="nav-links">
     <a href="#index" class="nav-link">Index</a>
-    <a href="#advocacy" class="nav-link">Advocacy</a>
     <a href="#about" class="nav-link">About</a>
   </div>
 </nav>
@@ -857,10 +807,7 @@ footer {
        data-url="xekie.com">
       <div class="proj-num">01</div>
       <div class="proj-info">
-        <div class="proj-name-row">
-          <div class="proj-name">XEKIE</div>
-          <span class="proj-beta">★ BETA</span>
-        </div>
+        <div class="proj-name-row"><div class="proj-name">XEKIE</div><span class="proj-beta">★ BETA</span></div>
         <div class="proj-cat">Marketplace · Demand-Side · World's First</div>
         <div class="proj-sentence">Thirty years of e-commerce ran one direction. XEKIE inverted it — buyers post what they want, sellers compete to fulfill it. Trade Different.</div>
       </div>
@@ -874,10 +821,7 @@ footer {
        data-url="kyzmyt.com">
       <div class="proj-num">02</div>
       <div class="proj-info">
-        <div class="proj-name-row">
-          <div class="proj-name">Kyzmyt</div>
-          <span class="proj-beta">★ BETA</span>
-        </div>
+        <div class="proj-name-row"><div class="proj-name">Kyzmyt</div><span class="proj-beta">★ BETA</span></div>
         <div class="proj-cat">Dating · Triple Verified · World's First</div>
         <div class="proj-sentence">Every dating app ever built skipped identity verification. Kyzmyt does all three — background check, live face scan, government ID — before the first match.</div>
       </div>
@@ -891,10 +835,7 @@ footer {
        data-url="voxxee.com">
       <div class="proj-num">03</div>
       <div class="proj-info">
-        <div class="proj-name-row">
-          <div class="proj-name">Voxxee</div>
-          <span class="proj-beta">★ BETA</span>
-        </div>
+        <div class="proj-name-row"><div class="proj-name">Voxxee</div><span class="proj-beta">★ BETA</span></div>
         <div class="proj-cat">Social Platform · Free Speech · Verified Adults · Facebook Competitor</div>
         <div class="proj-sentence">Every moderation decision logged in a live public record. Facebook cannot build this without documenting thirty years of suppression.</div>
       </div>
@@ -908,10 +849,7 @@ footer {
        data-url="voxvega.com">
       <div class="proj-num">04</div>
       <div class="proj-info">
-        <div class="proj-name-row">
-          <div class="proj-name">VoxVega</div>
-          <span class="proj-beta">★ BETA</span>
-        </div>
+        <div class="proj-name-row"><div class="proj-name">VoxVega</div><span class="proj-beta">★ BETA</span></div>
         <div class="proj-cat">Creator Platform · Cameo Competitor</div>
         <div class="proj-sentence">Six creator revenue streams in one profile. Cameo takes 25%. VoxVega takes nothing.</div>
       </div>
@@ -925,10 +863,7 @@ footer {
        data-url="silqueroad.com">
       <div class="proj-num">05</div>
       <div class="proj-info">
-        <div class="proj-name-row">
-          <div class="proj-name">Silque Road</div>
-          <span class="proj-beta">★ BETA</span>
-        </div>
+        <div class="proj-name-row"><div class="proj-name">Silque Road</div><span class="proj-beta">★ BETA</span></div>
         <div class="proj-cat">Marketplace · Legal · Anonymous · Crypto</div>
         <div class="proj-sentence">A legal marketplace with anonymous checkout and crypto payments, carrying products major platforms stopped listing.</div>
       </div>
@@ -1434,33 +1369,6 @@ footer {
     </p>
   </div>
 
-</section>
-
-<section class="section reveal" id="advocacy">
-  <div class="section-header">
-    <div class="section-label">Advocacy</div>
-    <div class="section-count">Three Fights Worth Having</div>
-  </div>
-  <div class="feat-grid">
-    <a class="feat-block" href="https://freeelizabethholmes.com" target="_blank" rel="noopener">
-      <div class="feat-eyebrow">Justice Campaign · Petition Live</div>
-      <div class="feat-title">Free Elizabeth Holmes</div>
-      <div class="feat-body">Acquitted on every patient count. Never enriched herself. Serving 11.25 years while the science she pioneered is commercialized by others without consequence. The sentence is wrong. The precedent is dangerous.</div>
-      <span class="feat-link">freeelizabethholmes.com →</span>
-    </a>
-    <a class="feat-block" href="https://pardonjohnkiriakou.com" target="_blank" rel="noopener">
-      <div class="feat-eyebrow">Presidential Pardon · Petition Live</div>
-      <div class="feat-title">Pardon John Kiriakou</div>
-      <div class="feat-body">The only American jailed for the CIA torture program — for telling the truth about it. 23 months served. Every torturer walked free. The truth-teller went to prison. That message cannot stand.</div>
-      <span class="feat-link">pardonjohnkiriakou.com →</span>
-    </a>
-    <a class="feat-block" href="https://pardonmartinshkreli.com" target="_blank" rel="noopener">
-      <div class="feat-eyebrow">Presidential Pardon · Petition Live</div>
-      <div class="feat-title">Pardon Martin Shkreli</div>
-      <div class="feat-body">Entrepreneur. Scientist. Contrarian. One of the most misunderstood figures in modern America. He served his time, returned to pharmaceutical research, and deserves a second look — and a pardon.</div>
-      <span class="feat-link">pardonmartinshkreli.com →</span>
-    </a>
-  </div>
 </section>
 
 <div class="about-row reveal" id="about">

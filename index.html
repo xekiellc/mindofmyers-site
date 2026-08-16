@@ -58,7 +58,6 @@ body {
   cursor: none;
 }
 
-/* ── CURSOR — toned down ── */
 .cursor {
   position: fixed;
   width: 6px; height: 6px;
@@ -89,7 +88,6 @@ body {
   pointer-events: none;
 }
 
-/* ── NAV ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -124,7 +122,6 @@ nav {
 }
 .nav-link:hover { color: var(--ice-bright); }
 
-/* ── CATEGORY NAV ── */
 .cat-nav {
   position: sticky;
   top: 0;
@@ -162,7 +159,6 @@ nav {
   border-bottom-color: var(--ice);
 }
 
-/* ── HERO ── */
 .hero {
   position: relative;
   z-index: 1;
@@ -275,7 +271,6 @@ nav {
   color: var(--text-dim);
 }
 
-/* ── TICKER ── */
 .ticker {
   position: relative;
   z-index: 1;
@@ -301,7 +296,6 @@ nav {
 }
 .ticker-sep { color: rgba(168,212,245,0.1); padding: 0 4px; }
 
-/* ── MANIFESTO ── */
 .manifesto {
   position: relative;
   z-index: 1;
@@ -329,7 +323,6 @@ nav {
 }
 .manifesto-body em { font-style: italic; color: var(--ice); }
 
-/* ── SECTION ── */
 .section {
   position: relative;
   z-index: 1;
@@ -355,7 +348,6 @@ nav {
   text-transform: uppercase;
 }
 
-/* ── SEARCH ── */
 .search-wrap {
   margin-bottom: 32px;
   position: relative;
@@ -391,7 +383,6 @@ nav {
   50% { opacity: 0.3; }
 }
 
-/* ── PROJECT LIST ── */
 .proj-list { display: flex; flex-direction: column; }
 .proj-row {
   display: grid;
@@ -465,7 +456,6 @@ nav {
   padding-top: 2px;
 }
 
-/* ── SECTION DIVIDER ── */
 .section-divider {
   font-size: 8px;
   letter-spacing: .22em;
@@ -484,7 +474,6 @@ nav {
   color: rgba(168,212,245,0.2);
 }
 
-/* ── HOVER PREVIEW ── */
 .hover-preview {
   position: fixed;
   right: 0;
@@ -541,7 +530,6 @@ nav {
 }
 .hp-url:hover { color: var(--ice-bright); border-bottom-color: var(--ice); }
 
-/* ── KPOP GRID ── */
 .kpop-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -588,7 +576,6 @@ nav {
   margin-top: 4px;
 }
 
-/* ── ADVOCACY CARDS ── */
 .feat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -637,7 +624,6 @@ nav {
 }
 .feat-block:hover .feat-link { color: var(--ice-bright); }
 
-/* ── ABOUT ── */
 .about-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -682,7 +668,6 @@ nav {
   border-radius: 2px;
 }
 
-/* ── FOOTER ── */
 footer {
   position: relative;
   z-index: 1;
@@ -713,7 +698,6 @@ footer {
 .footer-right a { color: var(--ice-dim); text-decoration: none; }
 .footer-right a:hover { color: var(--ice); }
 
-/* ── REVEAL ── */
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -721,22 +705,18 @@ footer {
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── ANIMATIONS ── */
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
 
-/* ── HIDDEN ── */
 .proj-row.hidden { display: none; }
 
-/* ── MOBILE ── */
 @media (max-width: 1024px) {
   .hover-preview { display: none; }
 }
@@ -767,7 +747,6 @@ footer {
 <div class="cursor-ring" id="curR"></div>
 <canvas id="bg-canvas"></canvas>
 
-<!-- HOVER PREVIEW PANEL -->
 <div class="hover-preview" id="hoverPreview">
   <div class="hp-num" id="hp-num"></div>
   <div class="hp-name" id="hp-name"></div>
@@ -786,7 +765,7 @@ footer {
 </nav>
 
 <section class="hero">
-  <div class="hero-eyebrow">mindofmyers.com &nbsp;·&nbsp; Northeast Ohio &nbsp;·&nbsp; Est. 2026</div>
+  <div class="hero-eyebrow">mindofmyers.com &nbsp;·&nbsp; Est. 2026</div>
   <h1 class="hero-h1">
     MIND
     <span class="of">of Myers</span>
@@ -813,7 +792,6 @@ footer {
   </div>
 </section>
 
-<!-- TICKER — 8 items, slow, quiet -->
 <div class="ticker">
   <div class="ticker-track">
     <span class="ticker-item">The Schrödinger Equation</span><span class="ticker-sep">·</span>
@@ -843,7 +821,6 @@ footer {
   </div>
 </div>
 
-<!-- CATEGORY NAV -->
 <nav class="cat-nav" id="catNav">
   <div class="cat-nav-inner">
     <a href="#sec-platforms" class="cat-nav-link">Platforms</a>
@@ -865,20 +842,12 @@ footer {
     <div class="section-count">44 Projects · And Counting</div>
   </div>
 
-  <!-- SEARCH -->
   <div class="search-wrap">
-    <input
-      type="text"
-      class="search-input"
-      id="searchInput"
-      placeholder="Search the mind — type to filter"
-      autocomplete="off"
-    >
+    <input type="text" class="search-input" id="searchInput" placeholder="Search the mind — type to filter" autocomplete="off">
   </div>
 
   <div class="proj-list" id="projList">
 
-    <!-- PLATFORMS -->
     <div class="section-divider" id="sec-platforms">
       <span>Platforms</span>
       <span class="section-divider-count">05</span>
@@ -959,7 +928,6 @@ footer {
       <div class="proj-arrow">→</div>
     </a>
 
-    <!-- TECH & THE FUTURE -->
     <div class="section-divider" id="sec-tech">
       <span>Tech &amp; The Future</span>
       <span class="section-divider-count">04</span>
@@ -1021,7 +989,6 @@ footer {
       <div class="proj-arrow">→</div>
     </a>
 
-    <!-- SCIENCE -->
     <div class="section-divider" id="sec-science">
       <span>Science</span>
       <span class="section-divider-count">03</span>
@@ -1069,7 +1036,6 @@ footer {
       <div class="proj-arrow">→</div>
     </a>
 
-    <!-- WATCHDOG & INTELLIGENCE -->
     <div class="section-divider" id="sec-watchdog">
       <span>Watchdog &amp; Intelligence</span>
       <span class="section-divider-count">03</span>
@@ -1117,7 +1083,6 @@ footer {
       <div class="proj-arrow">→</div>
     </a>
 
-    <!-- THE POLITICAL CLASS -->
     <div class="section-divider" id="sec-political">
       <span>The Political Class</span>
       <span class="section-divider-count">02</span>
@@ -1151,7 +1116,6 @@ footer {
       <div class="proj-arrow">→</div>
     </a>
 
-    <!-- ADVOCACY -->
     <div class="section-divider" id="sec-advocacy">
       <span>Advocacy</span>
       <span class="section-divider-count">03</span>
@@ -1199,7 +1163,6 @@ footer {
       <div class="proj-arrow">→</div>
     </a>
 
-    <!-- TRIBUTE & CULTURE -->
     <div class="section-divider" id="sec-tribute">
       <span>Tribute &amp; Culture</span>
       <span class="section-divider-count">05</span>
@@ -1275,7 +1238,6 @@ footer {
       <div class="proj-arrow">→</div>
     </a>
 
-    <!-- COMMUNITY HUBS -->
     <div class="section-divider" id="sec-community">
       <span>Community Hubs</span>
       <span class="section-divider-count">03</span>
@@ -1323,7 +1285,6 @@ footer {
       <div class="proj-arrow">→</div>
     </a>
 
-    <!-- GLOBAL SPORTS -->
     <div class="section-divider" id="sec-sports">
       <span>Global Sports</span>
       <span class="section-divider-count">03</span>
@@ -1371,15 +1332,13 @@ footer {
       <div class="proj-arrow">→</div>
     </a>
 
-    <!-- K-POP NETWORK -->
     <div class="section-divider" id="sec-kpop">
       <span>K-Pop Network</span>
       <span class="section-divider-count">13</span>
     </div>
 
-  </div><!-- end proj-list -->
+  </div>
 
-  <!-- K-POP GRID -->
   <div class="kpop-grid">
     <a class="kpop-cell" href="https://armypulse.com" target="_blank" rel="noopener">
       <div class="kpop-num">32</div>
@@ -1461,7 +1420,6 @@ footer {
     </a>
   </div>
 
-  <!-- K-POP NOTE -->
   <div style="padding: 24px 0; border-top: 1px solid var(--border); margin-top: 1px;">
     <p style="font-size:11px; color:rgba(168,212,245,0.6); line-height:1.8;">
       BTS, HYBE, and the full Korean music universe. 13 dedicated sites — each a completely unique layout and editorial identity. AI-curated twice daily. AI podcast with hosts Mia &amp; Kai in development. Built with my wife — the actual expert on all of it.
@@ -1470,7 +1428,6 @@ footer {
 
 </section>
 
-<!-- ADVOCACY FEATURE -->
 <section class="section reveal" id="advocacy">
   <div class="section-header">
     <div class="section-label">Advocacy</div>
@@ -1498,7 +1455,6 @@ footer {
   </div>
 </section>
 
-<!-- ABOUT -->
 <div class="about-row reveal" id="about">
   <div class="about-block">
     <div class="about-label">K-Pop Digital Network</div>
@@ -1517,7 +1473,6 @@ footer {
       <span class="about-tag">Founder</span>
       <span class="about-tag">Builder</span>
       <span class="about-tag">PhD Candidate — YSU</span>
-      <span class="about-tag">Northeast Ohio</span>
       <span class="about-tag">Crypto</span>
       <span class="about-tag">UAP Disclosure</span>
       <span class="about-tag">Advocacy</span>
@@ -1538,14 +1493,13 @@ footer {
 <footer>
   <div class="footer-logo">MIND <em>of Myers</em></div>
   <div class="footer-right">
-    © 2026 &nbsp;·&nbsp; Northeast Ohio &nbsp;·&nbsp;
+    © 2026 &nbsp;·&nbsp;
     <a href="mailto:info@mindofmyers.com">info@mindofmyers.com</a><br>
     <span style="opacity:.5;">Last updated August 2026</span>
   </div>
 </footer>
 
 <script>
-// ── CURSOR — toned down ring ──
 const cur=document.getElementById('cur'),curR=document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
@@ -1555,7 +1509,6 @@ document.querySelectorAll('a,.proj-row,.feat-block,.kpop-cell').forEach(el=>{
   el.addEventListener('mouseleave',()=>{cur.style.width='6px';cur.style.height='6px';});
 });
 
-// ── PARTICLE BACKGROUND ──
 const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');
 let W,H,particles=[],mouse={x:-999,y:-999};
 function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
@@ -1574,22 +1527,16 @@ function loop(){ctx.fillStyle='rgba(3,5,8,0.25)';ctx.fillRect(0,0,W,H);drawGrid(
 loop();
 document.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
 
-// ── REVEAL ON SCROLL ──
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
 
-// ── SEARCH ──
 const searchInput=document.getElementById('searchInput');
 const projRows=document.querySelectorAll('.proj-row');
 searchInput.addEventListener('input',function(){
   const q=this.value.toLowerCase().trim();
   projRows.forEach(row=>{
     if(!q){row.classList.remove('hidden');return;}
-    const name=row.dataset.name||'';
-    const cat=row.dataset.cat||'';
-    const sentence=row.dataset.sentence||'';
-    const url=row.dataset.url||'';
-    const match=(name+cat+sentence+url).toLowerCase().includes(q);
+    const match=(row.dataset.name+row.dataset.cat+row.dataset.sentence+row.dataset.url).toLowerCase().includes(q);
     row.classList.toggle('hidden',!match);
   });
   document.querySelectorAll('.section-divider').forEach(div=>{
@@ -1603,14 +1550,12 @@ searchInput.addEventListener('input',function(){
   });
 });
 
-// ── HOVER PREVIEW ──
 const preview=document.getElementById('hoverPreview');
 const hpNum=document.getElementById('hp-num');
 const hpName=document.getElementById('hp-name');
 const hpSentence=document.getElementById('hp-sentence');
 const hpCat=document.getElementById('hp-cat');
 const hpUrl=document.getElementById('hp-url');
-
 projRows.forEach(row=>{
   row.addEventListener('mouseenter',function(){
     hpNum.textContent='#'+this.dataset.num;
@@ -1626,7 +1571,6 @@ projRows.forEach(row=>{
   });
 });
 
-// ── ACTIVE CAT NAV ──
 const catLinks=document.querySelectorAll('.cat-nav-link');
 const sections=document.querySelectorAll('.section-divider[id]');
 window.addEventListener('scroll',()=>{
